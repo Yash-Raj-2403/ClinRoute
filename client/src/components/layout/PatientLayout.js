@@ -39,12 +39,12 @@ const PatientLayout = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-background text-gray-800 overflow-hidden font-sans selection:bg-secondary selection:text-primary-900">
+    <div className="flex h-screen bg-[#FDFBF7] text-slate-800 overflow-hidden font-sans selection:bg-[#FBBF24] selection:text-[#0f4c3a]">
       {/* Background Ambient Color Mesh to fix 'too white' */}
       <div className="fixed inset-0 pointer-events-none z-0">
-         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
-         <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-secondary-light rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
-         <div className="absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] bg-accent-blue rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+         <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-amber-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+         <div className="absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] bg-indigo-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
       </div>
 
       {/* Sidebar - Added subtle gradient */}
@@ -54,13 +54,13 @@ const PatientLayout = () => {
           width: isSidebarOpen ? 280 : 100,
           transition: { type: "spring", stiffness: 300, damping: 30 }
         }}
-        className="relative z-50 h-full bg-surface/80 backdrop-blur-xl border-r border-white/50 flex flex-col justify-between shadow-[4px_0_24px_rgba(0,0,0,0.02)]"
+        className="relative z-50 h-full bg-white/80 backdrop-blur-xl border-r border-white/50 flex flex-col justify-between shadow-[4px_0_24px_rgba(0,0,0,0.02)]"
       >
         <div className="flex flex-col h-full py-8 px-4">
           {/* Logo Area */}
           <div className="h-20 flex items-center justify-center mb-6">
-              <div className="relative group cursor-pointer flex items-center gap-3" onClick={() => navigate('/')}>
-                <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center text-secondary shadow-xl shadow-primary-900/10 transform group-hover:scale-105 transition-transform">
+              <div className="relative group cursor-pointer flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#0f4c3a] flex items-center justify-center text-[#FBBF24] shadow-xl shadow-green-900/10 transform group-hover:scale-105 transition-transform">
                   <Heart size={24} className="fill-current" />
                 </div>
                 {isSidebarOpen && (
@@ -69,7 +69,7 @@ const PatientLayout = () => {
                     animate={{ opacity: 1, x: 0 }}
                     className="flex flex-col"
                   >
-                    <h1 className="text-2xl font-serif font-bold tracking-tight text-primary-900">ClinRoute</h1>
+                    <h1 className="text-2xl font-serif font-bold tracking-tight text-[#0f4c3a]">ClinRoute</h1>
                   </motion.div>
                 )}
               </div>
@@ -90,15 +90,15 @@ const PatientLayout = () => {
                   className={({ isActive }) => `
                     relative flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 group mx-2
                     ${isActive 
-                      ? 'bg-primary-600 text-white font-bold shadow-lg shadow-primary-900/10' 
-                      : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium'
+                      ? 'bg-[#0f4c3a] text-white font-bold shadow-lg shadow-green-900/10' 
+                      : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-medium'
                     }
                     ${!isSidebarOpen && 'justify-center px-0'}
                   `}
                 >
                   <item.icon 
                     size={24} 
-                    className={`transition-all duration-300 ${isActive ? 'text-secondary' : 'group-hover:scale-110 group-hover:text-primary-600'}`}
+                    className={`transition-all duration-300 ${isActive ? 'text-[#FBBF24]' : 'group-hover:scale-110 group-hover:text-[#0f4c3a]'}`}
                     strokeWidth={isActive ? 2.5 : 2}
                   />
                   
@@ -111,24 +111,24 @@ const PatientLayout = () => {
           </nav>
 
           {/* User Profile / Logout */}
-          <div className="pt-6 mt-auto border-t border-gray-100">
+          <div className="pt-6 mt-auto border-t border-slate-100">
              {isSidebarOpen ? (
-                <div className="bg-surface rounded-2xl p-4 flex items-center justify-between gap-3 border border-gray-100 shadow-sm group hover:border-primary-200 transition-colors cursor-pointer" onClick={() => navigate('/patient/account-settings')}>
+                <div className="bg-white rounded-2xl p-4 flex items-center justify-between gap-3 border border-slate-100 shadow-sm group hover:border-emerald-200 transition-colors cursor-pointer" onClick={() => navigate('/patient/account-settings')}>
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-secondary-dark text-white flex items-center justify-center font-serif font-bold text-lg shadow-md">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FBBF24] to-yellow-500 text-white flex items-center justify-center font-serif font-bold text-lg shadow-md">
                       {user?.name?.charAt(0) || 'P'}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-bold text-gray-800 truncate font-serif">{user?.name || 'Patient'}</p>
-                      <p className="text-xs text-gray-400 truncate font-medium group-hover:text-primary-600 transition-colors">View Profile</p>
+                      <p className="text-sm font-bold text-slate-800 truncate font-serif">{user?.name || 'Patient'}</p>
+                      <p className="text-xs text-slate-400 truncate font-medium group-hover:text-emerald-600 transition-colors">View Profile</p>
                     </div>
                   </div>
-                  <ChevronRight size={16} className="text-gray-300 group-hover:text-primary-500" />
+                  <ChevronRight size={16} className="text-slate-300 group-hover:text-emerald-500" />
                 </div>
              ) : (
                 <button 
                   onClick={handleLogout}
-                  className="w-full flex justify-center p-4 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-colors"
+                  className="w-full flex justify-center p-4 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-colors"
                   title="Sign Out"
                 >
                   <LogOut size={24} />
@@ -143,7 +143,7 @@ const PatientLayout = () => {
         {/* Header */}
         <header className="h-24 flex items-center justify-between px-8 pt-6 z-30">
            <div className="flex flex-col">
-               <h2 className="text-3xl font-serif font-bold text-primary-900 leading-tight flex items-center gap-3 drop-shadow-sm">
+               <h2 className="text-3xl font-serif font-bold text-[#0f4c3a] leading-tight flex items-center gap-3 drop-shadow-sm">
                  {/* Dynamic Page Title based on route matching */}
                  {navItems.find(i => 
                     i.end ? location.pathname === i.path : location.pathname.startsWith(i.path)
@@ -152,21 +152,21 @@ const PatientLayout = () => {
            </div>
 
            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center bg-surface/80 backdrop-blur-md rounded-full px-5 py-3 border border-white/50 shadow-sm focus-within:border-primary-600 focus-within:ring-4 focus-within:ring-primary-600/10 transition-all w-80">
-                 <Search size={20} className="text-gray-400" />
+              <div className="hidden md:flex items-center bg-white/80 backdrop-blur-md rounded-full px-5 py-3 border border-white/50 shadow-sm focus-within:border-[#0f4c3a] focus-within:ring-4 focus-within:ring-[#0f4c3a]/10 transition-all w-80">
+                 <Search size={20} className="text-slate-400" />
                  <input 
                    type="text" 
                    placeholder="Search..." 
-                   className="flex-1 border-none focus:ring-0 text-sm font-medium placeholder:text-gray-400 bg-transparent ml-2 outline-none"
+                   className="flex-1 border-none focus:ring-0 text-sm font-medium placeholder:text-slate-400 bg-transparent ml-2"
                  />
               </div>
-              <button className="p-3 bg-surface/80 backdrop-blur-md border border-white/50 rounded-full text-gray-600 hover:text-primary-600 hover:bg-surface transition-all shadow-sm relative hover:scale-105 active:scale-95">
+              <button className="p-3 bg-white/80 backdrop-blur-md border border-white/50 rounded-full text-slate-600 hover:text-[#0f4c3a] hover:bg-white transition-all shadow-sm relative hover:scale-105 active:scale-95">
                  <Bell size={22} />
-                 <span className="absolute top-2 right-2.5 w-2 h-2 bg-accent-rose rounded-full ring-2 ring-white animate-pulse"></span>
+                 <span className="absolute top-2 right-2.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white animate-pulse"></span>
               </button>
               <button 
                  onClick={() => navigate('/patient/account-settings')}
-                 className="p-3 bg-surface/80 backdrop-blur-md border border-white/50 rounded-full text-gray-600 hover:text-primary-600 hover:bg-surface transition-all shadow-sm hover:scale-105 active:scale-95"
+                 className="p-3 bg-white/80 backdrop-blur-md border border-white/50 rounded-full text-slate-600 hover:text-[#0f4c3a] hover:bg-white transition-all shadow-sm hover:scale-105 active:scale-95"
               >
                  <Settings size={22} />
               </button>

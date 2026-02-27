@@ -29,16 +29,16 @@ const NearbyDoctors = () => {
             whileHover={{ scale: 1.1, rotate: 10 }}
             className="absolute top-0 right-0 bg-white p-4 rounded-2xl shadow-lg border border-slate-100"
           >
-             <Search size={24} className="text-primary-600" />
+             <Search size={24} className="text-[#0f4c3a]" />
           </motion.div>
        </div>
        
-       <h3 className="text-3xl font-serif font-bold text-primary-600 mb-4">Find your specialist</h3>
+       <h3 className="text-3xl font-serif font-bold text-[#0f4c3a] mb-4">Find your specialist</h3>
        <p className="text-slate-600 font-medium max-w-md mx-auto mb-10 text-lg leading-relaxed">
          Search for top-rated doctors in your area. Filter by specialty, availability, and insurance.
        </p>
        
-       <button className="px-8 py-4 bg-primary-600 text-white rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg">
+       <button className="px-8 py-4 bg-[#0f4c3a] text-white rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg">
          <Filter size={20} />
          Adjust Filters
        </button>
@@ -59,7 +59,7 @@ const NearbyDoctors = () => {
                   <Shield size={14} className="fill-current" />
                   Verified Specialists
               </motion.div>
-              <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary-600 tracking-tight mb-6">Find a Doctor</h1>
+              <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#0f4c3a] tracking-tight mb-6">Find a Doctor</h1>
               <p className="text-slate-600 text-xl font-medium max-w-2xl leading-relaxed">
                 Connect with world-class healthcare providers near you. Read reviews, check availability, and book instantly.
               </p>
@@ -69,11 +69,11 @@ const NearbyDoctors = () => {
          {/* Search & Filter Bar */}
          <div className="bg-white p-4 rounded-[2.5rem] shadow-nav border border-slate-100 flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-1 w-full group">
-               <Search className="absolute left-8 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary-600 transition-colors" size={24} />
+               <Search className="absolute left-8 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#0f4c3a] transition-colors" size={24} />
                <input 
                  type="text" 
                  placeholder="Search by doctor name, condition, or hospital..." 
-                 className="w-full pl-16 pr-8 py-5 bg-slate-50 border-transparent rounded-[2rem] focus:bg-white focus:ring-2 focus:ring-[primary-600]/20 text-slate-800 placeholder:text-slate-400 text-lg font-semibold transition-all"
+                 className="w-full pl-16 pr-8 py-5 bg-slate-50 border-transparent rounded-[2rem] focus:bg-white focus:ring-2 focus:ring-[#0f4c3a]/20 text-slate-800 placeholder:text-slate-400 text-lg font-semibold transition-all"
                  value={searchQuery}
                  onChange={(e) => setSearchQuery(e.target.value)}
                />
@@ -88,7 +88,7 @@ const NearbyDoctors = () => {
                 onClick={() => setSelectedSpecialty(spec.id)}
                 className={`px-8 py-4 rounded-full whitespace-nowrap text-lg font-bold transition-all flex items-center gap-3 border-2 ${
                   selectedSpecialty === spec.id 
-                  ? 'bg-primary-600 text-white border-primary-600 shadow-lg transform -translate-y-1' 
+                  ? 'bg-[#0f4c3a] text-white border-[#0f4c3a] shadow-lg transform -translate-y-1' 
                   : `${spec.color} border-transparent hover:border-current/20`
                 }`}
               >

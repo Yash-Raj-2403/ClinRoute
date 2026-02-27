@@ -21,7 +21,7 @@ const ConsultationStatus = () => {
                   </span>
                   Live Status
                </motion.div>
-               <h1 className="text-5xl font-serif font-bold text-primary-600 mb-6">Consultation Tracker</h1>
+               <h1 className="text-5xl font-serif font-bold text-[#0f4c3a] mb-6">Consultation Tracker</h1>
                <p className="text-slate-600 font-medium text-xl">Real-time updates on your medical requests and appointments.</p>
             </div>
 
@@ -50,7 +50,7 @@ const ConsultationStatus = () => {
                      
                      <Link 
                        to="/patient/consultation/new" 
-                       className="inline-flex px-10 py-5 bg-primary-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all items-center gap-3 text-lg"
+                       className="inline-flex px-10 py-5 bg-[#0f4c3a] text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all items-center gap-3 text-lg"
                      >
                         <PlusCircle size={24} />
                         Start New Request

@@ -16,13 +16,13 @@ const Reports = () => {
           <FileHeart size={64} className="text-rose-500" strokeWidth={1.5} />
        </motion.div>
        
-       <h3 className="text-4xl font-serif font-bold text-primary-600 mb-6">No Records Found</h3>
+       <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-6">No Records Found</h3>
        <p className="text-slate-600 font-medium max-w-lg mx-auto mb-12 text-xl leading-relaxed">
          Your medical reports, lab results, and prescriptions will be safely stored here.
        </p>
        
        <button className="px-10 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-full font-bold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm text-lg flex items-center gap-3">
-         <FilePlus size={24} className="text-primary-600" />
+         <FilePlus size={24} className="text-[#0f4c3a]" />
          Upload External Report
        </button>
     </div>
@@ -32,17 +32,17 @@ const Reports = () => {
     <div className="max-w-[1600px] mx-auto min-h-screen pb-12 px-6">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
          <div>
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary-600 mb-6 tracking-tight">Medical Records</h1>
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#0f4c3a] mb-6 tracking-tight">Medical Records</h1>
             <p className="text-slate-600 font-medium text-xl">Securely access and manage your complete health history.</p>
          </div>
 
          <div className="flex gap-4">
             <div className="relative group">
-               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary-600 transition-colors" size={20} />
+               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#0f4c3a] transition-colors" size={20} />
                <input 
                  type="text" 
                  placeholder="Search records..." 
-                 className="pl-14 pr-8 py-4 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[primary-600]/20 w-80 shadow-sm transition-all text-lg font-medium" 
+                 className="pl-14 pr-8 py-4 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#0f4c3a]/20 w-80 shadow-sm transition-all text-lg font-medium" 
                />
             </div>
             <button className="p-4 bg-white border border-slate-200 rounded-full text-slate-600 hover:bg-slate-50 hover:border-slate-300 shadow-sm transition-all">
@@ -60,7 +60,7 @@ const Reports = () => {
                  onClick={() => setActiveTab(tab.toLowerCase())}
                  className={`pb-5 px-4 text-base font-bold uppercase tracking-wider border-b-4 transition-all ${
                     activeTab === tab.toLowerCase() || (activeTab === 'all' && tab === 'All Records')
-                    ? 'border-primary-600 text-primary-600' 
+                    ? 'border-[#0f4c3a] text-[#0f4c3a]' 
                     : 'border-transparent text-slate-400 hover:text-slate-600'
                  }`}
                >
