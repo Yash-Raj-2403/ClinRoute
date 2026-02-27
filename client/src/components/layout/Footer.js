@@ -6,29 +6,22 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    product: [
-      { name: 'How It Works', path: '/how-it-works' },
+    company: [
       { name: 'About Us', path: '/about' },
       { name: 'Security', path: '/security' },
-      { name: 'RAG Technology', path: '#' },
     ],
-    providers: [
+    solutions: [
       { name: 'For Doctors', path: '/for-doctors' },
-      { name: 'For Hospitals', path: '/for-hospitals' },
-      { name: 'Enterprise Solutions', path: '#' },
-      { name: 'API Access', path: '#' },
+      { name: 'Enterprise', path: '/enterprise' },
     ],
-    resources: [
-      { name: 'Help Center', path: '#' },
-      { name: 'Contact Us', path: '#' },
-      { name: 'FAQs', path: '#' },
-      { name: 'System Status', path: '#' },
+    support: [
+      { name: 'Help Center', path: '/help-center' },
+      { name: 'Contact Us', path: '/contact' },
     ],
     legal: [
-      { name: 'Privacy Policy', path: '#' },
-      { name: 'Terms of Service', path: '#' },
-      { name: 'HIPAA Compliance', path: '#' },
-      { name: 'Cookie Policy', path: '#' },
+      { name: 'Privacy Policy', path: '/privacy' },
+      { name: 'Terms of Service', path: '/terms' },
+      { name: 'HIPAA Compliance', path: '/hipaa' },
     ],
   };
 
@@ -80,41 +73,33 @@ const Footer = () => {
           {/* Links Grid */}
           <div className="footer-links-grid">
             <div className="footer-column">
-              <h3 className="footer-column-title">Product</h3>
+              <h3 className="footer-column-title">Company</h3>
               <ul className="footer-links-list">
-                {footerLinks.product.map((link, index) => (
+                {footerLinks.company.map((link, index) => (
                   <li key={index}>
-                    {link.path.startsWith('#') ? (
-                      <a href={link.path}>{link.name}</a>
-                    ) : (
-                      <Link to={link.path}>{link.name}</Link>
-                    )}
+                    <Link to={link.path}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="footer-column">
-              <h3 className="footer-column-title">For Providers</h3>
+              <h3 className="footer-column-title">Solutions</h3>
               <ul className="footer-links-list">
-                {footerLinks.providers.map((link, index) => (
+                {footerLinks.solutions.map((link, index) => (
                   <li key={index}>
-                    {link.path.startsWith('#') ? (
-                      <a href={link.path}>{link.name}</a>
-                    ) : (
-                      <Link to={link.path}>{link.name}</Link>
-                    )}
+                    <Link to={link.path}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="footer-column">
-              <h3 className="footer-column-title">Resources</h3>
+              <h3 className="footer-column-title">Support</h3>
               <ul className="footer-links-list">
-                {footerLinks.resources.map((link, index) => (
+                {footerLinks.support.map((link, index) => (
                   <li key={index}>
-                    <a href={link.path}>{link.name}</a>
+                    <Link to={link.path}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -125,7 +110,7 @@ const Footer = () => {
               <ul className="footer-links-list">
                 {footerLinks.legal.map((link, index) => (
                   <li key={index}>
-                    <a href={link.path}>{link.name}</a>
+                    <Link to={link.path}>{link.name}</Link>
                   </li>
                 ))}
               </ul>

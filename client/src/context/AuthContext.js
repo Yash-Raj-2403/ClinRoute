@@ -148,14 +148,21 @@ export const AuthProvider = ({ children }) => {
   const updateProfile = async (updates) => {
     if (!user?.id) throw new Error('No authenticated user');
 
+    // Helper function to convert empty strings to null for numeric fields
+    const toNumericOrNull = (value) => {
+      if (value === '' || value === null || value === undefined) return null;
+      const num = Number(value);
+      return isNaN(num) ? null : num;
+    };
+
     const row = {
       id: user.id,
       email: user.email,
       role: user.role,
       name: updates.name !== undefined ? updates.name : user.name,
-      age: updates.age !== undefined ? updates.age : user.age,
-      weight: updates.weight !== undefined ? updates.weight : user.weight,
-      height: updates.height !== undefined ? updates.height : user.height,
+      age: toNumericOrNull(updates.age !== undefined ? updates.age : user.age),
+      weight: toNumericOrNull(updates.weight !== undefined ? updates.weight : user.weight),
+      height: toNumericOrNull(updates.height !== undefined ? updates.height : user.height),
       blood_group: updates.bloodGroup !== undefined ? updates.bloodGroup : user.bloodGroup,
       phone: updates.phone !== undefined ? updates.phone : user.phone,
       gender: updates.gender !== undefined ? updates.gender : user.gender,
@@ -168,8 +175,8 @@ export const AuthProvider = ({ children }) => {
       hospital_name: updates.hospitalName !== undefined ? updates.hospitalName : user.hospitalName,
       hospital_address: updates.hospitalAddress !== undefined ? updates.hospitalAddress : user.hospitalAddress,
       bio: updates.bio !== undefined ? updates.bio : user.bio,
-      experience: updates.experience !== undefined ? updates.experience : user.experience,
-      consultation_fee: updates.consultationFee !== undefined ? updates.consultationFee : user.consultationFee,
+      experience: toNumericOrNull(updates.experience !== undefined ? updates.experience : user.experience),
+      consultation_fee: toNumericOrNull(updates.consultationFee !== undefined ? updates.consultationFee : user.consultationFee),
       family_members: updates.familyMembers !== undefined ? updates.familyMembers : user.familyMembers,
       profile_complete: updates.profileComplete !== undefined ? updates.profileComplete : user.profileComplete,
     };

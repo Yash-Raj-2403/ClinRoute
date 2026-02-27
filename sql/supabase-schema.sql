@@ -1,5 +1,21 @@
 -- ============================================
+-- ⚠️ WARNING: DO NOT USE THIS FILE FOR CLINROUTE APP
+-- ============================================
+-- This file contains a complex multi-table schema that is NOT
+-- compatible with the current ClinRoute application.
+--
+-- The app uses a simpler single-table architecture (profiles table)
+-- defined in supabase-setup.sql
+--
+-- ❌ DO NOT RUN THIS FILE - It will cause conflicts and errors
+-- ✅ USE supabase-setup.sql instead
+--
+-- This file is kept for reference only.
+-- ============================================
+
+-- ============================================
 -- ClinRoute Database Schema for Supabase
+-- (REFERENCE ONLY - FOR COMPLEX MULTI-TABLE ARCHITECTURE)
 -- ============================================
 -- Copy and paste this entire file into Supabase SQL Editor
 -- Run it to create all tables, indexes, and constraints
@@ -40,35 +56,6 @@ CREATE TABLE users (
   reset_password_expire TIMESTAMP,
   email_verification_token VARCHAR(255),
   last_login TIMESTAMP,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-
--- ============================================
--- PATIENTS TABLE
--- ============================================
-CREATE TABLE patients (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID UNIQUE NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  medical_history JSONB DEFAULT '{
-    "conditions": [],
-    "allergies": [],
-    "medications": [],
-    "surgeries": [],
-    "familyHistory": []
-  }'::jsonb,
-  vitals JSONB DEFAULT '{
-    "bloodType": "Unknown",
-    "height": null,
-    "weight": null,
-    "lastUpdated": null
-  }'::jsonb,
-  insurance JSONB DEFAULT '{}'::jsonb,
-  emergency_contact JSONB DEFAULT '{}'::jsonb,
-  primary_care_physician_id UUID REFERENCES doctors(id),
-  favorite_doctors UUID[],
-  health_metrics JSONB DEFAULT '[]'::jsonb,
-  documents JSONB DEFAULT '[]'::jsonb,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
@@ -119,6 +106,35 @@ CREATE TABLE doctors (
   }'::jsonb,
   is_verified BOOLEAN DEFAULT false,
   verification_documents JSONB DEFAULT '[]'::jsonb,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ============================================
+-- PATIENTS TABLE
+-- ============================================
+CREATE TABLE patients (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID UNIQUE NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  medical_history JSONB DEFAULT '{
+    "conditions": [],
+    "allergies": [],
+    "medications": [],
+    "surgeries": [],
+    "familyHistory": []
+  }'::jsonb,
+  vitals JSONB DEFAULT '{
+    "bloodType": "Unknown",
+    "height": null,
+    "weight": null,
+    "lastUpdated": null
+  }'::jsonb,
+  insurance JSONB DEFAULT '{}'::jsonb,
+  emergency_contact JSONB DEFAULT '{}'::jsonb,
+  primary_care_physician_id UUID REFERENCES doctors(id),
+  favorite_doctors UUID[],
+  health_metrics JSONB DEFAULT '[]'::jsonb,
+  documents JSONB DEFAULT '[]'::jsonb,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );

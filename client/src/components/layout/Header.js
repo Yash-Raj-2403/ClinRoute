@@ -39,7 +39,7 @@ const Header = () => {
         {/* Navigation */}
         <nav className={`header-nav ${isMobileMenuOpen ? 'nav-open' : ''}`}>
           <Link to="/" className="nav-link">Home</Link>
-          <Link to="/chat" className="nav-link">AI Health Assistant</Link>
+          <Link to="/how-it-works" className="nav-link">How It Works</Link>
           <Link to="/about" className="nav-link">About</Link>
         </nav>
 

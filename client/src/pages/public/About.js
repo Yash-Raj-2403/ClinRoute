@@ -37,74 +37,7 @@ const About = () => {
     },
   ];
 
-  const timeline = [
-    {
-      year: '2023',
-      title: 'The Beginning',
-      description: 'ClinRoute founded by Dr. Sarah Chen and Michael Torres after personal experiences with healthcare navigation challenges.',
-    },
-    {
-      year: '2024',
-      title: 'AI Launch',
-      description: 'Released our first RAG-powered triage system, achieving 93% accuracy in medical specialty routing.',
-    },
-    {
-      year: '2025',
-      title: 'Rapid Growth',
-      description: 'Expanded to serve over 2M patients and partnered with 50,000+ healthcare providers nationwide.',
-    },
-    {
-      year: '2026',
-      title: 'Industry Leader',
-      description: 'Recognized as the leading AI-powered healthcare navigation platform with 95% patient satisfaction.',
-    },
-  ];
 
-  const team = [
-    { 
-      name: 'Dr. Sarah Chen', 
-      role: 'CEO & Co-founder', 
-      image: '👩‍⚕️',
-      bio: 'Former ER physician with 10+ years experience in emergency medicine',
-    },
-    { 
-      name: 'Michael Torres', 
-      role: 'CTO & Co-founder', 
-      image: '👨‍💻',
-      bio: 'AI researcher from Stanford, previously led ML teams at Google Health',
-    },
-    { 
-      name: 'Dr. James Wilson', 
-      role: 'Chief Medical Officer', 
-      image: '👨‍⚕️',
-      bio: 'Board-certified physician with expertise in clinical informatics',
-    },
-    { 
-      name: 'Priya Sharma', 
-      role: 'VP of Engineering', 
-      image: '👩‍💻',
-      bio: 'Former tech lead at Amazon Web Services, specialist in healthcare systems',
-    },
-    {
-      name: 'Dr. Emily Park',
-      role: 'Head of Medical AI',
-      image: '👩‍⚕️',
-      bio: 'MD-PhD with research focus on clinical decision support systems',
-    },
-    {
-      name: 'David Martinez',
-      role: 'VP of Product',
-      image: '👨‍💼',
-      bio: 'Product strategist with 15+ years in healthcare technology',
-    },
-  ];
-
-  const stats = [
-    { value: '2M+', label: 'Patients Served', icon: '👥' },
-    { value: '50K+', label: 'Healthcare Providers', icon: '🏥' },
-    { value: '95%', label: 'Triage Accuracy', icon: '🎯' },
-    { value: '90%', label: 'Time Saved', icon: '⚡' },
-  ];
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -126,20 +59,6 @@ const About = () => {
               We're on a mission to eliminate the confusion and delays in healthcare navigation, 
               connecting patients with the right care at the right time through intelligent AI-powered triage.
             </motion.p>
-            <motion.div className="hero-stats-mini" {...fadeInUp}>
-              <div className="mini-stat">
-                <span className="mini-stat-value">2M+</span>
-                <span className="mini-stat-label">Patients</span>
-              </div>
-              <div className="mini-stat">
-                <span className="mini-stat-value">50K+</span>
-                <span className="mini-stat-label">Providers</span>
-              </div>
-              <div className="mini-stat">
-                <span className="mini-stat-value">95%</span>
-                <span className="mini-stat-label">Accuracy</span>
-              </div>
-            </motion.div>
           </div>
         </div>
       </motion.section>
@@ -156,22 +75,21 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="section-label">Our Story</span>
-              <h2>Born from Personal Experience</h2>
+              <h2>Born from a Vision</h2>
               <p>
-                In 2023, Dr. Sarah Chen watched her father spend three frustrating weeks navigating 
-                the healthcare system, bouncing between wrong specialists for a condition that could 
-                have been diagnosed in days with proper triage.
+                Healthcare navigation has been broken for decades. Patients spend weeks bouncing 
+                between wrong specialists, urgent cases get missed, and the system wastes countless 
+                hours on inefficient routing.
               </p>
               <p>
-                That experience sparked a question: In an age of artificial intelligence, why is 
-                healthcare navigation still so broken? She partnered with AI researcher Michael Torres, 
-                and together they assembled a team of physicians, data scientists, and engineers to build 
-                something different.
+                ClinRoute was founded to solve this problem using cutting-edge artificial intelligence. 
+                Our team of physicians, data scientists, and engineers built a platform that can analyze 
+                symptoms, prioritize urgency, and connect patients with the right specialists instantly.
               </p>
               <p>
-                Today, ClinRoute uses advanced RAG (Retrieval-Augmented Generation) technology to analyze 
-                symptoms, prioritize urgency, and connect patients with the right specialists — reducing 
-                diagnostic time by 90% and improving care accuracy across the board.
+                Today, ClinRoute uses advanced RAG (Retrieval-Augmented Generation) technology powered by 
+                Llama 3.3 70B to deliver accurate medical triage. The platform reduces diagnostic time, 
+                improves care accuracy, and makes healthcare navigation simple for everyone.
               </p>
             </motion.div>
             <motion.div 
@@ -197,33 +115,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="timeline-section">
-        <div className="container">
-          <div className="section-header-center-about">
-            <span className="section-label">Our Journey</span>
-            <h2>Milestones That Matter</h2>
-          </div>
-          <div className="timeline">
-            {timeline.map((item, index) => (
-              <motion.div 
-                key={index} 
-                className="timeline-item"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="timeline-year">{item.year}</div>
-                <div className="timeline-content">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Values Section */}
       <section className="values-section-new">
@@ -255,62 +147,9 @@ const About = () => {
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section className="impact-stats-section">
-        <div className="container">
-          <div className="section-header-center-about">
-            <span className="section-label">Our Impact</span>
-            <h2>Making Healthcare Better, One Patient at a Time</h2>
-          </div>
-          <div className="impact-stats-grid">
-            {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
-                className="impact-stat-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index  * 0.1 }}
-              >
-                <div className="impact-icon">{stat.icon}</div>
-                <div className="impact-value">{stat.value}</div>
-                <div className="impact-label">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Team Section */}
-      <section className="team-section-new">
-        <div className="container">
-          <div className="section-header-center-about">
-            <span className="section-label">Leadership Team</span>
-            <h2>Meet the Minds Behind ClinRoute</h2>
-            <p className="team-subtitle">
-              A diverse team of physicians, engineers, and healthcare innovators
-            </p>
-          </div>
-          <div className="team-grid-new">
-            {team.map((member, index) => (
-              <motion.div 
-                key={index} 
-                className="team-card-new"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="team-avatar-new">{member.image}</div>
-                <h4>{member.name}</h4>
-                <p className="team-role">{member.role}</p>
-                <p className="team-bio">{member.bio}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* CTA Section */}
       <section className="about-cta-section">

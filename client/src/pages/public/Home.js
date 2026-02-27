@@ -39,36 +39,7 @@ const Home = () => {
     },
   ];
 
-  const stats = [
-    { value: '2M+', label: 'Patients Helped' },
-    { value: '50K+', label: 'Healthcare Providers' },
-    { value: '95%', label: 'Accuracy Rate' },
-    { value: '< 5min', label: 'Avg. Triage Time' },
-  ];
 
-  const testimonials = [
-    {
-      name: 'Emily Rodriguez',
-      role: 'Patient',
-      image: '👩',
-      text: 'ClinRoute saved me hours of research. Within minutes, I was connected with the right specialist for my condition.',
-      rating: 5,
-    },
-    {
-      name: 'Dr. Michael Chen',
-      role: 'Cardiologist',
-      image: '👨‍⚕️',
-      text: 'The AI triage system is incredibly accurate. My patients arrive better prepared and we spend less time on initial assessments.',
-      rating: 5,
-    },
-    {
-      name: 'Sarah Thompson', 
-      role: 'Patient',
-      image: '👩‍🦰',
-      text: 'As someone with anxiety about healthcare, ClinRoute made the process so much less overwhelming. Highly recommend!',
-      rating: 5,
-    },
-  ];
 
   const features = [
     {
@@ -98,16 +69,9 @@ const Home = () => {
     },
     {
       icon: '💬',
-      title: '24/7 AI Assistant',
+      title: '24/7 Support',
       description: 'Get help anytime, day or night',
     },
-  ];
-
-  const trustBadges = [
-    { icon: '🏆', text: 'Best Healthcare AI 2025' },
-    { icon: '🛡️', text: 'SOC 2 Certified' },
-    { icon: '⭐', text: '4.9/5 Patient Rating' },
-    { icon: '✓', text: 'HIPAA Compliant' },
   ];
 
   const handleSearch = (e) => {
@@ -311,22 +275,6 @@ const Home = () => {
                     <circle cx="70" cy="215" r="6" fill="#374151"/>
                   </g>
                 </svg>
-                
-                {/* Floating Cards */}
-                <div className="floating-card card-1">
-                  <div className="card-icon success">✓</div>
-                  <div>
-                    <strong>AI Assessment Complete</strong>
-                    <span>Moderate Priority</span>
-                  </div>
-                </div>
-                <div className="floating-card card-2">
-                  <div className="card-icon primary">🩺</div>
-                  <div>
-                    <strong>Dr. Sarah Johnson</strong>
-                    <span>Available in 2 hours</span>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -378,77 +326,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* App Download Section */}
-      <section className="app-section">
-        <div className="container">
-          <div className="app-content">
-            <div className="app-text">
-              <h2>Intelligent triage.<br/>One app.</h2>
-              <p>
-                The ClinRoute app uses AI to assess your symptoms, 
-                prioritize your care needs, and connect you with the right 
-                healthcare provider - all from your phone.
-              </p>
-              <div className="app-qr">
-                <div className="qr-placeholder">
-                  <svg width="100" height="100" viewBox="0 0 100 100">
-                    <rect width="100" height="100" fill="#f0f0f0" rx="8"/>
-                    <text x="50" y="55" textAnchor="middle" fontSize="12" fill="#666">QR Code</text>
-                  </svg>
-                </div>
-                <span>Scan to download</span>
-              </div>
-              <div className="app-buttons">
-                <a href="#" className="app-store-btn">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                  </svg>
-                  <div>
-                    <span>Download on the</span>
-                    <strong>App Store</strong>
-                  </div>
-                </a>
-                <a href="#" className="app-store-btn">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.806 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
-                  </svg>
-                  <div>
-                    <span>GET IT ON</span>
-                    <strong>Google Play</strong>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="app-mockup">
-              <div className="phone-mockup">
-                <div className="mockup-screen">
-                  <div className="mockup-header">
-                    <span className="mockup-logo">ClinRoute</span>
-                    <span className="mockup-badge">AI Active</span>
-                  </div>
-                  <div className="mockup-content">
-                    <div className="mockup-card">
-                      <div className="urgency-badge urgent">Urgent</div>
-                      <h4>Chest discomfort</h4>
-                      <p>Recommended: Cardiology</p>
-                      <div className="mockup-doctors">
-                        <div className="doctor-avatar">SJ</div>
-                        <div className="doctor-avatar">MK</div>
-                        <div className="doctor-avatar">+3</div>
-                      </div>
-                    </div>
-                    <div className="mockup-card">
-                      <div className="urgency-badge low">Routine</div>
-                      <h4>Annual checkup</h4>
-                      <p>Recommended: Primary Care</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* For Healthcare Providers */}
       <section className="providers-section">
@@ -475,38 +353,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Health Systems */}
-      <section className="health-systems-section">
-        <div className="container">
-          <div className="systems-header">
-            <span className="systems-label">ClinRoute for health systems</span>
-            <h2>Trusted by leading healthcare organizations</h2>
-          </div>
-          <div className="systems-logos">
-            <div className="system-logo">🏥 MedStar Health</div>
-            <div className="system-logo">🏥 Mount Sinai</div>
-            <div className="system-logo">🏥 Cleveland Clinic</div>
-            <div className="system-logo">🏥 Mayo Clinic</div>
-          </div>
-          <Link to="/for-hospitals" className="btn btn-secondary">
-            Explore enterprise solutions
-          </Link>
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <div key={index} className="stat-item">
-                <span className="stat-value">{stat.value}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Features Grid Section */}
       <section className="features-grid-section">
@@ -534,62 +383,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <div className="container">
-          <div className="section-header-center">
-            <h2 className="section-title">Trusted by millions of patients</h2>
-            <p className="section-subtitle">See what our users are saying about ClinRoute</p>
-          </div>
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <motion.div 
-                key={index} 
-                className="testimonial-card"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.15 }}
-              >
-                <div className="testimonial-rating">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="star">⭐</span>
-                  ))}
-                </div>
-                <p className="testimonial-text">"{testimonial.text}"</p>
-                <div className="testimonial-author">
-                  <div className="author-avatar">{testimonial.image}</div>
-                  <div className="author-info">
-                    <div className="author-name">{testimonial.name}</div>
-                    <div className="author-role">{testimonial.role}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Trust Badges Section */}
-      <section className="trust-badges-section">
-        <div className="container">
-          <div className="trust-badges-grid">
-            {trustBadges.map((badge, index) => (
-              <motion.div 
-                key={index} 
-                className="trust-badge"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <span className="trust-icon">{badge.icon}</span>
-                <span className="trust-text">{badge.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* CTA Section */}
       <section className="cta-section">
@@ -597,8 +393,8 @@ const Home = () => {
           <div className="cta-content">
             <h2>Ready to experience smarter healthcare?</h2>
             <p>
-              Join millions of patients who've discovered faster, more accurate 
-              healthcare routing with ClinRoute's RAG-powered platform.
+              Discover faster, more accurate healthcare routing with ClinRoute's 
+              AI-powered platform. Get started today.
             </p>
             <div className="cta-buttons">
               <Link to="/register" className="btn btn-primary btn-lg">

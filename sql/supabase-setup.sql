@@ -48,6 +48,13 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+-- Drop existing policies if they exist
+drop policy if exists "Users can view their own profile" on public.profiles;
+drop policy if exists "Users can insert their own profile" on public.profiles;
+drop policy if exists "Users can update their own profile" on public.profiles;
+drop policy if exists "Users can delete their own profile" on public.profiles;
+
+-- Create policies
 create policy "Users can view their own profile"
   on public.profiles for select
   using (auth.uid() = id);
@@ -73,6 +80,8 @@ begin
   return new;
 end;
 $$;
+
+drop trigger if exists profiles_updated_at on public.profiles;
 
 create trigger profiles_updated_at
   before update on public.profiles
