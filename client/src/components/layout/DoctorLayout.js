@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './DashboardLayout.css';
+import { motion } from 'framer-motion';
+import { 
+  LayoutDashboard, 
+  Users, 
+  Calendar, 
+  User, 
+  LogOut, 
+  Settings,
+  Bell,
+  Search,
+  Heart,
+  ChevronRight,
+  Stethoscope
+} from 'lucide-react';
 
 const DoctorLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -14,144 +28,151 @@ const DoctorLayout = () => {
   };
 
   const navItems = [
-    {
-      path: '/doctor',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="3" width="7" height="7" rx="1"/>
-          <rect x="14" y="3" width="7" height="7" rx="1"/>
-          <rect x="3" y="14" width="7" height="7" rx="1"/>
-          <rect x="14" y="14" width="7" height="7" rx="1"/>
-        </svg>
-      ),
-      label: 'Dashboard',
-      end: true,
-    },
-    {
-      path: '/doctor/queue',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-      ),
-      label: 'Patient Queue',
-    },
-    {
-      path: '/doctor/appointments',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-      ),
-      label: 'Appointments',
-    },
-    {
-      path: '/doctor/profile',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      ),
-      label: 'My Profile',
-    },
+    { path: '/doctor', icon: LayoutDashboard, label: 'Dashboard', end: true },
+    { path: '/doctor/queue', icon: Users, label: 'Patient Queue' },
+    { path: '/doctor/appointments', icon: Calendar, label: 'Appointments' },
+    { path: '/doctor/profile', icon: User, label: 'My Profile' },
   ];
 
   return (
-    <div className="dashboard-layout doctor-layout">
+    <div className="flex h-screen bg-[#FDFBF7] text-slate-800 overflow-hidden font-sans selection:bg-[#FBBF24] selection:text-[#0f4c3a]">
+      {/* Background Ambient Color Mesh */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+         <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-amber-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+         <div className="absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] bg-indigo-100 rounded-full blur-[100px] opacity-40 mix-blend-multiply"></div>
+      </div>
+
       {/* Sidebar */}
-      <aside className={`dashboard-sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-        <div className="sidebar-header">
-          <a href="/" className="sidebar-logo">
-            <div className="sidebar-logo-icon">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#319795"/>
-                <path d="M20 8C13.373 8 8 13.373 8 20C8 26.627 13.373 32 20 32C26.627 32 32 26.627 32 20C32 13.373 26.627 8 20 8ZM25 21H21V25C21 25.553 20.553 26 20 26C19.447 26 19 25.553 19 25V21H15C14.447 21 14 20.553 14 20C14 19.447 14.447 19 15 19H19V15C19 14.447 19.447 14 20 14C20.553 14 21 14.447 21 15V19H25C25.553 19 26 19.447 26 20C26 20.553 25.553 21 25 21Z" fill="white"/>
-              </svg>
-            </div>
-            {isSidebarOpen && <span>ClinRoute</span>}
-          </a>
-          <button 
-            className="sidebar-toggle"
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            aria-label="Toggle sidebar"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {isSidebarOpen ? (
-                <path d="M15 18l-6-6 6-6"/>
-              ) : (
-                <path d="M9 18l6-6-6-6"/>
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Emergency Alert Banner */}
-        <div className={`emergency-banner ${isSidebarOpen ? '' : 'banner-collapsed'}`}>
-          <div className="emergency-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
-            </svg>
-          </div>
-          {isSidebarOpen && (
-            <div className="emergency-content">
-              <span className="emergency-count">3</span>
-              <span className="emergency-label">Emergency Cases</span>
-            </div>
-          )}
-        </div>
-
-        <nav className="sidebar-nav">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.end}
-              className={({ isActive }) => 
-                `sidebar-nav-item ${isActive ? 'nav-item-active' : ''}`
-              }
-            >
-              <span className="nav-item-icon">{item.icon}</span>
-              {isSidebarOpen && <span className="nav-item-label">{item.label}</span>}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="sidebar-footer">
-          <div className="sidebar-user">
-            <div className="user-avatar doctor-avatar">
-              {user?.name?.charAt(0) || 'D'}
-            </div>
-            {isSidebarOpen && (
-              <div className="user-info">
-                <span className="user-name">{user?.name || 'Dr. Smith'}</span>
-                <span className="user-role">Physician</span>
+      <motion.aside 
+        initial={false}
+        animate={{ 
+          width: isSidebarOpen ? 280 : 100,
+          transition: { type: "spring", stiffness: 300, damping: 30 }
+        }}
+        className="relative z-50 h-full bg-white/80 backdrop-blur-xl border-r border-white/50 flex flex-col justify-between shadow-[4px_0_24px_rgba(0,0,0,0.02)]"
+      >
+        <div className="flex flex-col h-full py-8 px-4">
+          {/* Logo Area */}
+          <div className="h-20 flex items-center justify-center mb-6">
+              <div className="relative group cursor-pointer flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-[#0f4c3a] flex items-center justify-center text-[#FBBF24] shadow-xl shadow-green-900/10 transform group-hover:scale-105 transition-transform">
+                  <Heart size={24} className="fill-current" />
+                </div>
+                {isSidebarOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex flex-col"
+                  >
+                    <h1 className="text-2xl font-serif font-bold tracking-tight text-[#0f4c3a]">ClinRoute</h1>
+                    <span className="text-xs text-slate-400 font-medium">Doctor Portal</span>
+                  </motion.div>
+                )}
               </div>
-            )}
           </div>
-          <button className="sidebar-logout" onClick={handleLogout}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-              <polyline points="16 17 21 12 16 7"/>
-              <line x1="21" y1="12" x2="9" y2="12"/>
-            </svg>
-            {isSidebarOpen && <span>Logout</span>}
-          </button>
+
+          {/* Navigation Items */}
+          <nav className="flex-1 space-y-3 overflow-y-auto custom-scrollbar pt-6">
+            {navItems.map((item) => {
+              const isActive = item.end 
+                ? location.pathname === item.path 
+                : location.pathname.startsWith(item.path);
+              
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={`
+                    relative flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 group mx-2
+                    ${isActive 
+                      ? 'bg-[#0f4c3a] text-white font-bold shadow-lg shadow-green-900/10' 
+                      : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-medium'
+                    }
+                    ${!isSidebarOpen && 'justify-center px-0'}
+                  `}
+                >
+                  <item.icon 
+                    size={24} 
+                    className={`transition-all duration-300 ${isActive ? 'text-[#FBBF24]' : 'group-hover:scale-110 group-hover:text-[#0f4c3a]'}`}
+                    strokeWidth={isActive ? 2.5 : 2}
+                  />
+                  
+                  {isSidebarOpen && (
+                    <span className="text-base truncate">{item.label}</span>
+                  )}
+                </NavLink>
+              );
+            })}
+          </nav>
+
+          {/* User Profile / Logout */}
+          <div className="pt-6 mt-auto border-t border-slate-100">
+             {isSidebarOpen ? (
+                <div className="bg-white rounded-2xl p-4 flex items-center justify-between gap-3 border border-slate-100 shadow-sm group hover:border-emerald-200 transition-colors cursor-pointer" onClick={() => navigate('/doctor/settings')}>
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0f4c3a] to-emerald-600 text-white flex items-center justify-center shadow-md">
+                      <Stethoscope size={20} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-slate-800 truncate font-serif">Dr. {user?.name || 'Doctor'}</p>
+                      <p className="text-xs text-slate-400 truncate font-medium group-hover:text-emerald-600 transition-colors">Settings</p>
+                    </div>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-300 group-hover:text-emerald-500" />
+                </div>
+             ) : (
+                <button 
+                  onClick={handleLogout}
+                  className="w-full flex justify-center p-4 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-colors"
+                  title="Sign Out"
+                >
+                  <LogOut size={24} />
+                </button>
+             )}
+          </div>
         </div>
-      </aside>
+      </motion.aside>
 
       {/* Main Content */}
-      <main className="dashboard-main">
-        <div className="dashboard-content">
-          <Outlet />
-        </div>
-      </main>
+      <div className="flex-1 flex flex-col h-screen overflow-hidden relative z-10 bg-transparent">
+        {/* Header */}
+        <header className="h-24 flex items-center justify-between px-8 pt-6 z-30">
+           <div className="flex flex-col">
+               <h2 className="text-3xl font-serif font-bold text-[#0f4c3a] leading-tight flex items-center gap-3 drop-shadow-sm">
+                 {navItems.find(i => 
+                    i.end ? location.pathname === i.path : location.pathname.startsWith(i.path)
+                 )?.label || (location.pathname.includes('settings') ? 'Settings' : 'Dashboard')}
+               </h2>
+           </div>
+
+           <div className="flex items-center gap-4">
+              <div className="hidden md:flex items-center bg-white/80 backdrop-blur-md rounded-full px-5 py-3 border border-white/50 shadow-sm focus-within:border-[#0f4c3a] focus-within:ring-4 focus-within:ring-[#0f4c3a]/10 transition-all w-80">
+                 <Search size={20} className="text-slate-400" />
+                 <input 
+                   type="text" 
+                   placeholder="Search patients..." 
+                   className="flex-1 border-none focus:ring-0 text-sm font-medium placeholder:text-slate-400 bg-transparent ml-2"
+                 />
+              </div>
+              <button className="p-3 bg-white/80 backdrop-blur-md border border-white/50 rounded-full text-slate-600 hover:text-[#0f4c3a] hover:bg-white transition-all shadow-sm relative hover:scale-105 active:scale-95">
+                 <Bell size={22} />
+                 <span className="absolute top-2 right-2.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white animate-pulse"></span>
+              </button>
+              <button 
+                 onClick={() => navigate('/doctor/settings')}
+                 className="p-3 bg-white/80 backdrop-blur-md border border-white/50 rounded-full text-slate-600 hover:text-[#0f4c3a] hover:bg-white transition-all shadow-sm hover:scale-105 active:scale-95"
+              >
+                 <Settings size={22} />
+              </button>
+           </div>
+        </header>
+
+        {/* Scrollable Content */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto scroll-smooth p-6 md:p-8 md:pt-4">
+           <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
