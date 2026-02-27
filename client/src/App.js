@@ -21,7 +21,7 @@ import Login from './pages/public/Login';
 import Register from './pages/public/Register';
 
 // Chat Page (Protected)
-import Chatpage from './pages/chat/Chatpage';
+import AIHealthAssistant from './pages/chat/AIHealthAssistant';
 
 // Patient Pages
 import PatientDashboard from './pages/patient/Dashboard';
@@ -58,8 +58,17 @@ function App() {
           <Route path="/security" element={<Security />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/chat" element={<Chatpage />} />
         </Route>
+
+        {/* Protected Chat Route */}
+        <Route 
+          path="/chat" 
+          element={
+            <ProtectedRoute>
+              <AIHealthAssistant />
+            </ProtectedRoute>
+          } 
+        />
 
         {/* Patient Routes */}
         <Route path="/patient" element={<PatientLayout />}>

@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, AlertCircle, Activity } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { createChatCompletion, assessUrgency } from '../../lib/groq';
-import './Chatpage.css';
+import './AIHealthAssistant.css';
 
-const Chatpage = () => {
+const AIHealthAssistant = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([
     {
@@ -97,7 +97,7 @@ const Chatpage = () => {
   };
 
   return (
-    <div className="chatpage">
+    <div className="ai-health-assistant">
       <div className="chat-container">
         {/* Chat Header */}
         <div className="chat-header">
@@ -228,4 +228,4 @@ const Chatpage = () => {
   );
 };
 
-export default Chatpage;
+export default AIHealthAssistant;

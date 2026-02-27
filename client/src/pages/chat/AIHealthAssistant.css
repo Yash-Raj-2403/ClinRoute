@@ -1,8 +1,8 @@
 /* ========================================
-   Chatpage Styles
+   AI Health Assistant Styles
    ======================================== */
 
-.chatpage {
+.ai-health-assistant {
   min-height: 100vh;
   background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 50%, #f0fdf4 100%);
   padding: 100px 24px 40px;
@@ -307,7 +307,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .chatpage {
+  .ai-health-assistant {
     padding: 80px 16px 24px;
   }
 

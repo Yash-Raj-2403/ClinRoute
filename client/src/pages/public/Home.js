@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, ArrowRight, CheckCircle, Clock, Users, Heart } from 'lucide-react';
+import { Search } from 'lucide-react';
 import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [location, setLocation] = useState('');
-
-  const insuranceProviders = [
-    { name: 'Aetna', logo: '❤️' },
-    { name: 'Cigna', logo: '🌳' },
-    { name: 'United Healthcare', logo: '💙' },
-    { name: 'Medicare', logo: '🏥' },
-    { name: 'BlueCross BlueShield', logo: '🛡️' },
-  ];
 
   const specialties = [
     { name: 'Primary Care', icon: '🩺', color: '#FEF3C7' },
@@ -52,6 +44,70 @@ const Home = () => {
     { value: '50K+', label: 'Healthcare Providers' },
     { value: '95%', label: 'Accuracy Rate' },
     { value: '< 5min', label: 'Avg. Triage Time' },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Emily Rodriguez',
+      role: 'Patient',
+      image: '👩',
+      text: 'ClinRoute saved me hours of research. Within minutes, I was connected with the right specialist for my condition.',
+      rating: 5,
+    },
+    {
+      name: 'Dr. Michael Chen',
+      role: 'Cardiologist',
+      image: '👨‍⚕️',
+      text: 'The AI triage system is incredibly accurate. My patients arrive better prepared and we spend less time on initial assessments.',
+      rating: 5,
+    },
+    {
+      name: 'Sarah Thompson', 
+      role: 'Patient',
+      image: '👩‍🦰',
+      text: 'As someone with anxiety about healthcare, ClinRoute made the process so much less overwhelming. Highly recommend!',
+      rating: 5,
+    },
+  ];
+
+  const features = [
+    {
+      icon: '⚡',
+      title: 'Instant Triage',
+      description: 'Get AI-powered assessment in under 5 minutes',
+    },
+    {
+      icon: '🎯',
+      title: 'Right Specialist Match',
+      description: 'Connected to the perfect provider for your needs',
+    },
+    {
+      icon: '📊',
+      title: 'Smart Prioritization',
+      description: 'Urgent cases fast-tracked automatically',
+    },
+    {
+      icon: '🔒',
+      title: 'HIPAA Compliant',
+      description: 'Your health data is fully encrypted and secure',
+    },
+    {
+      icon: '📱',
+      title: 'Mobile Access',
+      description: 'Triage and book appointments from anywhere',
+    },
+    {
+      icon: '💬',
+      title: '24/7 AI Assistant',
+      description: 'Get help anytime, day or night',
+    },
+  ];
+
+  const trustBadges = [
+    { icon: '🏆', text: 'Best Healthcare AI 2025' },
+    { icon: '🛡️', text: 'SOC 2 Certified' },
+    { icon: '⭐', text: '4.9/5 Patient Rating' },
+    { icon: '✓', text: 'HIPAA Compliant' },
   ];
 
   const handleSearch = (e) => {
@@ -283,56 +339,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Insurance Providers */}
-      <section className="insurance-section">
-        <motion.div 
-          className="container"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">Works with over 1,000+ insurance plans</h2>
-          <p className="section-subtitle">Our RAG assistant helps you find in-network providers instantly</p>
-          
-          <motion.div 
-            className="insurance-grid"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            {insuranceProviders.map((provider, index) => (
-              <motion.div 
-                key={index} 
-                className="insurance-card"
-                variants={fadeInUp}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <span className="insurance-logo">{provider.logo}</span>
-                <span className="insurance-name">{provider.name}</span>
-              </motion.div>
-            ))}
-            <motion.button 
-              className="insurance-card see-all"
-              variants={fadeInUp}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            >
-              <span>See all</span>
-              <span className="count">(1,000+)</span>
-            </motion.button>
-          </motion.div>
-
-          <button className="btn btn-outline add-insurance-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 8v8M8 12h8"/>
-            </svg>
-            Add your insurance coverage
-          </button>
-        </motion.div>
-      </section>
-
       {/* Top Specialties */}
       <section className="specialties-section">
         <div className="container">
@@ -497,6 +503,89 @@ const Home = () => {
                 <span className="stat-value">{stat.value}</span>
                 <span className="stat-label">{stat.label}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid Section */}
+      <section className="features-grid-section">
+        <div className="container">
+          <div className="section-header-center">
+            <h2 className="section-title">Everything you need for smarter healthcare</h2>
+            <p className="section-subtitle">Powerful features designed to simplify your healthcare journey</p>
+          </div>
+          <div className="features-grid">
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index} 
+                className="feature-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <div className="feature-icon">{feature.icon}</div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <div className="container">
+          <div className="section-header-center">
+            <h2 className="section-title">Trusted by millions of patients</h2>
+            <p className="section-subtitle">See what our users are saying about ClinRoute</p>
+          </div>
+          <div className="testimonials-grid">
+            {testimonials.map((testimonial, index) => (
+              <motion.div 
+                key={index} 
+                className="testimonial-card"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.15 }}
+              >
+                <div className="testimonial-rating">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="star">⭐</span>
+                  ))}
+                </div>
+                <p className="testimonial-text">"{testimonial.text}"</p>
+                <div className="testimonial-author">
+                  <div className="author-avatar">{testimonial.image}</div>
+                  <div className="author-info">
+                    <div className="author-name">{testimonial.name}</div>
+                    <div className="author-role">{testimonial.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges Section */}
+      <section className="trust-badges-section">
+        <div className="container">
+          <div className="trust-badges-grid">
+            {trustBadges.map((badge, index) => (
+              <motion.div 
+                key={index} 
+                className="trust-badge"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <span className="trust-icon">{badge.icon}</span>
+                <span className="trust-text">{badge.text}</span>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,12 +1,19 @@
 /**
  * MongoDB Database Configuration
+ * MongoDB is optional - the application primarily uses Supabase (PostgreSQL)
  */
 
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
+  // Check if MongoDB URI is provided
+  if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI not provided. Using Supabase as primary database.');
+    return;
+  }
+
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/clinroute', {
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
       // Mongoose 6+ no longer requires these options, but keeping for compatibility
     });
 
@@ -26,8 +33,8 @@ const connectDB = async () => {
     });
 
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error.message);
-    process.exit(1);
+    console.warn('MongoDB connection failed:', error.message);
+    console.log('Continuing with Supabase as primary database...');
   }
 };
 
