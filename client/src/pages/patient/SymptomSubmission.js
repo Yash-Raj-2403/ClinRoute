@@ -1,394 +1,233 @@
 import React, { useState } from 'react';
-import './PatientDashboard.css';
+import { motion } from 'framer-motion';
+import { 
+  ChevronRight, 
+  ChevronLeft, 
+  Send, 
+  CheckCircle2, 
+  AlertCircle,
+  Stethoscope,
+  Thermometer,
+  Zap,
+  Coffee,
+  Frown,
+  Bone
+} from 'lucide-react';
 
 const SymptomSubmission = () => {
   const [step, setStep] = useState(1);
+  const totalSteps = 3;
+
+  // Form State
   const [formData, setFormData] = useState({
-    primarySymptom: '',
-    symptomDuration: '',
-    severity: '',
-    additionalSymptoms: [],
+    symptoms: [],
+    severity: 5,
+    duration: '',
     description: '',
-    medicalHistory: [],
-    currentMedications: '',
-    allergies: '',
-    preferredConsultationType: 'video'
+    history: ''
   });
 
-  const symptoms = [
-    { id: 'headache', label: 'Headache', icon: '🤕' },
-    { id: 'chest-pain', label: 'Chest Pain', icon: '💔' },
-    { id: 'fever', label: 'Fever', icon: '🌡️' },
-    { id: 'cough', label: 'Cough', icon: '😷' },
-    { id: 'fatigue', label: 'Fatigue', icon: '😴' },
-    { id: 'stomach-pain', label: 'Stomach Pain', icon: '🤢' },
-    { id: 'breathing', label: 'Breathing Issues', icon: '😮‍💨' },
-    { id: 'joint-pain', label: 'Joint Pain', icon: '🦴' },
-    { id: 'skin-issue', label: 'Skin Issues', icon: '🩹' },
-    { id: 'anxiety', label: 'Anxiety/Stress', icon: '😰' },
-    { id: 'dizziness', label: 'Dizziness', icon: '😵' },
-    { id: 'other', label: 'Other', icon: '➕' }
+  const handleNext = () => setStep(prev => Math.min(prev + 1, totalSteps));
+  const handlePrev = () => setStep(prev => Math.max(prev - 1, 1));
+
+  // Replaced Emojis with Lucide Icons
+  const commonSymptoms = [
+    { id: 'headache', label: 'Headache', icon: Zap, color: 'text-amber-500 bg-amber-50 border-amber-100' },
+    { id: 'fever', label: 'Fever', icon: Thermometer, color: 'text-rose-500 bg-rose-50 border-rose-100' },
+    { id: 'cough', label: 'Cough', icon: Frown, color: 'text-blue-500 bg-blue-50 border-blue-100' },
+    { id: 'fatigue', label: 'Fatigue', icon: Coffee, color: 'text-stone-500 bg-stone-50 border-stone-100' },
+    { id: 'nausea', label: 'Nausea', icon: Frown, color: 'text-emerald-500 bg-emerald-50 border-emerald-100' },
+    { id: 'pain', label: 'Body Pain', icon: Bone, color: 'text-purple-500 bg-purple-50 border-purple-100' },
   ];
 
-  const additionalSymptomsList = [
-    'Nausea', 'Vomiting', 'Loss of appetite', 'Sweating',
-    'Chills', 'Weakness', 'Numbness', 'Blurred vision',
-    'Rash', 'Swelling', 'Difficulty sleeping', 'Weight changes'
-  ];
+  const renderStep1 = () => (
+    <div className="space-y-10">
+      <div className="text-center mb-12">
+        <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-4">How are you feeling?</h3>
+        <p className="text-slate-600 text-xl font-medium">Select the symptoms that best describe your condition.</p>
+      </div>
 
-  const medicalConditions = [
-    'Diabetes', 'Hypertension', 'Heart Disease', 'Asthma',
-    'Arthritis', 'Cancer', 'Thyroid Disorder', 'None'
-  ];
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {commonSymptoms.map((symptom) => {
+          const Icon = symptom.icon;
+          const isSelected = formData.symptoms.includes(symptom.id);
+          
+          return (
+            <button
+              key={symptom.id}
+              className={`p-8 rounded-[2rem] border-2 transition-all duration-300 flex flex-col items-center gap-4 group hover:shadow-lg hover:-translate-y-1 ${
+                 isSelected
+                 ? 'border-[#0f4c3a] bg-[#0f4c3a] text-white'
+                 : `bg-white hover:border-current ${symptom.color}`
+              }`}
+              onClick={() => {
+                 const newSymptoms = isSelected
+                   ? formData.symptoms.filter(id => id !== symptom.id)
+                   : [...formData.symptoms, symptom.id];
+                 setFormData({ ...formData, symptoms: newSymptoms });
+              }}
+            >
+               <div className={`p-4 rounded-full ${isSelected ? 'bg-white/20' : 'bg-white'} transition-colors`}>
+                  <Icon size={32} strokeWidth={2.5} />
+               </div>
+               <span className="font-bold text-lg">{symptom.label}</span>
+            </button>
+          );
+        })}
+      </div>
+      
+      <div className="mt-10">
+         <label className="block text-lg font-bold text-slate-700 mb-4 ml-2">Other Symptoms?</label>
+         <input 
+           type="text" 
+           placeholder="e.g. Dizziness, Sore throat..." 
+           className="w-full p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[#0f4c3a] focus:bg-white focus:border-transparent outline-none transition-all text-lg font-medium text-slate-800"
+         />
+      </div>
+    </div>
+  );
 
-  const handleSymptomSelect = (symptomId) => {
-    setFormData({ ...formData, primarySymptom: symptomId });
-  };
+  const renderStep2 = () => (
+    <div className="space-y-10">
+      <div className="text-center mb-12">
+        <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-4">Tell us more</h3>
+        <p className="text-slate-600 text-xl font-medium">Help us understand the severity and duration.</p>
+      </div>
 
-  const handleAdditionalSymptom = (symptom) => {
-    const current = formData.additionalSymptoms;
-    if (current.includes(symptom)) {
-      setFormData({ ...formData, additionalSymptoms: current.filter(s => s !== symptom) });
-    } else {
-      setFormData({ ...formData, additionalSymptoms: [...current, symptom] });
-    }
-  };
+      <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-10">
+         <div>
+            <div className="flex justify-between mb-6">
+              <label className="font-bold text-slate-800 text-xl">Severity Scale</label>
+              <span className={`px-4 py-2 rounded-xl font-bold text-lg ${
+                 formData.severity < 4 ? 'bg-green-100 text-green-700' :
+                 formData.severity < 8 ? 'bg-yellow-100 text-yellow-700' :
+                 'bg-red-100 text-red-700'
+              }`}>
+                 {formData.severity} / 10
+              </span>
+            </div>
+            <input 
+              type="range" 
+              min="1" 
+              max="10" 
+              value={formData.severity}
+              onChange={(e) => setFormData({...formData, severity: parseInt(e.target.value)})}
+              className="w-full h-4 bg-slate-100 rounded-full appearance-none cursor-pointer accent-[#0f4c3a]"
+            />
+            <div className="flex justify-between text-sm font-bold text-slate-400 mt-4 uppercase tracking-wide">
+              <span>Mild Discomfort</span>
+              <span>Severe Pain</span>
+            </div>
+         </div>
 
-  const handleMedicalHistory = (condition) => {
-    const current = formData.medicalHistory;
-    if (current.includes(condition)) {
-      setFormData({ ...formData, medicalHistory: current.filter(c => c !== condition) });
-    } else {
-      setFormData({ ...formData, medicalHistory: [...current, condition] });
-    }
-  };
+         <div>
+            <label className="block font-bold text-slate-800 text-xl mb-6">Detailed Description</label>
+            <textarea 
+              className="w-full h-48 p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[#0f4c3a] focus:bg-white outline-none resize-none transition-all placeholder:text-slate-400 text-lg font-medium leading-relaxed"
+              placeholder="Please describe exactly what you're feeling, when it started, and any pattern you've noticed..."
+              value={formData.description}
+              onChange={(e) => setFormData({...formData, description: e.target.value})}
+            />
+         </div>
+      </div>
+    </div>
+  );
 
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const renderStep3 = () => (
+    <div className="space-y-8 text-center flex flex-col items-center justify-center py-12">
+       <motion.div 
+         initial={{ scale: 0 }}
+         animate={{ scale: 1 }}
+         className="w-28 h-28 bg-emerald-50 rounded-full flex items-center justify-center mb-8 text-emerald-600 shadow-lg"
+       >
+         <CheckCircle2 size={56} strokeWidth={2} />
+       </motion.div>
+       
+       <div>
+         <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-6">Ready to Submit?</h3>
+         <p className="text-slate-600 font-medium max-w-lg mx-auto mb-10 text-xl leading-relaxed">
+           Our AI will analyze your symptoms and recommend the best specialist for your case immediately.
+         </p>
+       </div>
+       
+       <div className="bg-amber-50 p-8 rounded-[2rem] max-w-2xl w-full text-left border border-amber-100 flex gap-5">
+          <AlertCircle className="text-amber-600 shrink-0 mt-1" size={28} />
+          <div>
+            <h4 className="font-bold text-amber-800 text-lg mb-2">Important Medical Disclaimer</h4>
+            <p className="text-amber-900/80 font-medium leading-relaxed">
+              This tool is for non-emergency guidance only. If you are experiencing a medical emergency, please call emergency services immediately.
+            </p>
+          </div>
+       </div>
+    </div>
+  );
 
   return (
-    <div className="symptom-submission">
-      {/* Progress Bar */}
-      <div className="submission-progress">
-        <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${(step / 4) * 100}%` }}></div>
+    <div className="max-w-5xl mx-auto pb-24 px-6">
+      <div className="flex items-center gap-6 mb-12">
+        <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-[#0f4c3a]">
+          <Stethoscope size={32} />
         </div>
-        <div className="progress-steps">
-          <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
-            <span className="step-number">1</span>
-            <span className="step-label">Symptoms</span>
-          </div>
-          <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
-            <span className="step-number">2</span>
-            <span className="step-label">Details</span>
-          </div>
-          <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
-            <span className="step-number">3</span>
-            <span className="step-label">History</span>
-          </div>
-          <div className={`progress-step ${step >= 4 ? 'active' : ''}`}>
-            <span className="step-number">4</span>
-            <span className="step-label">Review</span>
-          </div>
+        <div>
+           <h1 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-1">Symptom Checker</h1>
+           <p className="text-slate-500 font-medium text-lg">AI-Powered Triage Assistant</p>
         </div>
       </div>
 
-      {/* Step 1: Primary Symptom */}
-      {step === 1 && (
-        <div className="submission-step">
-          <div className="step-header">
-            <h2>What's your main concern today?</h2>
-            <p>Select the symptom that's bothering you the most</p>
-          </div>
-          <div className="symptoms-grid">
-            {symptoms.map(symptom => (
-              <button
-                key={symptom.id}
-                className={`symptom-card ${formData.primarySymptom === symptom.id ? 'selected' : ''}`}
-                onClick={() => handleSymptomSelect(symptom.id)}
+      {/* Progress Bar */}
+      <div className="mb-12 relative h-3 bg-slate-100 rounded-full overflow-hidden">
+        <motion.div 
+           className="absolute top-0 left-0 h-full bg-[#0f4c3a]"
+           initial={{ width: 0 }}
+           animate={{ width: `${(step / totalSteps) * 100}%` }}
+           transition={{ duration: 0.5, ease: "easeInOut" }}
+        />
+      </div>
+
+      {/* Main Card */}
+      <motion.div 
+        key={step}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        className="bg-white rounded-[3rem] shadow-nav border border-slate-100 p-8 md:p-14 min-h-[600px] flex flex-col"
+      >
+         <div className="flex-1">
+            {step === 1 && renderStep1()}
+            {step === 2 && renderStep2()}
+            {step === 3 && renderStep3()}
+         </div>
+
+         {/* Navigation */}
+         <div className="flex items-center justify-between mt-16 pt-10 border-t border-slate-100">
+            {step > 1 ? (
+              <button 
+                onClick={handlePrev}
+                className="px-10 py-4 rounded-full border-2 border-slate-200 text-slate-600 font-bold hover:bg-slate-50 transition-colors flex items-center gap-3 text-lg"
               >
-                <span className="symptom-icon">{symptom.icon}</span>
-                <span className="symptom-label">{symptom.label}</span>
+                <ChevronLeft size={24} />
+                Back
               </button>
-            ))}
-          </div>
-          <div className="step-actions">
-            <button 
-              className="btn btn-primary"
-              disabled={!formData.primarySymptom}
-              onClick={nextStep}
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
+            ) : <div></div>}
 
-      {/* Step 2: Symptom Details */}
-      {step === 2 && (
-        <div className="submission-step">
-          <div className="step-header">
-            <h2>Tell us more about your symptoms</h2>
-            <p>This helps our AI provide better recommendations</p>
-          </div>
-          
-          <div className="form-section">
-            <label>How long have you had this symptom?</label>
-            <div className="duration-options">
-              {['Less than a day', '1-3 days', '4-7 days', '1-2 weeks', 'More than 2 weeks'].map(duration => (
-                <button
-                  key={duration}
-                  className={`option-btn ${formData.symptomDuration === duration ? 'selected' : ''}`}
-                  onClick={() => setFormData({ ...formData, symptomDuration: duration })}
-                >
-                  {duration}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="form-section">
-            <label>How severe is the symptom?</label>
-            <div className="severity-scale">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(level => (
-                <button
-                  key={level}
-                  className={`severity-btn ${formData.severity === level ? 'selected' : ''} ${level <= 3 ? 'mild' : level <= 6 ? 'moderate' : 'severe'}`}
-                  onClick={() => setFormData({ ...formData, severity: level })}
-                >
-                  {level}
-                </button>
-              ))}
-              <div className="severity-labels">
-                <span>Mild</span>
-                <span>Moderate</span>
-                <span>Severe</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-section">
-            <label>Are you experiencing any other symptoms?</label>
-            <div className="additional-symptoms">
-              {additionalSymptomsList.map(symptom => (
-                <button
-                  key={symptom}
-                  className={`symptom-tag ${formData.additionalSymptoms.includes(symptom) ? 'selected' : ''}`}
-                  onClick={() => handleAdditionalSymptom(symptom)}
-                >
-                  {symptom}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="form-section">
-            <label>Describe your symptoms in detail (optional)</label>
-            <textarea
-              className="form-textarea"
-              placeholder="Please describe how you're feeling, when the symptoms started, what makes them better or worse..."
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              rows={4}
-            />
-          </div>
-
-          <div className="step-actions">
-            <button className="btn btn-outline" onClick={prevStep}>Back</button>
-            <button 
-              className="btn btn-primary"
-              disabled={!formData.symptomDuration || !formData.severity}
-              onClick={nextStep}
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Step 3: Medical History */}
-      {step === 3 && (
-        <div className="submission-step">
-          <div className="step-header">
-            <h2>Medical History</h2>
-            <p>This information helps provide personalized care</p>
-          </div>
-
-          <div className="form-section">
-            <label>Do you have any of these conditions?</label>
-            <div className="conditions-grid">
-              {medicalConditions.map(condition => (
-                <button
-                  key={condition}
-                  className={`condition-btn ${formData.medicalHistory.includes(condition) ? 'selected' : ''}`}
-                  onClick={() => handleMedicalHistory(condition)}
-                >
-                  {condition}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="form-section">
-            <label>Current medications (if any)</label>
-            <textarea
-              className="form-textarea"
-              placeholder="List any medications you're currently taking..."
-              value={formData.currentMedications}
-              onChange={(e) => setFormData({ ...formData, currentMedications: e.target.value })}
-              rows={3}
-            />
-          </div>
-
-          <div className="form-section">
-            <label>Known allergies (if any)</label>
-            <input
-              type="text"
-              className="form-input"
-              placeholder="e.g., Penicillin, Peanuts, etc."
-              value={formData.allergies}
-              onChange={(e) => setFormData({ ...formData, allergies: e.target.value })}
-            />
-          </div>
-
-          <div className="form-section">
-            <label>Preferred consultation type</label>
-            <div className="consultation-types">
-              <button
-                className={`type-card ${formData.preferredConsultationType === 'video' ? 'selected' : ''}`}
-                onClick={() => setFormData({ ...formData, preferredConsultationType: 'video' })}
+            {step < totalSteps ? (
+              <button 
+                onClick={handleNext}
+                className="px-10 py-4 rounded-full bg-[#0f4c3a] text-white font-bold shadow-lg hover:bg-[#065F46] hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
               >
-                <span className="type-icon">📹</span>
-                <span className="type-label">Video Call</span>
-                <span className="type-desc">Speak face-to-face with a doctor</span>
+                Next Step
+                <ChevronRight size={24} />
               </button>
-              <button
-                className={`type-card ${formData.preferredConsultationType === 'chat' ? 'selected' : ''}`}
-                onClick={() => setFormData({ ...formData, preferredConsultationType: 'chat' })}
+            ) : (
+               <button 
+                className="px-12 py-4 rounded-full bg-[#FBBF24] text-[#0f4c3a] font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
               >
-                <span className="type-icon">💬</span>
-                <span className="type-label">Chat</span>
-                <span className="type-desc">Text-based consultation</span>
+                Submit Assessment
+                <Send size={20} />
               </button>
-              <button
-                className={`type-card ${formData.preferredConsultationType === 'in-person' ? 'selected' : ''}`}
-                onClick={() => setFormData({ ...formData, preferredConsultationType: 'in-person' })}
-              >
-                <span className="type-icon">🏥</span>
-                <span className="type-label">In-Person</span>
-                <span className="type-desc">Visit a clinic nearby</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="step-actions">
-            <button className="btn btn-outline" onClick={prevStep}>Back</button>
-            <button className="btn btn-primary" onClick={nextStep}>
-              Review & Submit
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Step 4: Review */}
-      {step === 4 && (
-        <div className="submission-step">
-          <div className="step-header">
-            <h2>Review Your Information</h2>
-            <p>Please confirm all details are correct before submitting</p>
-          </div>
-
-          <div className="review-section">
-            <div className="review-card">
-              <div className="review-header">
-                <h3>Symptoms</h3>
-                <button className="edit-btn" onClick={() => setStep(1)}>Edit</button>
-              </div>
-              <div className="review-content">
-                <div className="review-item">
-                  <span className="review-label">Primary Symptom:</span>
-                  <span className="review-value">
-                    {symptoms.find(s => s.id === formData.primarySymptom)?.label}
-                  </span>
-                </div>
-                <div className="review-item">
-                  <span className="review-label">Duration:</span>
-                  <span className="review-value">{formData.symptomDuration}</span>
-                </div>
-                <div className="review-item">
-                  <span className="review-label">Severity:</span>
-                  <span className={`review-value severity ${formData.severity <= 3 ? 'mild' : formData.severity <= 6 ? 'moderate' : 'severe'}`}>
-                    {formData.severity}/10
-                  </span>
-                </div>
-                {formData.additionalSymptoms.length > 0 && (
-                  <div className="review-item">
-                    <span className="review-label">Additional Symptoms:</span>
-                    <span className="review-value">{formData.additionalSymptoms.join(', ')}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="review-card">
-              <div className="review-header">
-                <h3>Medical History</h3>
-                <button className="edit-btn" onClick={() => setStep(3)}>Edit</button>
-              </div>
-              <div className="review-content">
-                <div className="review-item">
-                  <span className="review-label">Conditions:</span>
-                  <span className="review-value">
-                    {formData.medicalHistory.length > 0 ? formData.medicalHistory.join(', ') : 'None reported'}
-                  </span>
-                </div>
-                <div className="review-item">
-                  <span className="review-label">Medications:</span>
-                  <span className="review-value">{formData.currentMedications || 'None'}</span>
-                </div>
-                <div className="review-item">
-                  <span className="review-label">Allergies:</span>
-                  <span className="review-value">{formData.allergies || 'None'}</span>
-                </div>
-                <div className="review-item">
-                  <span className="review-label">Consultation Type:</span>
-                  <span className="review-value capitalize">{formData.preferredConsultationType}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* RAG Triage Preview */}
-            <div className="ai-triage-preview">
-              <div className="triage-header">
-                <span className="ai-badge">🤖 RAG Analysis Preview</span>
-              </div>
-              <div className="triage-content">
-                <div className="triage-priority moderate">
-                  <span className="priority-label">Estimated Priority</span>
-                  <span className="priority-value">Moderate</span>
-                </div>
-                <p className="triage-note">
-                  Based on your symptoms, our RAG system will connect you with an appropriate specialist 
-                  within 2-4 hours. A detailed analysis will be provided after submission.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="step-actions">
-            <button className="btn btn-outline" onClick={prevStep}>Back</button>
-            <button className="btn btn-primary btn-lg">
-              <span>🚀</span>
-              Submit for RAG Triage
-            </button>
-          </div>
-
-          <p className="submission-note">
-            By submitting, you agree to our Terms of Service and Privacy Policy. 
-            Your data is encrypted and handled in compliance with HIPAA regulations.
-          </p>
-        </div>
-      )}
+            )}
+         </div>
+      </motion.div>
     </div>
   );
 };

@@ -124,10 +124,8 @@ function App() {
           <Route path="consultation/:id" element={<ConsultationStatus />} />
           <Route path="doctors-nearby" element={<NearbyDoctors />} />
           <Route path="reports" element={<PatientReports />} />
+          <Route path="account-settings" element={<PatientAccountSettings />} />
         </Route>
-
-        {/* Patient Account Settings (standalone, no layout wrapper) */}
-        <Route path="/patient/account-settings" element={<PatientAccountSettings />} />
 
         {/* Doctor Routes */}
         <Route path="/doctor" element={<ProfileGuard settingsPath="/doctor/settings"><DoctorLayout /></ProfileGuard>}>

@@ -1,363 +1,91 @@
 import React, { useState } from 'react';
-import './PatientDashboard.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, Download, Share2, Filter, Search, FileHeart, FilePlus } from 'lucide-react';
 
 const Reports = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const [selectedReport, setSelectedReport] = useState(null);
+  const reports = []; // Fetched via Supabase
 
-  const reports = [
-    {
-      id: 1,
-      title: 'Cardiology Consultation Report',
-      type: 'consultation',
-      doctor: 'Dr. Sarah Chen',
-      date: 'Dec 15, 2024',
-      status: 'completed',
-      icon: '❤️',
-      summary: 'ECG results normal. Blood pressure slightly elevated. Recommended lifestyle changes.',
-      diagnosis: 'Mild hypertension',
-      prescription: ['Lifestyle modifications', 'Continue current medications'],
-      followUp: 'Jan 15, 2025'
-    },
-    {
-      id: 2,
-      title: 'Complete Blood Count (CBC)',
-      type: 'lab',
-      facility: 'City Lab Services',
-      date: 'Dec 10, 2024',
-      status: 'completed',
-      icon: '🧪',
-      summary: 'All values within normal range. No abnormalities detected.',
-      results: [
-        { name: 'WBC', value: '6.5', unit: 'K/uL', range: '4.5-11.0', status: 'normal' },
-        { name: 'RBC', value: '4.8', unit: 'M/uL', range: '4.5-5.5', status: 'normal' },
-        { name: 'Hemoglobin', value: '14.2', unit: 'g/dL', range: '13.5-17.5', status: 'normal' },
-        { name: 'Platelets', value: '250', unit: 'K/uL', range: '150-400', status: 'normal' }
-      ]
-    },
-    {
-      id: 3,
-      title: 'Lipid Panel',
-      type: 'lab',
-      facility: 'City Lab Services',
-      date: 'Dec 10, 2024',
-      status: 'completed',
-      icon: '📊',
-      summary: 'Cholesterol levels slightly elevated. HDL could be improved.',
-      results: [
-        { name: 'Total Cholesterol', value: '215', unit: 'mg/dL', range: '<200', status: 'high' },
-        { name: 'LDL', value: '130', unit: 'mg/dL', range: '<100', status: 'high' },
-        { name: 'HDL', value: '45', unit: 'mg/dL', range: '>60', status: 'low' },
-        { name: 'Triglycerides', value: '140', unit: 'mg/dL', range: '<150', status: 'normal' }
-      ]
-    },
-    {
-      id: 4,
-      title: 'Annual Physical Examination',
-      type: 'consultation',
-      doctor: 'Dr. Michael Rodriguez',
-      date: 'Dec 5, 2024',
-      status: 'completed',
-      icon: '🩺',
-      summary: 'Overall health is good. BMI within normal range. Immunizations up to date.',
-      vitals: [
-        { name: 'Blood Pressure', value: '128/82', status: 'normal' },
-        { name: 'Heart Rate', value: '72 bpm', status: 'normal' },
-        { name: 'Temperature', value: '98.6°F', status: 'normal' },
-        { name: 'BMI', value: '23.5', status: 'normal' }
-      ],
-      followUp: 'Dec 2025'
-    },
-    {
-      id: 5,
-      title: 'Chest X-Ray',
-      type: 'imaging',
-      facility: 'RadiologyOne',
-      date: 'Nov 28, 2024',
-      status: 'completed',
-      icon: '📷',
-      summary: 'No acute cardiopulmonary abnormality. Lungs clear. Heart size normal.',
-      findings: 'Clear lung fields bilaterally. No evidence of pneumonia or mass lesions.'
-    },
-    {
-      id: 6,
-      title: 'Prescription - Lisinopril',
-      type: 'prescription',
-      doctor: 'Dr. Sarah Chen',
-      date: 'Dec 15, 2024',
-      status: 'active',
-      icon: '💊',
-      medication: 'Lisinopril 10mg',
-      dosage: 'Once daily in the morning',
-      quantity: '30 tablets',
-      refills: '3 refills remaining'
-    }
-  ];
-
-  const filteredReports = reports.filter(report => {
-    if (activeTab === 'all') return true;
-    return report.type === activeTab;
-  });
+  const EmptyState = () => (
+    <div className="flex flex-col items-center justify-center py-32 text-center">
+       <motion.div 
+         className="w-40 h-40 bg-rose-50 rounded-[2.5rem] flex items-center justify-center mb-10 shadow-sm"
+         animate={{ rotate: [0, 5, 0] }}
+         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+       >
+          <FileHeart size={64} className="text-rose-500" strokeWidth={1.5} />
+       </motion.div>
+       
+       <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-6">No Records Found</h3>
+       <p className="text-slate-600 font-medium max-w-lg mx-auto mb-12 text-xl leading-relaxed">
+         Your medical reports, lab results, and prescriptions will be safely stored here.
+       </p>
+       
+       <button className="px-10 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-full font-bold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm text-lg flex items-center gap-3">
+         <FilePlus size={24} className="text-[#0f4c3a]" />
+         Upload External Report
+       </button>
+    </div>
+  );
 
   return (
-    <div className="reports-page">
-      {/* Page Header */}
-      <div className="page-header">
-        <div className="header-content">
-          <h1>Medical Reports & Records</h1>
-          <p>Access all your health documents in one place</p>
-        </div>
-        <div className="header-actions">
-          <button className="btn btn-outline">
-            <span>📤</span> Export All
-          </button>
-          <button className="btn btn-primary">
-            <span>📁</span> Upload Document
-          </button>
-        </div>
+    <div className="max-w-[1600px] mx-auto min-h-screen pb-12 px-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+         <div>
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#0f4c3a] mb-6 tracking-tight">Medical Records</h1>
+            <p className="text-slate-600 font-medium text-xl">Securely access and manage your complete health history.</p>
+         </div>
+
+         <div className="flex gap-4">
+            <div className="relative group">
+               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#0f4c3a] transition-colors" size={20} />
+               <input 
+                 type="text" 
+                 placeholder="Search records..." 
+                 className="pl-14 pr-8 py-4 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#0f4c3a]/20 w-80 shadow-sm transition-all text-lg font-medium" 
+               />
+            </div>
+            <button className="p-4 bg-white border border-slate-200 rounded-full text-slate-600 hover:bg-slate-50 hover:border-slate-300 shadow-sm transition-all">
+               <Filter size={24} />
+            </button>
+         </div>
       </div>
 
-      {/* Quick Stats */}
-      <div className="reports-stats">
-        <div className="stat-box">
-          <span className="stat-icon">📋</span>
-          <div className="stat-content">
-            <span className="stat-number">{reports.length}</span>
-            <span className="stat-label">Total Reports</span>
-          </div>
-        </div>
-        <div className="stat-box">
-          <span className="stat-icon">🧪</span>
-          <div className="stat-content">
-            <span className="stat-number">{reports.filter(r => r.type === 'lab').length}</span>
-            <span className="stat-label">Lab Results</span>
-          </div>
-        </div>
-        <div className="stat-box">
-          <span className="stat-icon">💊</span>
-          <div className="stat-content">
-            <span className="stat-number">{reports.filter(r => r.type === 'prescription').length}</span>
-            <span className="stat-label">Prescriptions</span>
-          </div>
-        </div>
-        <div className="stat-box">
-          <span className="stat-icon">📷</span>
-          <div className="stat-content">
-            <span className="stat-number">{reports.filter(r => r.type === 'imaging').length}</span>
-            <span className="stat-label">Imaging</span>
-          </div>
-        </div>
-      </div>
+      <div className="bg-white rounded-[3rem] border border-slate-100 shadow-nav min-h-[700px] overflow-hidden flex flex-col">
+         {/* Tabs */}
+         <div className="border-b border-slate-100 px-10 pt-10 flex gap-10 overflow-x-auto">
+            {['All Records', 'Lab Results', 'Prescriptions', 'Imaging'].map((tab) => (
+               <button 
+                 key={tab}
+                 onClick={() => setActiveTab(tab.toLowerCase())}
+                 className={`pb-5 px-4 text-base font-bold uppercase tracking-wider border-b-4 transition-all ${
+                    activeTab === tab.toLowerCase() || (activeTab === 'all' && tab === 'All Records')
+                    ? 'border-[#0f4c3a] text-[#0f4c3a]' 
+                    : 'border-transparent text-slate-400 hover:text-slate-600'
+                 }`}
+               >
+                 {tab}
+               </button>
+            ))}
+         </div>
 
-      {/* Tabs */}
-      <div className="reports-tabs">
-        <button 
-          className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
-          onClick={() => setActiveTab('all')}
-        >
-          All Reports
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'consultation' ? 'active' : ''}`}
-          onClick={() => setActiveTab('consultation')}
-        >
-          Consultations
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'lab' ? 'active' : ''}`}
-          onClick={() => setActiveTab('lab')}
-        >
-          Lab Results
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'imaging' ? 'active' : ''}`}
-          onClick={() => setActiveTab('imaging')}
-        >
-          Imaging
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === 'prescription' ? 'active' : ''}`}
-          onClick={() => setActiveTab('prescription')}
-        >
-          Prescriptions
-        </button>
-      </div>
-
-      {/* Reports Grid */}
-      <div className="reports-content">
-        <div className="reports-list">
-          {filteredReports.map(report => (
-            <div 
-              key={report.id} 
-              className={`report-card ${selectedReport?.id === report.id ? 'selected' : ''}`}
-              onClick={() => setSelectedReport(report)}
-            >
-              <div className="report-icon">{report.icon}</div>
-              <div className="report-info">
-                <h3>{report.title}</h3>
-                <p className="report-meta">
-                  {report.doctor || report.facility} • {report.date}
-                </p>
-                <p className="report-summary">{report.summary}</p>
-              </div>
-              <div className="report-actions">
-                <span className={`report-status ${report.status}`}>
-                  {report.status === 'active' ? '🟢 Active' : '✓ Completed'}
-                </span>
-                <button className="action-btn">📥</button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Report Detail Panel */}
-        {selectedReport && (
-          <div className="report-detail">
-            <div className="detail-header">
-              <div className="detail-title">
-                <span className="detail-icon">{selectedReport.icon}</span>
-                <div>
-                  <h2>{selectedReport.title}</h2>
-                  <p>{selectedReport.date}</p>
-                </div>
-              </div>
-              <div className="detail-actions">
-                <button className="btn btn-outline btn-sm">
-                  <span>🖨️</span> Print
-                </button>
-                <button className="btn btn-outline btn-sm">
-                  <span>📥</span> Download
-                </button>
-                <button className="btn btn-outline btn-sm">
-                  <span>📤</span> Share
-                </button>
-              </div>
-            </div>
-
-            <div className="detail-body">
-              {/* Summary */}
-              <div className="detail-section">
-                <h4>Summary</h4>
-                <p>{selectedReport.summary}</p>
-              </div>
-
-              {/* Lab Results */}
-              {selectedReport.results && (
-                <div className="detail-section">
-                  <h4>Results</h4>
-                  <div className="results-table">
-                    <div className="results-header">
-                      <span>Test</span>
-                      <span>Value</span>
-                      <span>Reference Range</span>
-                      <span>Status</span>
-                    </div>
-                    {selectedReport.results.map((result, index) => (
-                      <div key={index} className={`results-row ${result.status}`}>
-                        <span>{result.name}</span>
-                        <span>{result.value} {result.unit}</span>
-                        <span>{result.range}</span>
-                        <span className={`status-badge ${result.status}`}>
-                          {result.status === 'normal' ? '✓ Normal' : 
-                           result.status === 'high' ? '↑ High' : '↓ Low'}
-                        </span>
-                      </div>
-                    ))}
+         <div className="p-10 flex-1 relative">
+            <AnimatePresence mode="wait">
+               {reports.length > 0 ? (
+                  <div className="grid gap-6">
+                     {/* Report Items */}
                   </div>
-                </div>
-              )}
-
-              {/* Vitals */}
-              {selectedReport.vitals && (
-                <div className="detail-section">
-                  <h4>Vitals</h4>
-                  <div className="vitals-grid">
-                    {selectedReport.vitals.map((vital, index) => (
-                      <div key={index} className="vital-item">
-                        <span className="vital-name">{vital.name}</span>
-                        <span className="vital-value">{vital.value}</span>
-                        <span className={`vital-status ${vital.status}`}>
-                          {vital.status === 'normal' ? '✓ Normal' : '⚠ Attention'}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Diagnosis */}
-              {selectedReport.diagnosis && (
-                <div className="detail-section">
-                  <h4>Diagnosis</h4>
-                  <p className="diagnosis-text">{selectedReport.diagnosis}</p>
-                </div>
-              )}
-
-              {/* Prescription Details */}
-              {selectedReport.type === 'prescription' && (
-                <div className="detail-section">
-                  <h4>Prescription Details</h4>
-                  <div className="prescription-info">
-                    <div className="prescription-row">
-                      <span className="label">Medication:</span>
-                      <span className="value">{selectedReport.medication}</span>
-                    </div>
-                    <div className="prescription-row">
-                      <span className="label">Dosage:</span>
-                      <span className="value">{selectedReport.dosage}</span>
-                    </div>
-                    <div className="prescription-row">
-                      <span className="label">Quantity:</span>
-                      <span className="value">{selectedReport.quantity}</span>
-                    </div>
-                    <div className="prescription-row">
-                      <span className="label">Refills:</span>
-                      <span className="value">{selectedReport.refills}</span>
-                    </div>
-                  </div>
-                  <button className="btn btn-primary btn-block">
-                    Request Refill
-                  </button>
-                </div>
-              )}
-
-              {/* Follow Up */}
-              {selectedReport.followUp && (
-                <div className="detail-section">
-                  <h4>Follow-up Date</h4>
-                  <div className="followup-box">
-                    <span className="followup-icon">📅</span>
-                    <span className="followup-date">{selectedReport.followUp}</span>
-                    <button className="btn btn-outline btn-sm">Schedule</button>
-                  </div>
-                </div>
-              )}
-
-              {/* Doctor Info */}
-              {selectedReport.doctor && (
-                <div className="detail-section">
-                  <h4>Doctor</h4>
-                  <div className="doctor-info-box">
-                    <span className="doctor-avatar">👨‍⚕️</span>
-                    <div className="doctor-details">
-                      <span className="doctor-name">{selectedReport.doctor}</span>
-                      <button className="link-btn">View Profile →</button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* No Selection State */}
-        {!selectedReport && (
-          <div className="no-selection">
-            <span className="empty-icon">📄</span>
-            <h3>Select a report to view details</h3>
-            <p>Click on any report from the list to see full details</p>
-          </div>
-        )}
+               ) : (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="h-full flex items-center justify-center"
+                  >
+                     <EmptyState />
+                  </motion.div>
+               )}
+            </AnimatePresence>
+         </div>
       </div>
     </div>
   );

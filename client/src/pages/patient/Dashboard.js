@@ -1,245 +1,202 @@
 import React from 'react';
-import './PatientDashboard.css';
+import { motion } from 'framer-motion';
+import { 
+  Calendar, 
+  Activity, 
+  Clock, 
+  FileText, 
+  MessageSquare, 
+  ChevronRight,
+  Star,
+  Sun,
+  ArrowRight,
+  Heart,
+  Shield,
+  Zap
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Dashboard = () => {
-  const upcomingAppointments = [
-    {
-      id: 1,
-      doctor: 'Dr. Sarah Chen',
-      specialty: 'Cardiologist',
-      date: 'Today',
-      time: '2:30 PM',
-      type: 'Video Consultation',
-      avatar: '👩‍⚕️'
-    },
-    {
-      id: 2,
-      doctor: 'Dr. Michael Rodriguez',
-      specialty: 'General Physician',
-      date: 'Tomorrow',
-      time: '10:00 AM',
-      type: 'In-Person',
-      avatar: '👨‍⚕️'
+  const { user } = useAuth();
+  const upcomingAppointments = []; 
+  
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
     }
-  ];
+  };
 
-  const recentConsultations = [
-    {
-      id: 1,
-      title: 'Chest Pain Assessment',
-      date: 'Dec 15, 2024',
-      status: 'Completed',
-      priority: 'urgent',
-      doctor: 'Dr. Sarah Chen'
-    },
-    {
-      id: 2,
-      title: 'Annual Checkup',
-      date: 'Dec 10, 2024',
-      status: 'Completed',
-      priority: 'routine',
-      doctor: 'Dr. Michael Rodriguez'
-    },
-    {
-      id: 3,
-      title: 'Migraine Follow-up',
-      date: 'Dec 5, 2024',
-      status: 'Completed',
-      priority: 'moderate',
-      doctor: 'Dr. Emily Watson'
-    }
-  ];
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 40 } }
+  };
 
-  const healthMetrics = [
-    { label: 'Blood Pressure', value: '120/80', unit: 'mmHg', status: 'normal', icon: '❤️' },
-    { label: 'Heart Rate', value: '72', unit: 'bpm', status: 'normal', icon: '💓' },
-    { label: 'Weight', value: '165', unit: 'lbs', status: 'normal', icon: '⚖️' },
-    { label: 'BMI', value: '23.5', unit: '', status: 'normal', icon: '📊' }
-  ];
+  const ActionCard = ({ icon: Icon, title, description, to, bgGradient, iconColor, btnColor }) => (
+    <motion.div 
+      variants={item}
+      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+      className={`group relative overflow-hidden rounded-[2.5rem] p-8 md:p-10 transition-all duration-300 border border-white/40 shadow-sm ${bgGradient}`}
+    >
+       <div className={`w-16 h-16 rounded-[2rem] bg-white flex items-center justify-center mb-6 shadow-md shadow-black/5 group-hover:scale-110 transition-transform duration-300 ${iconColor}`}>
+          <Icon size={32} strokeWidth={2} />
+       </div>
+       <h3 className="text-2xl font-serif font-bold text-[#0f4c3a] mb-3">{title}</h3>
+       <p className="text-slate-600 font-medium mb-8 leading-relaxed text-lg min-h-[3.5rem] relative z-10">{description}</p>
+       
+       <Link 
+         to={to}
+         className={`inline-flex items-center justify-center w-14 h-14 rounded-full text-white shadow-lg hover:scale-110 transition-all ${btnColor}`}
+       >
+         <ArrowRight size={24} />
+       </Link>
+       
+       {/* Decorative Shapes */}
+       <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+       <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/30 rounded-full blur-xl pointer-events-none" />
+    </motion.div>
+  );
 
   return (
-    <div className="patient-dashboard">
-      {/* Welcome Header */}
-      <div className="dashboard-header">
-        <div className="welcome-section">
-          <h1>Welcome back, Sarah! 👋</h1>
-          <p>Here's an overview of your health journey</p>
-        </div>
-        <div className="header-actions">
-          <button className="btn btn-primary">
-            <span>➕</span>
-            New Consultation
-          </button>
-        </div>
-      </div>
-
-      {/* Stats Grid */}
-      <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-icon blue">📋</div>
-          <div className="stat-info">
-            <span className="stat-value">12</span>
-            <span className="stat-label">Total Consultations</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon green">✅</div>
-          <div className="stat-info">
-            <span className="stat-value">10</span>
-            <span className="stat-label">Completed</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon yellow">⏳</div>
-          <div className="stat-info">
-            <span className="stat-value">2</span>
-            <span className="stat-label">Pending</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon purple">📅</div>
-          <div className="stat-info">
-            <span className="stat-value">3</span>
-            <span className="stat-label">Upcoming Appointments</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="dashboard-grid">
-        {/* Upcoming Appointments */}
-        <div className="dashboard-card appointments-card">
-          <div className="card-header">
-            <h2>Upcoming Appointments</h2>
-            <a href="/patient/consultations" className="view-all">View All →</a>
-          </div>
-          <div className="appointments-list">
-            {upcomingAppointments.map(apt => (
-              <div key={apt.id} className="appointment-item">
-                <div className="apt-avatar">{apt.avatar}</div>
-                <div className="apt-info">
-                  <h4>{apt.doctor}</h4>
-                  <p>{apt.specialty}</p>
-                  <div className="apt-meta">
-                    <span className="apt-date">📅 {apt.date}, {apt.time}</span>
-                    <span className="apt-type">{apt.type}</span>
-                  </div>
-                </div>
-                <div className="apt-actions">
-                  <button className="btn btn-outline btn-sm">Reschedule</button>
-                  <button className="btn btn-primary btn-sm">Join</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Health Metrics */}
-        <div className="dashboard-card metrics-card">
-          <div className="card-header">
-            <h2>Health Metrics</h2>
-            <a href="/patient/reports" className="view-all">View Reports →</a>
-          </div>
-          <div className="metrics-grid">
-            {healthMetrics.map((metric, index) => (
-              <div key={index} className="metric-item">
-                <span className="metric-icon">{metric.icon}</span>
-                <div className="metric-info">
-                  <span className="metric-label">{metric.label}</span>
-                  <span className="metric-value">
-                    {metric.value} <small>{metric.unit}</small>
-                  </span>
-                </div>
-                <span className={`metric-status ${metric.status}`}>
-                  {metric.status === 'normal' && '✓ Normal'}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Recent Consultations */}
-        <div className="dashboard-card consultations-card">
-          <div className="card-header">
-            <h2>Recent Consultations</h2>
-            <a href="/patient/consultations" className="view-all">View All →</a>
-          </div>
-          <div className="consultations-list">
-            {recentConsultations.map(consultation => (
-              <div key={consultation.id} className="consultation-item">
-                <div className={`consultation-priority ${consultation.priority}`}></div>
-                <div className="consultation-info">
-                  <h4>{consultation.title}</h4>
-                  <p>with {consultation.doctor}</p>
-                </div>
-                <div className="consultation-meta">
-                  <span className="consultation-date">{consultation.date}</span>
-                  <span className={`consultation-status ${consultation.status.toLowerCase()}`}>
-                    {consultation.status}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="dashboard-card quick-actions-card">
-          <div className="card-header">
-            <h2>Quick Actions</h2>
-          </div>
-          <div className="quick-actions-grid">
-            <a href="/patient/symptom-submission" className="quick-action">
-              <span className="action-icon">🩺</span>
-              <span className="action-label">Submit Symptoms</span>
-            </a>
-            <a href="/patient/nearby-doctors" className="quick-action">
-              <span className="action-icon">📍</span>
-              <span className="action-label">Find Doctors</span>
-            </a>
-            <a href="/patient/reports" className="quick-action">
-              <span className="action-icon">📄</span>
-              <span className="action-label">View Reports</span>
-            </a>
-            <a href="/patient/consultations" className="quick-action">
-              <span className="action-icon">💬</span>
-              <span className="action-label">Messages</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* AI Health Tips */}
-      <div className="health-tips-section">
-        <div className="tips-header">
-          <span className="tips-icon">🤖</span>
-          <h3>AI Health Insights</h3>
-        </div>
-        <div className="tips-content">
-          <div className="tip-card">
-            <span className="tip-icon">💧</span>
-            <div className="tip-text">
-              <h4>Stay Hydrated</h4>
-              <p>Based on your activity level, aim for 8-10 glasses of water daily.</p>
+    <motion.div 
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="max-w-[1600px] mx-auto pb-12 px-6"
+    >
+      {/* Hero Welcome Section - Vibrant & Eye Catchy */}
+      <motion.div 
+        variants={item}
+        className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-[#0f4c3a] via-[#13614d] to-[#0A3D30] text-white p-10 md:p-16 mb-12 shadow-2xl shadow-green-900/20"
+      >
+        {/* Abstract Background Art */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FBBF24] rounded-full mix-blend-overlay opacity-20 blur-[80px] -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-400 rounded-full mix-blend-overlay opacity-20 blur-[60px] translate-y-1/2 -translate-x-1/4"></div>
+        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] border border-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-[#FBBF24] text-sm font-bold uppercase tracking-widest mb-8 border border-white/20"
+            >
+              <Sun size={16} className="fill-current animate-pulse-slow" />
+              Good Morning
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight leading-[1.1] mb-8">
+              Mental health <br/>
+              <span className="text-[#FBBF24] italic font-light">is wealth.</span>
+            </h1>
+            <p className="text-emerald-50/90 text-xl font-medium max-w-lg leading-relaxed mb-10">
+              Welcome back, <strong className="text-white border-b-2 border-[#FBBF24]">{user?.name?.split(' ')[0] || 'Friend'}</strong>. 
+              We've organized everything for your well-being today.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/patient/consultation/new" className="px-10 py-5 bg-[#FBBF24] text-[#0f4c3a] rounded-full font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 hover:-translate-y-1 transition-all text-lg flex items-center gap-3">
+                 <Activity size={20} />
+                 Check Symptoms
+               </Link>
+               <Link to="/patient/consultations" className="px-10 py-5 bg-transparent border-2 border-white/30 text-white rounded-full font-bold hover:bg-white/10 transition-all text-lg backdrop-blur-sm">
+                 Book Visit
+               </Link>
             </div>
           </div>
-          <div className="tip-card">
-            <span className="tip-icon">🏃</span>
-            <div className="tip-text">
-              <h4>Keep Moving</h4>
-              <p>You've been less active this week. Try a 30-minute walk today.</p>
-            </div>
-          </div>
-          <div className="tip-card">
-            <span className="tip-icon">😴</span>
-            <div className="tip-text">
-              <h4>Sleep Better</h4>
-              <p>Aim for 7-9 hours of sleep to support your cardiovascular health.</p>
-            </div>
+          
+          {/* Glass Card Illustration */}
+          <div className="hidden md:block relative h-full min-h-[300px]">
+             <motion.div 
+               animate={{ y: [0, -10, 0] }}
+               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+               className="absolute right-0 top-1/2 -translate-y-1/2 w-80 bg-white/10 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/20 shadow-2xl relative z-10"
+             >
+                <div className="flex items-center justify-between mb-8">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-[#FBBF24] flex items-center justify-center text-[#0f4c3a]">
+                        <Heart size={20} className="fill-current" />
+                      </div>
+                      <span className="font-bold text-white">Daily Vitels</span>
+                   </div>
+                   <span className="text-emerald-200 font-serif">Today</span>
+                </div>
+                
+                <div className="space-y-6">
+                   <div className="p-4 bg-black/20 rounded-2xl flex items-center gap-4">
+                      <div className="text-3xl">❤️</div>
+                      <div>
+                         <div className="text-xs text-white/60 uppercase font-bold tracking-wider">Heart Rate</div>
+                         <div className="text-xl font-bold text-white">72 <span className="text-sm font-normal text-white/60">bpm</span></div>
+                      </div>
+                   </div>
+                   <div className="p-4 bg-black/20 rounded-2xl flex items-center gap-4">
+                      <div className="text-3xl">😴</div>
+                      <div>
+                         <div className="text-xs text-white/60 uppercase font-bold tracking-wider">Sleep</div>
+                         <div className="text-xl font-bold text-white">7h 30m</div>
+                      </div>
+                   </div>
+                </div>
+             </motion.div>
+             
+             {/* Abstract floating circles */}
+             <div className="absolute top-0 right-10 w-20 h-20 bg-[#FBBF24] rounded-full blur-xl opacity-40"></div>
+             <div className="absolute bottom-0 right-60 w-32 h-32 bg-teal-400 rounded-full blur-2xl opacity-30"></div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Action Grid - Colorful & Engaging */}
+      <h3 className="text-2xl font-serif font-bold text-[#0f4c3a] mb-8 flex items-center gap-3">
+        <Zap className="fill-[#FBBF24] text-[#FBBF24]" />
+        Quick Actions
+      </h3>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+         <ActionCard 
+            title="Chat Assistance" 
+            description="Talk to our AI for instant medical guidance." 
+            icon={MessageSquare} 
+            to="/patient/consultations" 
+            bgGradient="bg-gradient-to-br from-indigo-50 to-purple-50"
+            iconColor="text-indigo-600"
+            btnColor="bg-indigo-600 hover:bg-indigo-700"
+         />
+         <ActionCard 
+            title="Symptom Check" 
+            description="Identify conditions with AI triage." 
+            icon={Activity} 
+            to="/patient/consultation/new" 
+            bgGradient="bg-gradient-to-br from-orange-50 to-amber-50"
+            iconColor="text-orange-600"
+            btnColor="bg-orange-600 hover:bg-orange-700"
+         />
+         <ActionCard 
+            title="Nearby Doctors" 
+            description="Find and book specialists near you." 
+            icon={MapPin} 
+            to="/patient/doctors-nearby" 
+            bgGradient="bg-gradient-to-br from-emerald-50 to-teal-50"
+            iconColor="text-emerald-600"
+            btnColor="bg-emerald-600 hover:bg-emerald-700"
+         />
+         <ActionCard 
+            title="My Records" 
+            description="Lab results, prescriptions & history." 
+            icon={FileText} 
+            to="/patient/reports" 
+            bgGradient="bg-gradient-to-br from-blue-50 to-sky-50"
+            iconColor="text-blue-600"
+            btnColor="bg-blue-600 hover:bg-blue-700"
+         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

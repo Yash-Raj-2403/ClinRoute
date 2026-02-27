@@ -61,26 +61,45 @@ export const AuthProvider = ({ children }) => {
 
   // Restore session on mount
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session?.user) {
-        const profile = await fetchProfile(session.user);
-        setUser(profile);
+    let mounted = true;
+
+    const initAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (mounted && session?.user) {
+          const profile = await fetchProfile(session.user);
+          setUser(profile);
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+      } finally {
+        if (mounted) setLoading(false);
       }
-      setLoading(false);
-    });
+    };
+
+    initAuth();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        if (!mounted) return;
+        
         if (session?.user) {
-          const profile = await fetchProfile(session.user);
-          setUser(profile);
+          try {
+            const profile = await fetchProfile(session.user);
+            setUser(profile);
+          } catch (error) {
+            console.error('Profile fetch error:', error);
+          }
         } else {
           setUser(null);
         }
       }
     );
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   //  LOGIN 
@@ -254,7 +273,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
