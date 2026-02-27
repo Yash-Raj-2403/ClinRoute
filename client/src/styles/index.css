@@ -21,17 +21,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  /* Primary Colors - Healthcare Teal/Blue */
-  --primary-50: #E6FFFA;
-  --primary-100: #B2F5EA;
-  --primary-200: #81E6D9;
-  --primary-300: #4FD1C5;
-  --primary-400: #38B2AC;
-  --primary-500: #319795;
-  --primary-600: #2C7A7B;
-  --primary-700: #285E61;
-  --primary-800: #234E52;
-  --primary-900: #1D4044;
+  /* Primary Colors - Deep Forest Green */
+  --primary-50: #f2fcf9;
+  --primary-100: #dff8f1;
+  --primary-200: #bfeee3;
+  --primary-300: #92e0cf;
+  --primary-400: #5cc9b5;
+  --primary-500: #38b2a3;
+  --primary-600: #0f4c3a;
+  --primary-700: #0d4033;
+  --primary-800: #0a352b;
+  --primary-900: #03231d;
 
   /* Accent - Warm Yellow (like Zocdoc) */
   --accent-50: #FFFBEB;
@@ -113,7 +113,7 @@ html {
 
 body {
   font-family: var(--font-primary);
-  background-color: #FFFFFF;
+  background-color: #FDFBF7;
   color: var(--gray-800);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

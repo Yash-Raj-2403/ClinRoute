@@ -5,22 +5,22 @@
 /* Page shell */
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+  background: linear-gradient(135deg, #FDFBF7 0%, #f5f3ef 50%, #FDFBF7 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
   position: relative;
   overflow: hidden;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Floating decorative circles */
 .login-bg-decoration { position: absolute; inset: 0; pointer-events: none; }
 .bg-circle { position: absolute; border-radius: 50%; opacity: 0.15; }
-.bg-circle-1 { width: 640px; height: 640px; background: #0d9488; top: -200px; left: -200px; }
-.bg-circle-2 { width: 480px; height: 480px; background: #06b6d4; bottom: -160px; right: -120px; }
-.bg-circle-3 { width: 320px; height: 320px; background: #319795; top: 40%; left: 30%; }
+.bg-circle-1 { width: 640px; height: 640px; background: #0f4c3a; top: -200px; left: -200px; }
+.bg-circle-2 { width: 480px; height: 480px; background: #FBBF24; bottom: -160px; right: -120px; }
+.bg-circle-3 { width: 320px; height: 320px; background: #0f4c3a; top: 40%; left: 30%; }
 
 /* Two-panel wrapper */
 .login-wrapper {
@@ -39,7 +39,7 @@
 /* Left panel */
 .login-panel--left {
   flex: 0 0 42%;
-  background: linear-gradient(160deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+  background: linear-gradient(160deg, #0f4c3a 0%, #13614d 50%, #1a7a5e 100%);
   padding: 48px 40px;
   display: flex;
   flex-direction: column;
@@ -125,7 +125,7 @@
 .login-card-title { font-size: 26px; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.5px; }
 .login-card-sub { font-size: 14px; color: #64748b; margin: -12px 0 0; }
 .login-card-footer { font-size: 14px; color: #64748b; text-align: center; margin: 0; }
-.login-card-footer a { color: #0d9488; font-weight: 600; text-decoration: none; }
+.login-card-footer a { color: #0f4c3a; font-weight: 600; text-decoration: none; }
 .login-card-footer a:hover { text-decoration: underline; }
 
 /* Role toggle */
@@ -153,8 +153,8 @@
   transition: all 0.2s ease;
 }
 .lrt-btn:hover { background: rgba(255,255,255,0.6); color: #0f172a; }
-.lrt-btn--active { background: #fff; color: #0d9488; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.lrt-btn--active svg { color: #0d9488; }
+.lrt-btn--active { background: #fff; color: #0f4c3a; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.lrt-btn--active svg { color: #0f4c3a; }
 
 /* Error box */
 .login-error-box {
@@ -180,8 +180,8 @@
   overflow: hidden;
 }
 .lf-input-wrap:focus-within {
-  border-color: #0d9488;
-  box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+  border-color: #0f4c3a;
+  box-shadow: 0 0 0 3px rgba(15,76,58,0.12);
 }
 .lf-icon { color: #94a3b8; margin: 0 12px; flex-shrink: 0; }
 .lf-input-wrap input,
@@ -222,20 +222,20 @@
 
 .lf-options { display: flex; align-items: center; justify-content: space-between; }
 .lf-remember { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #475569; cursor: pointer; }
-.lf-remember input { accent-color: #0d9488; width: 15px; height: 15px; cursor: pointer; }
-.lf-forgot { font-size: 13px; color: #0d9488; text-decoration: none; font-weight: 600; }
+.lf-remember input { accent-color: #0f4c3a; width: 15px; height: 15px; cursor: pointer; }
+.lf-forgot { font-size: 13px; color: #0f4c3a; text-decoration: none; font-weight: 600; }
 .lf-forgot:hover { text-decoration: underline; }
 
 .lf-terms { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #6b7280; }
-.lf-terms input { accent-color: #0d9488; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
-.lf-terms a { color: #0d9488; text-decoration: none; font-weight: 500; }
+.lf-terms input { accent-color: #0f4c3a; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
+.lf-terms a { color: #0f4c3a; text-decoration: none; font-weight: 500; }
 .lf-terms a:hover { text-decoration: underline; }
 
 /* Submit button */
 .lf-submit {
   width: 100%;
   padding: 13px;
-  background: linear-gradient(135deg, #0d9488, #0f766e);
+  background: linear-gradient(135deg, #0f4c3a, #0a352b);
   color: white;
   border: none;
   border-radius: 12px;
