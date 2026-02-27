@@ -19,6 +19,7 @@ import ForHospitals from './pages/public/ForHospitals';
 import Security from './pages/public/Security';
 import Login from './pages/public/Login';
 import Register from './pages/public/Register';
+import AuthCallback from './pages/public/AuthCallback';
 
 // Chat Page (Protected)
 import Chatpage from './pages/chat/Chatpage';
@@ -37,11 +38,23 @@ import PatientQueue from './pages/doctor/PatientQueue';
 import CaseView from './pages/doctor/CaseView';
 import DoctorAppointments from './pages/doctor/Appointments';
 import DoctorProfile from './pages/doctor/Profile';
+import DoctorSettings from './pages/doctor/DoctorSettings';
+
+// Patient Settings
+import PatientAccountSettings from './pages/patient/AccountSettings';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
+// Profile Guard — redirects to settings if profile not yet completed
+const ProfileGuard = ({ children, settingsPath }) => {
+  const { isAuthenticated, user } = useAuth();
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!user?.profileComplete) return <Navigate to={settingsPath} replace />;
+  return children;
 };
 
 function App() {
@@ -58,11 +71,12 @@ function App() {
           <Route path="/security" element={<Security />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/chat" element={<Chatpage />} />
         </Route>
 
         {/* Patient Routes */}
-        <Route path="/patient" element={<PatientLayout />}>
+        <Route path="/patient" element={<ProfileGuard settingsPath="/patient/account-settings"><PatientLayout /></ProfileGuard>}>
           <Route index element={<PatientDashboard />} />
           <Route path="consultation/new" element={<SymptomSubmission />} />
           <Route path="consultations" element={<Consultations />} />
@@ -71,14 +85,20 @@ function App() {
           <Route path="reports" element={<PatientReports />} />
         </Route>
 
+        {/* Patient Account Settings (standalone, no layout wrapper) */}
+        <Route path="/patient/account-settings" element={<PatientAccountSettings />} />
+
         {/* Doctor Routes */}
-        <Route path="/doctor" element={<DoctorLayout />}>
+        <Route path="/doctor" element={<ProfileGuard settingsPath="/doctor/settings"><DoctorLayout /></ProfileGuard>}>
           <Route index element={<DoctorDashboard />} />
           <Route path="queue" element={<PatientQueue />} />
           <Route path="case/:id" element={<CaseView />} />
           <Route path="appointments" element={<DoctorAppointments />} />
           <Route path="profile" element={<DoctorProfile />} />
         </Route>
+
+        {/* Doctor Settings (standalone, no layout wrapper) */}
+        <Route path="/doctor/settings" element={<DoctorSettings />} />
       </Routes>
     </ToastProvider>
   );
