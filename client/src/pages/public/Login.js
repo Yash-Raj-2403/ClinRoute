@@ -103,14 +103,6 @@ const Login = () => {
             <p className="login-hero-sub">
               ClinRoute connects patients and doctors through smart triage, real-time consultations, and AI-driven insights.
             </p>
-            <div className="login-stats">
-              {[['2M+', 'Patients helped'], ['50K+', 'Providers'], ['95%', 'Accuracy']].map(([val, label]) => (
-                <div className="login-stat" key={label}>
-                  <span className="login-stat-value">{val}</span>
-                  <span className="login-stat-label">{label}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -141,7 +133,7 @@ const Login = () => {
                     <label>Email Address</label>
                     <div className="lf-input-wrap">
                       <Mail className="lf-icon" size={18} />
-                      <input type="email" value={patientEmail} onChange={e => setPatientEmail(e.target.value)} placeholder="you@example.com" required />
+                      <input type="email" value={patientEmail} onChange={e => setPatientEmail(e.target.value)} placeholder="Enter your email" required />
                     </div>
                   </div>
                   <div className="lf-group">
@@ -171,21 +163,21 @@ const Login = () => {
                     <label>Email Address</label>
                     <div className="lf-input-wrap">
                       <Mail className="lf-icon" size={18} />
-                      <input type="email" value={doctorEmail} onChange={e => setDoctorEmail(e.target.value)} placeholder="doctor@hospital.com" required />
+                      <input type="email" value={doctorEmail} onChange={e => setDoctorEmail(e.target.value)} placeholder="Enter your email" required />
                     </div>
                   </div>
                   <div className="lf-group">
                     <label>Doctor License Number</label>
                     <div className="lf-input-wrap">
                       <CreditCard className="lf-icon" size={18} />
-                      <input type="text" value={doctorLicense} onChange={e => setDoctorLicense(e.target.value)} placeholder="e.g. MED-123456" required />
+                      <input type="text" value={doctorLicense} onChange={e => setDoctorLicense(e.target.value)} placeholder="Enter license number" required />
                     </div>
                   </div>
                   <div className="lf-group">
                     <label>Phone Number</label>
                     <div className="lf-input-wrap">
                       <Phone className="lf-icon" size={18} />
-                      <input type="tel" value={doctorPhone} onChange={e => setDoctorPhone(e.target.value)} placeholder="+1 (555) 000-0000" required />
+                      <input type="tel" value={doctorPhone} onChange={e => setDoctorPhone(e.target.value)} placeholder="Enter phone number" required />
                     </div>
                   </div>
                   <motion.button type="submit" className="lf-submit lf-submit--doctor" disabled={loading} whileHover={{ scale: loading ? 1 : 1.02 }} whileTap={{ scale: loading ? 1 : 0.98 }}>

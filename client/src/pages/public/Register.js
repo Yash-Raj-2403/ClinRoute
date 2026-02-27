@@ -89,11 +89,6 @@ const Register = () => {
             <div className="login-hero-badge">Join ClinRoute</div>
             <h1 className="login-hero-title">Start your healthcare journey today</h1>
             <p className="login-hero-sub">Whether you are a patient seeking care or a doctor offering expertise, ClinRoute streamlines every step.</p>
-            <div className="login-stats">
-              {[['2M+', 'Patients helped'], ['50K+', 'Providers'], ['95%', 'Accuracy']].map(([val, label]) => (
-                <div className="login-stat" key={label}><span className="login-stat-value">{val}</span><span className="login-stat-label">{label}</span></div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -118,11 +113,11 @@ const Register = () => {
                 <motion.form key="patient-reg" onSubmit={handlePatientSubmit} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 16 }} transition={{ duration: 0.25 }}>
                   <div className="lf-group">
                     <label>Full Name</label>
-                    <div className="lf-input-wrap"><User className="lf-icon" size={18} /><input type="text" name="name" value={patientData.name} onChange={handlePatientChange} placeholder="John Doe" required /></div>
+                    <div className="lf-input-wrap"><User className="lf-icon" size={18} /><input type="text" name="name" value={patientData.name} onChange={handlePatientChange} placeholder="Enter your full name" required /></div>
                   </div>
                   <div className="lf-group">
                     <label>Email Address</label>
-                    <div className="lf-input-wrap"><Mail className="lf-icon" size={18} /><input type="email" name="email" value={patientData.email} onChange={handlePatientChange} placeholder="you@example.com" required /></div>
+                    <div className="lf-input-wrap"><Mail className="lf-icon" size={18} /><input type="email" name="email" value={patientData.email} onChange={handlePatientChange} placeholder="Enter your email" required /></div>
                   </div>
                   <div className="lf-row">
                     <div className="lf-group">
@@ -147,17 +142,17 @@ const Register = () => {
                   <div className="lf-row">
                     <div className="lf-group">
                       <label>Doctor Full Name</label>
-                      <div className="lf-input-wrap"><User className="lf-icon" size={18} /><input type="text" name="name" value={doctorData.name} onChange={handleDoctorChange} placeholder="Dr. Jane Smith" required /></div>
+                      <div className="lf-input-wrap"><User className="lf-icon" size={18} /><input type="text" name="name" value={doctorData.name} onChange={handleDoctorChange} placeholder="Enter your full name" required /></div>
                     </div>
                     <div className="lf-group">
                       <label>Email Address</label>
-                      <div className="lf-input-wrap"><Mail className="lf-icon" size={18} /><input type="email" name="email" value={doctorData.email} onChange={handleDoctorChange} placeholder="doctor@hospital.com" required /></div>
+                      <div className="lf-input-wrap"><Mail className="lf-icon" size={18} /><input type="email" name="email" value={doctorData.email} onChange={handleDoctorChange} placeholder="Enter your email" required /></div>
                     </div>
                   </div>
                   <div className="lf-row">
                     <div className="lf-group">
                       <label>Phone Number</label>
-                      <div className="lf-input-wrap"><Phone className="lf-icon" size={18} /><input type="tel" name="phone" value={doctorData.phone} onChange={handleDoctorChange} placeholder="+1 (555) 000-0000" required /></div>
+                      <div className="lf-input-wrap"><Phone className="lf-icon" size={18} /><input type="tel" name="phone" value={doctorData.phone} onChange={handleDoctorChange} placeholder="Enter phone number" required /></div>
                     </div>
                     <div className="lf-group">
                       <label>Specialty</label>
@@ -181,22 +176,22 @@ const Register = () => {
                   <div className="lf-row">
                     <div className="lf-group">
                       <label>Doctor ID</label>
-                      <div className="lf-input-wrap"><BadgeCheck className="lf-icon" size={18} /><input type="text" name="doctorId" value={doctorData.doctorId} onChange={handleDoctorChange} placeholder="e.g. DOC-78901" required /></div>
+                      <div className="lf-input-wrap"><BadgeCheck className="lf-icon" size={18} /><input type="text" name="doctorId" value={doctorData.doctorId} onChange={handleDoctorChange} placeholder="Enter doctor ID" required /></div>
                     </div>
                     <div className="lf-group">
                       <label>License Number</label>
-                      <div className="lf-input-wrap"><CreditCard className="lf-icon" size={18} /><input type="text" name="licenseNumber" value={doctorData.licenseNumber} onChange={handleDoctorChange} placeholder="e.g. MED-123456" required /></div>
+                      <div className="lf-input-wrap"><CreditCard className="lf-icon" size={18} /><input type="text" name="licenseNumber" value={doctorData.licenseNumber} onChange={handleDoctorChange} placeholder="Enter license number" required /></div>
                     </div>
                   </div>
                   <div className="lf-section-label">Hospital Details</div>
                   <div className="lf-row">
                     <div className="lf-group">
                       <label>Hospital Name</label>
-                      <div className="lf-input-wrap"><Building2 className="lf-icon" size={18} /><input type="text" name="hospitalName" value={doctorData.hospitalName} onChange={handleDoctorChange} placeholder="MedStar General Hospital" required /></div>
+                      <div className="lf-input-wrap"><Building2 className="lf-icon" size={18} /><input type="text" name="hospitalName" value={doctorData.hospitalName} onChange={handleDoctorChange} placeholder="Enter hospital name" required /></div>
                     </div>
                     <div className="lf-group">
                       <label>Hospital Address</label>
-                      <div className="lf-input-wrap"><Building2 className="lf-icon" size={18} /><input type="text" name="hospitalAddress" value={doctorData.hospitalAddress} onChange={handleDoctorChange} placeholder="123 Medical Drive, NY" required /></div>
+                      <div className="lf-input-wrap"><Building2 className="lf-icon" size={18} /><input type="text" name="hospitalAddress" value={doctorData.hospitalAddress} onChange={handleDoctorChange} placeholder="Enter hospital address" required /></div>
                     </div>
                   </div>
                   <div className="lf-section-label">Security</div>

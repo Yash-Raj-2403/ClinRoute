@@ -5,7 +5,7 @@
 /* Page shell */
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2027 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,10 +17,10 @@
 
 /* Floating decorative circles */
 .login-bg-decoration { position: absolute; inset: 0; pointer-events: none; }
-.bg-circle { position: absolute; border-radius: 50%; opacity: 0.08; }
-.bg-circle-1 { width: 640px; height: 640px; background: #319795; top: -200px; left: -200px; }
-.bg-circle-2 { width: 480px; height: 480px; background: #2563eb; bottom: -160px; right: -120px; }
-.bg-circle-3 { width: 320px; height: 320px; background: #7c3aed; top: 40%; left: 30%; }
+.bg-circle { position: absolute; border-radius: 50%; opacity: 0.15; }
+.bg-circle-1 { width: 640px; height: 640px; background: #0d9488; top: -200px; left: -200px; }
+.bg-circle-2 { width: 480px; height: 480px; background: #06b6d4; bottom: -160px; right: -120px; }
+.bg-circle-3 { width: 320px; height: 320px; background: #319795; top: 40%; left: 30%; }
 
 /* Two-panel wrapper */
 .login-wrapper {
@@ -39,7 +39,7 @@
 /* Left panel */
 .login-panel--left {
   flex: 0 0 42%;
-  background: linear-gradient(160deg, #134e4a 0%, #0f766e 50%, #0d9488 100%);
+  background: linear-gradient(160deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
   padding: 48px 40px;
   display: flex;
   flex-direction: column;
