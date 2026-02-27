@@ -57,11 +57,19 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
+    
+    console.log('Patient login attempt:', patientEmail);
+    
     try {
       const user = await login(patientEmail, patientPassword, 'patient');
-      navigate(user.profileComplete ? '/patient' : '/patient/account-settings');
-    } catch {
-      setError('Invalid email or password. Please try again.');
+      console.log('Login successful:', user);
+      
+      // Always navigate to dashboard - user can complete profile later
+      console.log('Navigating to /patient/dashboard');
+      navigate('/patient/dashboard');
+    } catch (error) {
+      console.error('Login error:', error);
+      setError(error.message || 'Invalid email or password. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -71,11 +79,19 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
+    
+    console.log('Doctor login attempt:', doctorEmail);
+    
     try {
       const user = await login(doctorEmail, doctorLicense, 'doctor', doctorPhone);
-      navigate(user.profileComplete ? '/doctor' : '/doctor/settings');
-    } catch {
-      setError('Invalid credentials. Please check your details.');
+      console.log('Login successful:', user);
+      
+      // Always navigate to dashboard - user can complete profile later
+      console.log('Navigating to /doctor/dashboard');
+      navigate('/doctor/dashboard');
+    } catch (error) {
+      console.error('Login error:', error);
+      setError(error.message || 'Invalid credentials. Please check your details.');
     } finally {
       setLoading(false);
     }

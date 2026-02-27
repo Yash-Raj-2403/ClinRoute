@@ -4,6 +4,7 @@
 
 const Consultation = require('../models/Consultation');
 const Patient = require('../models/Patient');
+const ragService = require('../services/ragService');
 
 /**
  * Triage Algorithm - Analyzes symptoms and returns triage assessment
@@ -563,3 +564,114 @@ exports.updateTriageAssessment = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @desc    AI-Powered Semantic Search Analysis using RAG
+ * @route   POST /api/triage/ai-analyze
+ * @access  Public/Patient
+ */
+exports.aiAnalyzeSymptoms = async (req, res, next) => {
+  try {
+    const { symptoms, patientContext } = req.body;
+
+    if (!symptoms || !Array.isArray(symptoms) || symptoms.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide symptoms as an array'
+      });
+    }
+
+    // Extract symptom names for RAG analysis
+    const symptomNames = symptoms.map(s => 
+      typeof s === 'string' ? s : s.name || s.description
+    ).filter(Boolean);
+
+    // Convert strings to symptom objects for traditional analysis
+    const symptomObjects = symptoms.map(s => {
+      if (typeof s === 'string') {
+        return { name: s, severity: 5, description: s };
+      }
+      return s;
+    });
+
+    // Use RAG service for AI-powered analysis
+    const ragAnalysis = await ragService.analyzeSymptoms(symptomNames, patientContext);
+
+    // Combine with traditional triage scoring if needed (only if symptoms are provided as objects)
+    let traditionalScore = null;
+    let priority = null;
+    let riskFactors = [];
+    
+    try {
+      const traditionalAnalysis = analyzeSymptoms(symptomObjects, patientContext);
+      traditionalScore = traditionalAnalysis.score;
+      priority = traditionalAnalysis.priority;
+      riskFactors = traditionalAnalysis.riskFactors;
+    } catch (error) {
+      console.log('Traditional analysis skipped:', error.message);
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        aiAnalysis: ragAnalysis.analysis,
+        possibleConditions: ragAnalysis.datasetMatches?.slice(0, 5) || [],
+        traditionalScore,
+        priority,
+        riskFactors,
+        recommendedActions: ragAnalysis.analysis?.recommendedActions || [],
+        urgencyLevel: ragAnalysis.analysis?.urgencyLevel || 'Moderate',
+        source: ragAnalysis.source,
+        timestamp: new Date()
+      }
+    });
+  } catch (error) {
+    console.error('AI Analysis Error:', error);
+    next(error);
+  }
+};
+
+/**
+ * @desc    Semantic Search for Diseases
+ * @route   GET /api/triage/search
+ * @access  Public
+ */
+exports.semanticSearch = async (req, res, next) => {
+  try {
+    const { query, limit = 10 } = req.query;
+
+    if (!query) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a search query'
+      });
+    }
+
+    const results = await ragService.semanticSearch(query, parseInt(limit));
+
+    res.status(200).json({
+      success: true,
+      data: results
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @desc    Get RAG Service Status
+ * @route   GET /api/triage/rag-status
+ * @access  Public
+ */
+exports.getRagStatus = async (req, res, next) => {
+  try {
+    const status = ragService.getStatus();
+    res.status(200).json({
+      success: true,
+      data: status
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

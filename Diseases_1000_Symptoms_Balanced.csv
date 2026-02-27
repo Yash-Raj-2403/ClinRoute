@@ -1,0 +1,1001 @@
+Disease,Symptom_1,Symptom_2,Symptom_3,Symptom_4,Symptom_5
+Influenza (Flu),Fever,Cough,Sore throat,Muscle aches,Fatigue
+Common Cold,Sneezing,Stuffy nose,Sore throat,Cough,Mild headache
+Type 2 Diabetes,Frequent urination,Excessive thirst,Fatigue,Blurred vision,Slow-healing sores
+Hypertension,Headache,Shortness of breath,Dizziness,Chest pain,Blurred vision
+Asthma,Wheezing,Shortness of breath,Chest tightness,Coughing,Difficulty breathing
+Migraine,Severe headache,Nausea,Sensitivity to light,Sensitivity to sound,Blurred vision
+Osteoarthritis,Joint pain,Stiffness,Swelling,Reduced range of motion,Tenderness
+GERD (Acid Reflux),Heartburn,Regurgitation,Difficulty swallowing,Chest pain,Chronic cough
+Urinary Tract Infection,Burning urination,Frequent urge to urinate,Cloudy urine,Pelvic pain,Strong-smelling urine
+COVID-19,Fever,Dry cough,Fatigue,Loss of taste/smell,Shortness of breath
+Bronchitis,Persistent cough,Mucus production,Fatigue,Shortness of breath,Chest discomfort
+Sinusitis,Facial pain/pressure,Nasal congestion,Discolored nasal discharge,Sore throat,Cough
+Strep Throat,Severe sore throat,Painful swallowing,Fever,Swollen lymph nodes,Red/swollen tonsils
+Gastroenteritis,Diarrhea,Vomiting,Stomach cramps,Nausea,Low-grade fever
+Conjunctivitis (Pink Eye),Eye redness,Itchiness,Gritty feeling,Eye discharge,Tearing
+Chickenpox,Itchy rash,Fluid-filled blisters,Fever,Fatigue,Loss of appetite
+Anemia,Fatigue,Weakness,Pale skin,Shortness of breath,Dizziness
+Hypothyroidism,Weight gain,Fatigue,Cold intolerance,Dry skin,Constipation
+Hyperthyroidism,Weight loss,Rapid heartbeat,Increased appetite,Anxiety,Sweating
+Depression,Persistent sadness,Loss of interest,Sleep changes,Appetite changes,Fatigue
+Anxiety Disorder,Restlessness,Rapid heart rate,Sweating,Trembling,Difficulty concentrating
+ADHD,Inattention,Hyperactivity,Impulsivity,Difficulty focusing,Forgetfulness
+Insomnia,Difficulty falling asleep,Waking up during night,Daytime sleepiness,Irritability,Poor concentration
+Osteoporosis,Back pain,Loss of height,Stooped posture,Bone fractures,Fragile bones
+Cataracts,Cloudy vision,Difficulty seeing at night,Sensitivity to light,Fading colors,Double vision in one eye
+Glaucoma,Eye pain,Blurred vision,Halos around lights,Nausea,Vision loss
+Obesity,Excess body fat,Shortness of breath,Increased sweating,Snoring,Inability to cope with physical activity
+Sleep Apnea,Loud snoring,Episodes of stopped breathing,Abrupt awakenings,Morning headache,Excessive daytime sleepiness
+Heart Attack,Chest pain,Shortness of breath,Nausea,Lightheadedness,Pain in jaw/back/arms
+Stroke,Face drooping,Arm weakness,Speech difficulty,Sudden confusion,Vision problems
+Pneumonia,Cough with phlegm,Fever,Chills,Difficulty breathing,Chest pain
+Kidney Stones,Severe side/back pain,Pain during urination,Pink/red/brown urine,Nausea,Cloudy/foul-smelling urine
+Gallstones,Sudden pain in upper right abdomen,Back pain between shoulder blades,Nausea,Vomiting,Bloating
+Allergies (Hay Fever),Sneezing,Itchy eyes,Runny nose,Congestion,Watery eyes
+Acne,Whiteheads,Blackheads,Small red bumps,Pimples,Painful lumps under skin
+Psoriasis,Red patches of skin,Silvery scales,Dry/cracked skin,Itching,Swollen joints
+Eczema,Dry skin,Itching,Red to brownish-gray patches,Small raised bumps,Thickened/cracked/scaly skin
+Back Pain,Muscle ache,Shooting/stabbing pain,Pain radiating down leg,Limited flexibility,Inability to stand straight
+Sciatica,Pain radiating from lower spine to buttock,Numbness in leg,Tingling sensation,Muscle weakness,Pain that worsens with sitting
+Hepatitis B,Abdominal pain,Dark urine,Fever,Joint pain,Yellowing of skin/eyes (jaundice)
+Tuberculosis,Persistent cough,Coughing up blood,Chest pain,Weight loss,Night sweats
+HIV/AIDS,Fever,Sore throat,Swollen lymph nodes,Fatigue,Night sweats
+Malaria,Fever,Chills,Headache,Nausea,Muscle aches
+Dengue Fever,High fever,Severe headache,Pain behind eyes,Joint/muscle pain,Rash
+Typhoid Fever,Prolonged high fever,Fatigue,Headache,Nausea,Abdominal pain
+Lyme Disease,Bullseye rash,Fever,Chills,Fatigue,Body aches
+Celiac Disease,Diarrhea,Fatigue,Weight loss,Bloating/gas,Abdominal pain
+Irritable Bowel Syndrome (IBS),Abdominal pain,Cramping,Bloating,Gas,Diarrhea or constipation
+Crohn's Disease,Abdominal pain,Severe diarrhea,Fatigue,Weight loss,Malnutrition
+Rheumatoid Arthritis,Tender/swollen joints,Joint stiffness,Fatigue,Fever,Loss of appetite
+ACTH Deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+APECED Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Aarskog syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Aase syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Abdominal aortic aneurysm,dry skin,mood swings,blood in stool,numbness,stiffness
+Acanthamoeba keratitis,fever,chills,fatigue,body aches,headache
+Acanthocheilonemiasis,loss of balance,heartburn,itching,confusion,runny nose
+Acanthocytosis,burning sensation,heat intolerance,itching,blisters,watering eyes
+Acanthosis Nigricans,chest pain,foul smell,fever,fainting,seizures
+Acanthosis nigricans,seizures,restlessness,chest pain,skin rash,yellowish skin
+Achalasia,restlessness,confusion,cough,runny nose,hair loss
+Achard Thiers Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Achilles tendinopathy,pale skin,burning sensation,joint pain,spinning sensation,lethargy
+Achondrogenesis,tinnitus,night sweats,restlessness,chills,palpitations
+Achondroplasia,weight loss,indigestion,palpitations,diarrhea,redness
+"Acidemia, Isovaleric",hoarseness,diarrhea,cough,vomiting,fainting
+"Acidemia, Methylmalonic",chest pain,memory loss,dry skin,stiffness,tremor
+"Acidemia, Propionic",earache,memory loss,pain,diarrhea,dry skin
+Acne vulgaris,dry skin,neck pain,mood swings,hunger,dizziness
+Acoustic neuroma,headache,dizziness,confusion,seizures,numbness
+Acrocallosal Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Acrodermatitis Enteropathica,fever,chills,fatigue,body aches,headache
+Acrodysostosis,fainting,heat intolerance,skin rash,redness,palpitations
+Acromegaly,fever,insomnia,hair loss,pale skin,hallucinations
+Acromesomelic Dysplasia,numbness,blood in urine,shivering,stiffness,yellowish skin
+Acromicric Dysplasia,chest pain,pale skin,hair loss,weight loss,stiffness
+Actinomycosis,lump,dizziness,redness,hunger,blood in stool
+Acute Endocarditis,fever,chills,fatigue,body aches,headache
+Acute bronchitis,fever,chills,fatigue,body aches,headache
+Acute cholecystitis,fever,chills,fatigue,body aches,headache
+Acute disseminated encephalomyelitis,fever,chills,fatigue,body aches,headache
+Acute glomerulonephritis,fever,chills,fatigue,body aches,headache
+Acute hepatitis,fever,chills,fatigue,body aches,headache
+Acute kidney injury,pain,brittle nails,lump,diarrhea,dark urine
+Acute lymphoblastic leukaemia,dry skin,weight loss,burning sensation,blood in urine,cough
+Acute lymphoblastic leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Acute myeloid leukaemia,pale skin,pain,bloating,confusion,brittle nails
+Acute myeloid leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Acute pancreatitis,fever,chills,fatigue,body aches,headache
+Acute respiratory infection,fever,chills,fatigue,body aches,headache
+Acute stress disorder,diarrhea,confusion,back pain,mood swings,heartburn
+Acute tubular necrosis,dry mouth,heartburn,fatigue,palpitations,loss of appetite
+Adams Oliver Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Addison's disease,hunger,fainting,hair loss,skin rash,swelling
+Adenocarcinoma of the lung,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Adenomyosis,hunger,frequent urination,bloating,cough,heat intolerance
+Adenovirus,fever,chills,fatigue,body aches,headache
+Adie Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Adjustment disorder,abdominal pain,hunger,difficulty swallowing,foul smell,weakness
+Adrenal Hyperplasia,hallucinations,memory loss,numbness,fatigue,delusions
+Adrenal crisis,mood swings,lump,indigestion,confusion,blood in stool
+Adrenal insufficiency,anxiety,abdominal pain,blood in stool,cold intolerance,sore throat
+Adrenocortical carcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Adrenoleukodystrophy,tinnitus,difficulty swallowing,stiffness,dry mouth,swelling
+Adrenomyeloneuropathy,headache,dizziness,confusion,seizures,numbness
+Afibrinogenemia,swelling,redness,hoarseness,difficulty swallowing,heartburn
+African tick-bite fever,fever,chills,fatigue,body aches,headache
+African trypanosomiasis,blurred vision,shortness of breath,thirst,fainting,hallucinations
+Agammaglobulinemias,indigestion,night sweats,mood swings,lump,nausea
+Agenesis of Corpus Callosum,gas,blurred vision,brittle nails,tinnitus,seizures
+Agnosia,chills,stiffness,dizziness,numbness,weakness
+Agoraphobia,blood in stool,palpitations,blood in urine,joint pain,headache
+Agranulocytosis,loss of appetite,itching,cough,delusions,insomnia
+Ahumada Del Castillo Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Aicardi Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alagille Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alagille syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Albinism,back pain,indigestion,sweating,weight loss,chest pain
+Alcohol-related liver disease,chest pain,memory loss,abdominal pain,delusions,swelling
+Alcoholic liver disease,chest pain,fatigue,chills,shortness of breath,memory loss
+Alexander's Disease,difficulty swallowing,gas,chest pain,vomiting,abdominal pain
+Alkaptonuria,hair loss,chills,thirst,pain,confusion
+Allan Herndon Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Allergic rhinitis,fever,chills,fatigue,body aches,headache
+Allergies,nausea,brittle nails,neck pain,mood swings,diarrhea
+Alopecia,back pain,cough,delusions,blisters,dizziness
+Alopecia areata,delusions,frequent urination,joint pain,heartburn,pale skin
+Alpers Disease,foul smell,shivering,heat intolerance,night sweats,sweating
+Alpha-1 antitrypsin deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alpha-1-Antitrypsin Deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alport Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alport syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alstrom Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Alternating Hemiplegia of Childhood,hallucinations,numbness,pain,weight loss,palpitations
+Alveolitis,fever,chills,fatigue,body aches,headache
+Alzheimer's disease,shivering,headache,hunger,chest pain,sweating
+Amblyopia,hunger,headache,heat intolerance,palpitations,dry mouth
+Amebiasis,shivering,heat intolerance,palpitations,pain,blisters
+Ameloblastoma,confusion,fainting,headache,shivering,diarrhea
+Amelogenesis Imperfecta,lethargy,headache,pale skin,vomiting,heartburn
+Amniotic Band Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Ampullary cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Amyloidosis,constipation,abdominal pain,itching,numbness,hallucinations
+Amyotrophic Lateral Sclerosis,lethargy,chest pain,watering eyes,fatigue,frequent urination
+Amyotrophic lateral sclerosis,tinnitus,sweating,abdominal pain,heartburn,hunger
+Anal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Anal fissure,frequent urination,fatigue,shivering,hallucinations,night sweats
+Anal fistula,fainting,runny nose,back pain,blood in stool,sweating
+Anaphylaxis,constipation,cough,swelling,delusions,frequent urination
+Anaplasmosis,difficulty swallowing,night sweats,burning sensation,fever,nausea
+Anaplastic large cell lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Anaplastic thyroid cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Andersen Disease,fatigue,shivering,constipation,loss of appetite,dizziness
+Androgenetic alopecia,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Anemia of chronic disease,difficulty swallowing,swelling,dark urine,joint pain,chest pain
+"Anemia, Blackfan Diamond",hair loss,lethargy,pain,difficulty swallowing,hoarseness
+"Anemia, Fanconi's",spinning sensation,chills,blood in stool,blisters,nausea
+Anencephaly,sweating,yellowish skin,foul smell,weakness,chest pain
+Aneurysm,memory loss,dry mouth,inflammation,anxiety,runny nose
+Angelman Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Angelman syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Angina,heartburn,delusions,insomnia,hair loss,earache
+Angina pectoris,numbness,runny nose,weight loss,gas,constipation
+Angioedema,hoarseness,dark urine,muscle aches,dry mouth,fever
+Angiosarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Angiostrongyliasis,yellowish skin,restlessness,numbness,foul smell,nausea
+Aniridia,fainting,runny nose,skin rash,blood in urine,inflammation
+Anisakiasis,heartburn,night sweats,lethargy,fatigue,confusion
+Ankle avulsion fracture,stiffness,earache,heartburn,anxiety,difficulty swallowing
+Ankle sprain,blisters,thirst,dizziness,lump,earache
+Ankylosing spondylitis,fever,chills,fatigue,body aches,headache
+Ankylostomiasis,blurred vision,yellowish skin,chills,itching,redness
+Anodontia,blood in urine,restlessness,delusions,hunger,gas
+Anorexia nervosa,dry mouth,dark urine,mood swings,memory loss,confusion
+Anthrax,shivering,night sweats,fever,muscle aches,blood in urine
+Antiphospholipid Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Antiphospholipid syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Antisocial personality disorder,dry skin,earache,joint pain,watering eyes,blood in stool
+Antithrombin III Deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Antithrombin III deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Antley Bixler Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Anxiety disorders,hoarseness,lethargy,dry skin,hallucinations,memory loss
+Aortic dissection,constipation,weight loss,chills,indigestion,blood in urine
+Aortic regurgitation,weight loss,gas,indigestion,frequent urination,fever
+Aortic stenosis,heartburn,muscle aches,fainting,watering eyes,difficulty swallowing
+Apert Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Apert syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Aplasia Cutis Congenita,blurred vision,skin rash,blood in stool,sore throat,pain
+Aplastic anaemia,pain,abdominal pain,lethargy,tremor,blisters
+Aplastic anemia,diarrhea,swelling,blood in stool,tremor,fatigue
+"Apnea, Sleep",redness,numbness,lethargy,swelling,loss of appetite
+Appendicitis,fever,chills,fatigue,body aches,headache
+Apraxia,fatigue,loss of balance,dry skin,hoarseness,heat intolerance
+Arachnoid Cysts,cough,shivering,yellowish skin,fainting,muscle aches
+Arachnoiditis,fever,chills,fatigue,body aches,headache
+Arginase Deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Arginino Succinic Aciduria,lethargy,inflammation,night sweats,memory loss,frequent urination
+Arnold Chiari Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Arnold-Chiari malformation,nausea,tremor,shortness of breath,lethargy,constipation
+Arterial thrombosis,cough,weight loss,blurred vision,spinning sensation,abdominal pain
+Arthritis,fever,chills,fatigue,body aches,headache
+Asbestosis,loss of balance,chest pain,restlessness,frequent urination,bruising
+Ascariasis,confusion,chills,earache,fainting,weakness
+Aseptic meningitis,fever,chills,fatigue,body aches,headache
+Asperger's Syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Aspergillosis,blood in stool,frequent urination,spinning sensation,burning sensation,dizziness
+Aspiration pneumonia,cough,shortness of breath,chest pain,wheezing,sore throat
+Astigmatism,night sweats,sweating,seizures,nausea,back pain
+Astrocytoma,skin rash,heat intolerance,weakness,weight loss,hair loss
+Ataxia,hunger,hallucinations,itching,chills,shivering
+Ataxia telangiectasia,heartburn,headache,redness,cold intolerance,loss of appetite
+Atherosclerosis,restlessness,dark urine,hair loss,earache,sore throat
+Athlete's foot,shortness of breath,bloating,anxiety,weight loss,night sweats
+Atopic eczema,skin rash,itching,redness,blisters,swelling
+Atrial fibrillation,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Atrial flutter,fever,chills,fatigue,body aches,headache
+Atrial septal defect,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Atrioventricular block,hunger,chest pain,spinning sensation,cough,blisters
+Attention deficit hyperactivity disorder,sore throat,indigestion,skin rash,runny nose,blood in stool
+Auditory processing disorder,pale skin,hair loss,blood in urine,swelling,hallucinations
+Autism,hallucinations,confusion,blood in stool,anxiety,nausea
+Autism spectrum disorder,palpitations,seizures,fainting,chills,runny nose
+Autoimmune hemolytic anemia,bruising,diarrhea,pale skin,sore throat,watering eyes
+Autonomic neuropathy,headache,dizziness,confusion,seizures,numbness
+Avascular necrosis,chills,loss of appetite,bruising,joint pain,confusion
+Avoidant personality disorder,indigestion,spinning sensation,sore throat,memory loss,dark urine
+Avoidant/Restrictive Food Intake Disorder,yellowish skin,bloating,itching,tinnitus,weight loss
+Babesiosis,memory loss,back pain,foul smell,indigestion,seizures
+Bacillary angiomatosis,mood swings,loss of balance,insomnia,tremor,chest pain
+Bacterial Vaginosis,fever,chills,fatigue,body aches,headache
+Bacterial pneumonia,fever,chills,fatigue,body aches,headache
+Baker's Cyst,weakness,swelling,hoarseness,brittle nails,memory loss
+Balanitis,fever,chills,fatigue,body aches,headache
+Balantidiasis,nausea,stiffness,redness,hunger,yellowish skin
+Bardet-Biedl syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Barmah Forest virus,fever,chills,fatigue,body aches,headache
+Basal cell carcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Batten disease,anxiety,confusion,loss of balance,diarrhea,cold intolerance
+Becker muscular dystrophy,diarrhea,nausea,insomnia,weakness,hallucinations
+Beckwith-Wiedemann syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Behcet syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Behcet's disease,vomiting,brittle nails,gas,weight loss,anxiety
+Bejel,frequent urination,dark urine,dry skin,dizziness,shivering
+Bell's palsy,headache,dizziness,confusion,seizures,numbness
+Benign paroxysmal positional vertigo,chest pain,delusions,heartburn,redness,stiffness
+Benign prostatic hyperplasia,cold intolerance,blood in urine,shortness of breath,joint pain,seizures
+Beriberi,bloating,dry skin,insomnia,cold intolerance,night sweats
+Biliary atresia,shortness of breath,headache,pale skin,thirst,chest pain
+Binge eating disorder,nausea,lethargy,hair loss,delusions,dark urine
+Bipolar disorder,restlessness,pain,dry skin,bloating,swelling
+Bird flu,fever,chills,fatigue,body aches,headache
+Bladder cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Bladder stones,back pain,skin rash,cough,headache,hair loss
+Blastomycosis,weakness,hoarseness,pale skin,chills,blisters
+Blepharitis,fever,chills,fatigue,body aches,headache
+Blood clots,weight loss,memory loss,burning sensation,skin rash,heat intolerance
+Bloom syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Blue rubber bleb nevus syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Body dysmorphic disorder,bloating,thirst,dry skin,earache,heat intolerance
+Bone cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Borderline personality disorder,lethargy,dry mouth,hunger,earache,neck pain
+Bornholm disease,restlessness,inflammation,swelling,sweating,hair loss
+Botulism,blisters,joint pain,dizziness,vomiting,muscle aches
+Boutonneuse fever,fever,chills,fatigue,body aches,headache
+Bovine spongiform encephalopathy,yellowish skin,watering eyes,anxiety,cough,sweating
+Bowel cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Bowel polyps,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Brain abscess,headache,dizziness,confusion,seizures,numbness
+Brain aneurysm,headache,dizziness,confusion,seizures,numbness
+Brain tumor,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Brain tumour,headache,dizziness,confusion,seizures,numbness
+Breast abscess,redness,diarrhea,frequent urination,pale skin,heartburn
+Breast cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Bronchiectasis,cough,shortness of breath,chest pain,wheezing,sore throat
+Bronchiolitis,fever,chills,fatigue,body aches,headache
+Brucellosis,palpitations,tremor,hunger,dizziness,muscle aches
+Buerger disease,hallucinations,confusion,brittle nails,inflammation,fainting
+Buerger's disease,shortness of breath,cough,headache,blood in urine,sore throat
+Bulimia,back pain,chest pain,abdominal pain,blood in stool,thirst
+Bulimia nervosa,seizures,back pain,spinning sensation,fainting,neck pain
+Bullous pemphigoid,anxiety,numbness,pale skin,itching,constipation
+Bundle branch block,redness,back pain,stiffness,dizziness,neck pain
+Bunion,weight loss,watering eyes,pain,fainting,blood in urine
+Burkitt lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Burkitt's lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Burning mouth syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Bursitis,fever,chills,fatigue,body aches,headache
+Buruli ulcer,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Campylobacter,headache,indigestion,brittle nails,cold intolerance,numbness
+Canavan disease,itching,bloating,tinnitus,pale skin,joint pain
+Cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Candidiasis,abdominal pain,hair loss,sweating,pain,palpitations
+Capillariasis,heartburn,confusion,neck pain,blurred vision,tinnitus
+Carbon monoxide poisoning,shivering,confusion,abdominal pain,foul smell,swelling
+Carbuncle,night sweats,vomiting,dizziness,heat intolerance,shortness of breath
+Carcinoid tumor,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Cardiomyopathy,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Carpal tunnel syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Cat eye syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Cat-scratch disease,abdominal pain,indigestion,earache,chills,insomnia
+Cataract,mood swings,dry mouth,blisters,fatigue,bloating
+Catarrh,fever,neck pain,hallucinations,brittle nails,weight loss
+Celiac disease,neck pain,spinning sensation,gas,blood in urine,thirst
+Cellulitis,fever,chills,fatigue,body aches,headache
+Cerebral palsy,headache,dizziness,confusion,seizures,numbness
+Cervical cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Cervical spondylosis,lethargy,heartburn,redness,chest pain,blood in urine
+Cervicitis,fever,chills,fatigue,body aches,headache
+Chagas disease,shortness of breath,restlessness,nausea,heartburn,runny nose
+Chalazion,foul smell,cough,pain,hoarseness,dry mouth
+Charcot-Marie-Tooth disease,swelling,loss of balance,lethargy,seizures,burning sensation
+Chediak-Higashi syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Chest infection,fever,chills,fatigue,body aches,headache
+Chikungunya,tremor,joint pain,lethargy,weakness,loss of appetite
+Chlamydia,dry mouth,neck pain,delusions,hoarseness,insomnia
+Cholangiocarcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Cholangitis,fever,chills,fatigue,body aches,headache
+Cholecystitis,fever,chills,fatigue,body aches,headache
+Choledocholithiasis,thirst,blisters,restlessness,seizures,dry mouth
+Cholelithiasis,frequent urination,heartburn,difficulty swallowing,hoarseness,vomiting
+Cholera,dizziness,shivering,earache,memory loss,blood in urine
+Cholesteatoma,sweating,seizures,frequent urination,anxiety,back pain
+"Cholesterol, High",swelling,weakness,pain,hallucinations,hair loss
+Chondrosarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Choriocarcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Choroideremia,swelling,itching,constipation,insomnia,lump
+Chronic bronchitis,fever,chills,fatigue,body aches,headache
+Chronic fatigue syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Chronic glomerulonephritis,fever,chills,fatigue,body aches,headache
+Chronic hepatitis,fever,chills,fatigue,body aches,headache
+Chronic inflammatory demyelinating polyneuropathy,headache,dizziness,confusion,seizures,numbness
+Chronic kidney disease,difficulty swallowing,indigestion,stiffness,swelling,pain
+Chronic lymphocytic leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Chronic myeloid leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Chronic obstructive pulmonary disease,cough,insomnia,skin rash,redness,swelling
+Chronic pancreatitis,fever,chills,fatigue,body aches,headache
+Churg-Strauss syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Cirrhosis,fever,loss of balance,numbness,chills,seizures
+Cleft lip and palate,abdominal pain,weight loss,gas,watering eyes,runny nose
+Clonorchiasis,cold intolerance,abdominal pain,seizures,swelling,night sweats
+Clostridium difficile,foul smell,shivering,hair loss,pale skin,itching
+Cluster headache,watering eyes,lump,bloating,fatigue,night sweats
+Coarctation of the aorta,inflammation,loss of appetite,brittle nails,blurred vision,insomnia
+Coats' disease,hunger,abdominal pain,dark urine,night sweats,chest pain
+Coccidioidomycosis,pain,confusion,anxiety,spinning sensation,chills
+Cockayne syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Coeliac disease,spinning sensation,blood in urine,bruising,burning sensation,blood in stool
+Coffin-Lowry syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Cold sore,memory loss,foul smell,blurred vision,tremor,mood swings
+Colic,thirst,back pain,nausea,runny nose,memory loss
+Color blindness,shortness of breath,cold intolerance,pale skin,lethargy,lump
+Colorado tick fever,fever,chills,fatigue,body aches,headache
+Colorectal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Common cold,pain,memory loss,blurred vision,constipation,sore throat
+Complex regional pain syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Concussion,shortness of breath,cough,itching,inflammation,back pain
+Conduct disorder,chills,sweating,hoarseness,heat intolerance,dry skin
+Congenital adrenal hyperplasia,vomiting,skin rash,weakness,heat intolerance,watering eyes
+Congenital heart disease,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Conjunctivitis,fever,chills,fatigue,body aches,headache
+Conn's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Constipation,hair loss,restlessness,neck pain,shivering,abdominal pain
+Contact dermatitis,fever,chills,fatigue,body aches,headache
+Conversion disorder,mood swings,lethargy,foul smell,earache,restlessness
+Cor pulmonale,numbness,nausea,swelling,earache,mood swings
+Corneal ulcer,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Coronary heart disease,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Coronavirus,fever,chills,fatigue,body aches,headache
+Costochondritis,fever,chills,fatigue,body aches,headache
+Cowpox,watering eyes,difficulty swallowing,cough,blood in stool,blood in urine
+Craniopharyngioma,nausea,numbness,redness,memory loss,night sweats
+Craniosynostosis,insomnia,memory loss,tremor,constipation,dry mouth
+Creutzfeldt-Jakob disease,numbness,yellowish skin,mood swings,blood in urine,headache
+Cri du chat syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Crimean-Congo hemorrhagic fever,fever,chills,fatigue,body aches,headache
+Crohn's disease,gas,watering eyes,constipation,blurred vision,shortness of breath
+Croup,hoarseness,foul smell,nausea,delusions,neck pain
+Cryptococcosis,joint pain,dry skin,foul smell,thirst,lump
+Cryptosporidiosis,delusions,redness,mood swings,fever,hunger
+Cushing's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Cutaneous T-cell lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Cyclosporiasis,fever,joint pain,chills,tremor,weakness
+Cystic fibrosis,hoarseness,bruising,fatigue,shortness of breath,watering eyes
+Cysticercosis,swelling,spinning sensation,muscle aches,vomiting,sweating
+Cystinosis,tinnitus,back pain,neck pain,burning sensation,fatigue
+Cystinuria,headache,gas,hoarseness,weight loss,indigestion
+Cystitis,fever,chills,fatigue,body aches,headache
+Cytomegalovirus,fever,chills,fatigue,body aches,headache
+Dandy-Walker malformation,fatigue,dark urine,nausea,insomnia,hoarseness
+De Quervain's thyroiditis,fever,chills,fatigue,body aches,headache
+Deep vein thrombosis,delusions,pain,loss of appetite,constipation,lump
+Dengue,foul smell,hunger,loss of appetite,earache,constipation
+Dengue fever,fever,chills,fatigue,body aches,headache
+Dependent personality disorder,mood swings,sore throat,hoarseness,anxiety,stiffness
+Dermatitis,fever,chills,fatigue,body aches,headache
+Dermatitis herpetiformis,fever,chills,fatigue,body aches,headache
+Dermatofibrosarcoma protuberans,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Dermatomyositis,fever,chills,fatigue,body aches,headache
+DiGeorge syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Diabetes,gas,pale skin,hunger,weight loss,fainting
+Diabetes insipidus,hoarseness,weight loss,dizziness,hallucinations,frequent urination
+Diabetes ketoacidosis,cold intolerance,delusions,loss of appetite,inflammation,dark urine
+Diabetes mellitus type 1,confusion,frequent urination,chest pain,nausea,weight loss
+Diabetes mellitus type 2,palpitations,sore throat,thirst,seizures,numbness
+Diabetic ketoacidosis,hoarseness,shortness of breath,cough,blood in stool,difficulty swallowing
+Diabetic neuropathy,headache,dizziness,confusion,seizures,numbness
+Diabetic retinopathy,hoarseness,runny nose,sore throat,dizziness,cold intolerance
+Diffuse large B-cell lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Diphtheria,diarrhea,blurred vision,bloating,redness,seizures
+Diphyllobothriasis,spinning sensation,vomiting,chills,dry skin,tinnitus
+Dipylidiasis,delusions,fatigue,headache,yellowish skin,chills
+Discoid lupus,restlessness,watering eyes,cold intolerance,heartburn,inflammation
+Dislocation,mood swings,watering eyes,itching,muscle aches,memory loss
+Disseminated intravascular coagulation,dry mouth,inflammation,hoarseness,chills,blood in stool
+Diverticular disease,loss of balance,loss of appetite,lethargy,runny nose,skin rash
+Diverticulitis,fever,chills,fatigue,body aches,headache
+Diverticulosis,cough,neck pain,yellowish skin,dark urine,seizures
+Down syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Down's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Dracunculiasis,night sweats,tinnitus,inflammation,shortness of breath,dizziness
+Dravet syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Dry eye syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Dry mouth,weight loss,cold intolerance,fever,dizziness,stiffness
+Duchenne muscular dystrophy,inflammation,diarrhea,restlessness,heartburn,earache
+Ductal carcinoma in situ,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Dupuytren's contracture,abdominal pain,delusions,shortness of breath,runny nose,shivering
+Dysphagia,itching,weakness,difficulty swallowing,frequent urination,dry mouth
+Dyspraxia,pain,blisters,foul smell,shortness of breath,difficulty swallowing
+Dysthymia,dizziness,yellowish skin,hair loss,hallucinations,loss of appetite
+Dystonia,seizures,tinnitus,difficulty swallowing,pale skin,lump
+E. coli infection,fever,chills,fatigue,body aches,headache
+Earache,sweating,diarrhea,runny nose,inflammation,chest pain
+Earwax build-up,weakness,restlessness,redness,hoarseness,chest pain
+Eating disorders,tinnitus,earache,dry mouth,blurred vision,skin rash
+Ebola,loss of balance,palpitations,dry skin,watering eyes,muscle aches
+Ebola virus disease,fever,chills,fatigue,body aches,headache
+Echinococcosis,blisters,confusion,dry skin,tremor,constipation
+Eclampsia,insomnia,constipation,lethargy,blisters,brittle nails
+Ectopic pregnancy,indigestion,shivering,constipation,restlessness,thirst
+Ectropion,cold intolerance,yellowish skin,sore throat,back pain,loss of appetite
+Edwards syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Edwards' syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Ehlers-Danlos syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Ehrlichiosis,confusion,sore throat,stiffness,dry mouth,muscle aches
+Ejaculation problems,runny nose,palpitations,blisters,confusion,hunger
+Emphysema,sore throat,abdominal pain,neck pain,pain,insomnia
+Encephalitis,fever,chills,fatigue,body aches,headache
+End-stage renal disease,skin rash,confusion,watering eyes,foul smell,hallucinations
+Endocarditis,fever,chills,fatigue,body aches,headache
+Endometrial cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Endometrial hyperplasia,indigestion,blood in urine,tremor,confusion,diarrhea
+Endometriosis,burning sensation,back pain,weakness,blood in urine,dry mouth
+Enterobiasis,thirst,back pain,abdominal pain,fever,seizures
+Enteropathic arthritis,fever,chills,fatigue,body aches,headache
+Entropion,fatigue,dry mouth,palpitations,blurred vision,memory loss
+Ependymoma,dizziness,night sweats,palpitations,nausea,watering eyes
+Epidemic typhus,pain,thirst,swelling,loss of appetite,bloating
+Epidermolysis bullosa,numbness,foul smell,fainting,restlessness,watering eyes
+Epididymitis,fever,chills,fatigue,body aches,headache
+Epidural hematoma,dry mouth,constipation,blood in urine,blood in stool,shortness of breath
+Epiglottitis,fever,chills,fatigue,body aches,headache
+Epilepsy,headache,dizziness,confusion,seizures,numbness
+Epstein-Barr virus,fever,chills,fatigue,body aches,headache
+Erectile dysfunction,fainting,nausea,redness,blood in stool,burning sensation
+Erysipelas,foul smell,itching,loss of balance,yellowish skin,hunger
+Erythema multiforme,dizziness,insomnia,earache,indigestion,cold intolerance
+Erythema nodosum,joint pain,blisters,watering eyes,loss of balance,abdominal pain
+Esophageal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Esophageal varices,blood in stool,anxiety,heat intolerance,bruising,fainting
+Esophagitis,fever,chills,fatigue,body aches,headache
+Essential hypertension,thirst,spinning sensation,anxiety,fatigue,chills
+Essential thrombocythemia,vomiting,inflammation,back pain,sore throat,earache
+Ewing sarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Ewing's sarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Eye cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Fabry disease,pain,earache,watering eyes,nausea,hallucinations
+Facial palsy,headache,dizziness,confusion,seizures,numbness
+Facioscapulohumeral muscular dystrophy,gas,blurred vision,tremor,tinnitus,nausea
+Factitious disorder,numbness,insomnia,fever,heartburn,fatigue
+Factor V Leiden,blurred vision,cough,insomnia,confusion,back pain
+Fainting,fatigue,hunger,blood in urine,spinning sensation,memory loss
+Familial adenomatous polyposis,dry mouth,shortness of breath,inflammation,thirst,chest pain
+Familial hypercholesterolaemia,anxiety,blisters,chest pain,insomnia,heat intolerance
+Fanconi anaemia,dry mouth,blood in urine,swelling,indigestion,gas
+Fanconi anemia,sweating,chills,fainting,blurred vision,thirst
+Fascioliasis,foul smell,sweating,heartburn,weight loss,blood in stool
+Fasciolopsiasis,chest pain,heat intolerance,blurred vision,nausea,watering eyes
+Fatal familial insomnia,confusion,joint pain,thirst,chills,fever
+Febrile seizures,headache,dizziness,confusion,seizures,numbness
+Fetal alcohol syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Fibroadenoma,headache,neck pain,dark urine,pale skin,burning sensation
+Fibrocystic breast changes,blood in urine,confusion,neck pain,tinnitus,pain
+Fibroids,lump,fatigue,hunger,runny nose,dry mouth
+Fibromyalgia,joint pain,weakness,hunger,spinning sensation,indigestion
+Fibrosarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Fifth disease,insomnia,shivering,burning sensation,night sweats,lump
+Filariasis,back pain,thirst,weight loss,skin rash,joint pain
+Flat feet,frequent urination,shivering,lump,blurred vision,diarrhea
+Flu,fever,chills,fatigue,body aches,headache
+Folate deficiency anemia,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Folic acid deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Follicular lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Follicular thyroid cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Folliculitis,fever,chills,fatigue,body aches,headache
+Food allergy,blood in urine,blisters,difficulty swallowing,sore throat,vomiting
+Food intolerance,mood swings,yellowish skin,runny nose,sore throat,hair loss
+Food poisoning,fainting,watering eyes,fatigue,dry skin,anxiety
+Fragile X syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Friedreich's ataxia,headache,restlessness,pain,weakness,hunger
+Frontotemporal dementia,headache,dizziness,confusion,seizures,numbness
+Frostbite,restlessness,cold intolerance,inflammation,blood in stool,tremor
+Frozen shoulder,confusion,difficulty swallowing,abdominal pain,palpitations,memory loss
+Fungal nail infection,fever,chills,fatigue,body aches,headache
+Furuncle,fainting,sore throat,bruising,back pain,constipation
+G6PD deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Galactosaemia,weakness,memory loss,lump,inflammation,loss of balance
+Gallbladder cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Ganglion cyst,memory loss,blurred vision,pain,foul smell,tremor
+Gangrene,dry mouth,hoarseness,muscle aches,fatigue,heat intolerance
+Gas gangrene,dark urine,dry mouth,dizziness,insomnia,weight loss
+Gastric cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Gastrinoma,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Gastritis,fever,chills,fatigue,body aches,headache
+Gastro-oesophageal reflux disease,fever,chills,fatigue,body aches,headache
+Gastroesophageal reflux disease,fever,chills,fatigue,body aches,headache
+Gastroparesis,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Gaucher disease,nausea,earache,delusions,mood swings,skin rash
+Gender dysphoria,skin rash,burning sensation,mood swings,night sweats,fainting
+Generalised anxiety disorder,palpitations,bloating,skin rash,swelling,seizures
+Generalized anxiety disorder,swelling,delusions,fainting,pale skin,lump
+Genital herpes,sore throat,spinning sensation,frequent urination,hair loss,cold intolerance
+Genital warts,shivering,blisters,night sweats,stiffness,chills
+Gerstmann-Sträussler-Scheinker syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Gestational diabetes,sore throat,lethargy,blurred vision,dizziness,dry mouth
+Gestational trophoblastic disease,blisters,mood swings,redness,tremor,lethargy
+Giant cell arteritis,fever,chills,fatigue,body aches,headache
+Giardiasis,fever,brittle nails,numbness,loss of appetite,spinning sensation
+Gigantism,confusion,memory loss,watering eyes,palpitations,muscle aches
+Gilbert's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Gingivitis,fever,chills,fatigue,body aches,headache
+Glanders,confusion,shivering,loss of appetite,foul smell,vomiting
+Glandular fever,fever,chills,fatigue,body aches,headache
+Glioblastoma,blisters,spinning sensation,insomnia,joint pain,swelling
+Glioblastoma multiforme,abdominal pain,dry skin,seizures,thirst,fainting
+Glomerulonephritis,fever,chills,fatigue,body aches,headache
+Glossitis,fever,chills,fatigue,body aches,headache
+Glucagonoma,nausea,stiffness,weight loss,headache,diarrhea
+Glucose-6-phosphate dehydrogenase deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Glue ear,shivering,sore throat,hoarseness,pale skin,confusion
+Glycogen storage disease,joint pain,headache,redness,shortness of breath,difficulty swallowing
+Gnathostomiasis,cold intolerance,diarrhea,blood in urine,mood swings,sore throat
+Goiter,lump,sweating,weight loss,hair loss,watering eyes
+Goitre,runny nose,earache,gas,chest pain,neck pain
+Gonorrhoea,yellowish skin,pale skin,joint pain,gas,loss of appetite
+Goodpasture syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Gout,heat intolerance,blood in urine,swelling,thirst,pain
+Granulomatosis with polyangiitis,fever,chills,fatigue,body aches,headache
+Granulomatous amoebic encephalitis,fever,chills,fatigue,body aches,headache
+Graves' disease,loss of balance,heartburn,skin rash,frequent urination,sore throat
+Group B strep,numbness,shortness of breath,dark urine,indigestion,redness
+Guillain-Barré syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Gum disease,heat intolerance,hallucinations,hoarseness,watering eyes,chills
+Gynaecomastia,pain,confusion,lethargy,shortness of breath,neck pain
+HTLV-1 infection,fever,chills,fatigue,body aches,headache
+Haemochromatosis,shivering,blurred vision,indigestion,diarrhea,brittle nails
+Haemophilia,hair loss,skin rash,blurred vision,dark urine,foul smell
+Haemophilus influenzae,fever,chills,fatigue,body aches,headache
+Hairy cell leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+"Hand, foot and mouth disease",vomiting,stiffness,runny nose,hallucinations,fainting
+Hantavirus,fever,chills,fatigue,body aches,headache
+Hantavirus pulmonary syndrome,fever,chills,fatigue,body aches,headache
+Hashimoto's thyroiditis,fever,chills,fatigue,body aches,headache
+Hay fever,fever,chills,fatigue,body aches,headache
+Head and neck cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Head lice,delusions,pale skin,fever,brittle nails,watering eyes
+Headache,watering eyes,night sweats,blisters,brittle nails,seizures
+Hearing loss,inflammation,neck pain,hallucinations,weakness,hair loss
+Heart attack,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Heart block,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Heart failure,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Heart palpitations,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Heart valve disease,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Heatstroke,gas,loss of balance,heat intolerance,back pain,thirst
+Hemochromatosis,dizziness,heat intolerance,lump,weakness,dark urine
+Hemolytic anemia,indigestion,anxiety,neck pain,skin rash,itching
+Hemolytic uremic syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Hemophagocytic lymphohistiocytosis,dizziness,lethargy,dry skin,redness,burning sensation
+Hemophilia,loss of balance,yellowish skin,weakness,weight loss,shortness of breath
+Hemophilia A,skin rash,bruising,pale skin,hunger,pain
+Hemophilia B,bloating,pain,blurred vision,diarrhea,shivering
+Hemorrhagic conjunctivitis,fever,chills,fatigue,body aches,headache
+Hemorrhagic fever with renal syndrome,fever,chills,fatigue,body aches,headache
+Hemorrhagic stroke,fatigue,tinnitus,swelling,blood in urine,heat intolerance
+Hemorrhoids,thirst,watering eyes,shortness of breath,cold intolerance,blisters
+Hemothorax,muscle aches,sore throat,loss of appetite,swelling,bruising
+Henoch-Schonlein purpura,delusions,dry mouth,sweating,redness,anxiety
+Henoch-Schönlein purpura,weight loss,hunger,pain,numbness,back pain
+Hepatitis A,fever,chills,fatigue,body aches,headache
+Hepatitis C,fever,chills,fatigue,body aches,headache
+Hepatitis D,fever,chills,fatigue,body aches,headache
+Hepatitis E,fever,chills,fatigue,body aches,headache
+Hepatitis G,fever,chills,fatigue,body aches,headache
+Hepatocellular carcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Hereditary angioedema,numbness,dizziness,redness,pale skin,blisters
+Hereditary haemorrhagic telangiectasia,weakness,muscle aches,dizziness,difficulty swallowing,mood swings
+Hereditary spastic paraplegia,diarrhea,hunger,joint pain,frequent urination,dizziness
+Hereditary spherocytosis,loss of balance,burning sensation,pain,seizures,bloating
+Hermansky-Pudlak syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Hernia,tremor,anxiety,gas,blood in urine,hair loss
+Herpangina,pain,gas,earache,seizures,bloating
+Herpes simplex,abdominal pain,joint pain,stiffness,sore throat,loss of appetite
+Herpes zoster,redness,nausea,cough,anxiety,earache
+Hiatus hernia,pale skin,pain,shivering,hunger,mood swings
+High blood pressure,lethargy,joint pain,brittle nails,seizures,abdominal pain
+High cholesterol,spinning sensation,dizziness,loss of appetite,blood in urine,shivering
+Hip dysplasia,weight loss,muscle aches,fever,shortness of breath,dry skin
+Hirschsprung's disease,abdominal pain,yellowish skin,tremor,joint pain,blisters
+Hirsutism,hallucinations,anxiety,watering eyes,heat intolerance,night sweats
+Histiocytosis,numbness,blood in urine,delusions,runny nose,heartburn
+Histoplasmosis,mood swings,insomnia,hair loss,anxiety,blood in urine
+Hives,shortness of breath,blood in urine,pain,skin rash,numbness
+Hodgkin lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Hodgkin's lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Holoprosencephaly,stiffness,blood in urine,fatigue,insomnia,swelling
+Homocystinuria,pain,fainting,watering eyes,insomnia,shivering
+Horner's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Hunter syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Huntington's disease,blood in urine,chest pain,nausea,insomnia,chills
+Hurler syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Hydatidiform mole,memory loss,diarrhea,seizures,dark urine,muscle aches
+Hydrocele,redness,numbness,neck pain,stiffness,indigestion
+Hydrocephalus,sweating,difficulty swallowing,thirst,spinning sensation,dizziness
+Hydronephrosis,skin rash,chest pain,frequent urination,anxiety,vomiting
+Hymenolepiasis,constipation,hallucinations,chills,dry skin,mood swings
+Hypercholesterolemia,gas,heartburn,difficulty swallowing,vomiting,bloating
+Hyperglycaemia,pale skin,restlessness,numbness,hair loss,fever
+Hyperglycemia,thirst,shortness of breath,blisters,confusion,bruising
+Hyperhidrosis,bruising,dizziness,hair loss,yellowish skin,nausea
+Hyperlipidemia,difficulty swallowing,memory loss,hoarseness,abdominal pain,earache
+Hyperopia,dry skin,swelling,gas,difficulty swallowing,bloating
+Hyperosmolar hyperglycemic state,skin rash,bloating,constipation,frequent urination,diarrhea
+Hyperparathyroidism,hunger,dark urine,numbness,gas,blisters
+Hyperprolactinemia,back pain,delusions,pale skin,insomnia,muscle aches
+Hypersensitivity pneumonitis,fever,chills,fatigue,body aches,headache
+Hypertensive emergency,back pain,burning sensation,blurred vision,numbness,thirst
+Hypertensive retinopathy,mood swings,skin rash,swelling,bloating,difficulty swallowing
+Hypertensive urgency,dark urine,brittle nails,bloating,vomiting,headache
+Hypertriglyceridemia,seizures,dry skin,inflammation,cold intolerance,tremor
+Hypochondriasis,blurred vision,diarrhea,memory loss,seizures,burning sensation
+Hypoglycaemia,hair loss,earache,foul smell,sweating,memory loss
+Hypoglycemia,brittle nails,tremor,spinning sensation,runny nose,mood swings
+Hypogonadism,fever,redness,hair loss,brittle nails,spinning sensation
+Hypoparathyroidism,difficulty swallowing,tremor,anxiety,loss of balance,blurred vision
+Hypopituitarism,runny nose,diarrhea,thirst,memory loss,neck pain
+Hypothermia,abdominal pain,spinning sensation,blood in urine,dry skin,vomiting
+Ichthyosis,tremor,foul smell,indigestion,hoarseness,hallucinations
+Idiopathic pulmonary fibrosis,restlessness,hoarseness,diarrhea,hunger,foul smell
+IgA nephropathy,yellowish skin,hallucinations,constipation,dark urine,loss of balance
+Immune thrombocytopenic purpura,restlessness,night sweats,lethargy,hallucinations,itching
+Impetigo,dry skin,nausea,delusions,hoarseness,tremor
+Inclusion body myositis,fever,chills,fatigue,body aches,headache
+Inclusion conjunctivitis,fever,chills,fatigue,body aches,headache
+Incontinence,stiffness,insomnia,difficulty swallowing,restlessness,shivering
+Indigestion,palpitations,neck pain,indigestion,skin rash,bruising
+Infectious mononucleosis,yellowish skin,muscle aches,cold intolerance,redness,hoarseness
+Infertility,watering eyes,mood swings,shivering,tinnitus,gas
+Inflammatory breast cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Influenza,fever,chills,fatigue,body aches,headache
+Ingrowing toenail,numbness,mood swings,muscle aches,restlessness,back pain
+Inguinal hernia,yellowish skin,abdominal pain,chills,sweating,runny nose
+Insulin resistance,bloating,swelling,confusion,weight loss,loss of balance
+Insulinoma,heat intolerance,thirst,sore throat,heartburn,nausea
+Intellectual disability,hoarseness,chills,weakness,bloating,spinning sensation
+Intersex,hair loss,stiffness,tremor,hallucinations,burning sensation
+Interstitial cystitis,fever,chills,fatigue,body aches,headache
+Interstitial nephritis,fever,chills,fatigue,body aches,headache
+Intestinal obstruction,gas,dry skin,memory loss,dry mouth,shivering
+Intracerebral hemorrhage,stiffness,loss of appetite,hallucinations,tinnitus,frequent urination
+Intussusception,weight loss,shivering,sore throat,diarrhea,fatigue
+Iritis,fever,chills,fatigue,body aches,headache
+Iron deficiency anaemia,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Iron deficiency anemia,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Irritable bowel syndrome,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Ischemic colitis,fever,chills,fatigue,body aches,headache
+Ischemic heart disease,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Ischemic stroke,pain,bruising,chills,tinnitus,lump
+Isosporiasis,pale skin,numbness,cough,hair loss,mood swings
+Itching,dizziness,pain,weakness,indigestion,redness
+Japanese encephalitis,fever,chills,fatigue,body aches,headache
+Jaundice,tinnitus,bruising,hallucinations,hoarseness,sore throat
+Jaw pain,itching,back pain,chills,insomnia,yellowish skin
+Joint pain,joint pain,stiffness,swelling,movement restriction,muscle weakness
+Juvenile idiopathic arthritis,fever,chills,fatigue,body aches,headache
+Kaposi sarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Kaposi's sarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Kawasaki disease,blood in stool,bruising,headache,redness,cold intolerance
+Keratitis,fever,chills,fatigue,body aches,headache
+Keratoconus,blisters,watering eyes,constipation,vomiting,mood swings
+Keratosis pilaris,fatigue,anxiety,chills,dark urine,blurred vision
+Kidney cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Kidney infection,fever,chills,fatigue,body aches,headache
+Kidney stones,yellowish skin,dark urine,insomnia,sore throat,sweating
+Klinefelter syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Klippel-Feil syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Klippel-Trenaunay syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Knee pain,confusion,earache,skin rash,stiffness,numbness
+Krabbe disease,muscle aches,weakness,tinnitus,redness,seizures
+Kuru,hair loss,hallucinations,constipation,nausea,abdominal pain
+Kwashiorkor,fever,shivering,blurred vision,numbness,brittle nails
+Kyasanur Forest disease,blood in stool,fainting,cold intolerance,skin rash,restlessness
+Kyphosis,spinning sensation,memory loss,neck pain,cold intolerance,joint pain
+Labyrinthitis,fever,chills,fatigue,body aches,headache
+Lactose intolerance,dry mouth,fatigue,heat intolerance,cold intolerance,lump
+Lambert-Eaton myasthenic syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Langerhans cell histiocytosis,confusion,fever,yellowish skin,fatigue,difficulty swallowing
+Large cell lung cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Larva migrans,seizures,itching,thirst,brittle nails,restlessness
+Laryngeal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Laryngitis,fever,chills,fatigue,body aches,headache
+Lassa fever,fever,chills,fatigue,body aches,headache
+Lazy eye,redness,difficulty swallowing,nausea,headache,cold intolerance
+Lead poisoning,delusions,burning sensation,sore throat,fever,insomnia
+Legionnaire's disease,dry mouth,confusion,burning sensation,thirst,delusions
+Legionnaires' disease,tinnitus,hoarseness,thirst,inflammation,restlessness
+Leiomyosarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Leishmaniasis,loss of appetite,vomiting,seizures,night sweats,mood swings
+Lennox-Gastaut syndrome,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Leprosy,loss of balance,sore throat,chest pain,confusion,skin rash
+Leptospirosis,blood in urine,memory loss,frequent urination,fainting,headache
+Lesch-Nyhan syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Leukaemia,palpitations,chest pain,frequent urination,fatigue,sore throat
+Leukemia,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Leukocytosis,seizures,loss of balance,sweating,fainting,earache
+Leukopenia,loss of appetite,watering eyes,foul smell,dry mouth,tremor
+Lewy body dementia,headache,dizziness,confusion,seizures,numbness
+Lichen planus,dry mouth,inflammation,bruising,abdominal pain,spinning sensation
+Lichen sclerosus,heat intolerance,abdominal pain,delusions,spinning sensation,earache
+Limb-girdle muscular dystrophy,hair loss,gas,cough,frequent urination,skin rash
+Liposarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Listeriosis,cough,burning sensation,insomnia,difficulty swallowing,blood in urine
+Liver abscess,chills,palpitations,night sweats,headache,abdominal pain
+Liver cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Liver cirrhosis,heartburn,dizziness,weight loss,insomnia,dry mouth
+Liver disease,diarrhea,bruising,muscle aches,cough,joint pain
+Liver failure,blurred vision,restlessness,nausea,loss of appetite,chest pain
+Lobular carcinoma in situ,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Loiasis,chest pain,confusion,swelling,thirst,earache
+Long QT syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Lowe syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Lung abscess,cough,shortness of breath,chest pain,wheezing,sore throat
+Lung cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Lupus,heartburn,diarrhea,weakness,lethargy,sweating
+Lyme borreliosis,headache,fainting,tremor,nausea,skin rash
+Lyme disease,swelling,nausea,tremor,cough,headache
+Lymphedema,hallucinations,memory loss,blisters,headache,back pain
+Lymphocyte-depleted HL,foul smell,headache,blurred vision,swelling,back pain
+Lymphocyte-rich HL,pain,nausea,hoarseness,gas,fatigue
+Lymphoedema,weakness,shortness of breath,pale skin,back pain,memory loss
+Lymphogranuloma venereum,cough,hunger,hallucinations,shivering,inflammation
+Lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+MALT lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+MERS,tinnitus,joint pain,nausea,redness,muscle aches
+Macular degeneration,foul smell,brittle nails,weakness,hoarseness,frequent urination
+Major depressive disorder,inflammation,loss of appetite,pale skin,numbness,blisters
+Malignant melanoma,inflammation,diarrhea,blood in stool,hair loss,weakness
+Mallory-Weiss tear,insomnia,fatigue,pain,neck pain,swelling
+Malnutrition,runny nose,hallucinations,cold intolerance,inflammation,anxiety
+Mantle cell lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Marasmus,fever,anxiety,blood in stool,bloating,loss of appetite
+Marburg virus disease,fever,chills,fatigue,body aches,headache
+Marfan syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Marginal zone lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Mastitis,fever,chills,fatigue,body aches,headache
+Mastocytosis,confusion,indigestion,thirst,tinnitus,numbness
+Mastoiditis,fever,chills,fatigue,body aches,headache
+Measles,pain,night sweats,thirst,loss of balance,blood in urine
+Meckel's diverticulum,hair loss,bloating,palpitations,numbness,anxiety
+Medullary sponge kidney,heartburn,hallucinations,stiffness,dry mouth,vomiting
+Medullary thyroid cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Medulloblastoma,night sweats,inflammation,hair loss,tremor,runny nose
+Megaloblastic anemia,neck pain,anxiety,shortness of breath,dry mouth,chest pain
+Melasma,neck pain,gas,brittle nails,blisters,cold intolerance
+Melioidosis,restlessness,nausea,abdominal pain,neck pain,shortness of breath
+Meniere's disease,dizziness,tremor,burning sensation,swelling,dry mouth
+Meningioma,fainting,heartburn,constipation,fever,shivering
+Meningitis,fever,chills,fatigue,body aches,headache
+Meningococcal disease,heat intolerance,dry mouth,shivering,itching,hunger
+Menkes disease,shivering,lethargy,cough,vomiting,fatigue
+Menopause,tremor,chest pain,weight loss,memory loss,muscle aches
+Meralgia paresthetica,cold intolerance,lethargy,runny nose,foul smell,fainting
+Merkel cell carcinoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Mesenteric ischemia,dry skin,joint pain,chills,night sweats,insomnia
+Mesothelioma,blurred vision,brittle nails,bruising,loss of balance,fever
+Metabolic syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Metachromatic leukodystrophy,itching,restlessness,loss of appetite,diarrhea,dizziness
+Microscopic polyangiitis,fever,chills,fatigue,body aches,headache
+Microsporidiosis,heartburn,hair loss,swelling,hunger,fatigue
+Milker's nodule,joint pain,indigestion,shortness of breath,stiffness,dizziness
+Miscarriage,constipation,numbness,indigestion,itching,blurred vision
+Mitral regurgitation,loss of appetite,fatigue,burning sensation,vomiting,hallucinations
+Mitral stenosis,pale skin,itching,blisters,weight loss,dry mouth
+Mitral valve prolapse,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Mixed cellularity HL,mood swings,weakness,blisters,numbness,dry skin
+Mixed connective tissue disease,redness,sore throat,cough,hair loss,stiffness
+Molar pregnancy,loss of balance,joint pain,fainting,heartburn,fever
+Molluscum contagiosum,neck pain,nausea,vomiting,hunger,tremor
+Monkeypox,vomiting,loss of balance,hunger,seizures,weight loss
+Morning sickness,brittle nails,inflammation,fainting,night sweats,sore throat
+Motor neurone disease,headache,dizziness,confusion,seizures,numbness
+Mouth cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Mouth ulcers,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Mucopolysaccharidosis,shortness of breath,constipation,hoarseness,nausea,fatigue
+Mucormycosis,spinning sensation,delusions,hunger,restlessness,vomiting
+Multiple myeloma,swelling,weight loss,insomnia,delusions,dizziness
+Multiple sclerosis,blurred vision,headache,numbness,yellowish skin,abdominal pain
+Multiple system atrophy,yellowish skin,skin rash,hallucinations,chills,back pain
+Mumps,sweating,back pain,nausea,heartburn,sore throat
+Munchausen syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Munchausen's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Murine typhus,anxiety,tremor,mood swings,joint pain,pain
+Murray Valley encephalitis,fever,chills,fatigue,body aches,headache
+Muscular dystrophy,heat intolerance,fever,bruising,weakness,watering eyes
+Myasthenia gravis,shortness of breath,lump,hair loss,gas,watering eyes
+Mycosis fungoides,sore throat,bloating,dizziness,weakness,foul smell
+Myelodysplastic syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Myelodysplastic syndromes,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Myelofibrosis,shortness of breath,pain,cold intolerance,diarrhea,delusions
+Myocardial infarction,blisters,vomiting,loss of appetite,shivering,confusion
+Myocarditis,fever,chills,fatigue,body aches,headache
+Myopia,dry mouth,loss of balance,restlessness,lethargy,watering eyes
+Myositis,fever,chills,fatigue,body aches,headache
+Myotonic dystrophy,memory loss,hunger,difficulty swallowing,pale skin,spinning sensation
+Ménière's disease,indigestion,brittle nails,nausea,cold intolerance,neck pain
+Narcissistic personality disorder,weight loss,yellowish skin,constipation,hoarseness,tinnitus
+Narcolepsy,dry skin,mood swings,chills,blurred vision,constipation
+Nasal polyps,itching,frequent urination,chills,redness,hair loss
+Nasopharyngeal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Nausea,fever,dry skin,heat intolerance,watering eyes,earache
+Necatoriasis,dry skin,dizziness,weight loss,sweating,pale skin
+Neck pain,fever,bloating,delusions,spinning sensation,dark urine
+Necrotizing fasciitis,fever,chills,fatigue,body aches,headache
+Nephrolithiasis,blisters,cold intolerance,yellowish skin,weight loss,burning sensation
+Nephrotic syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Neuralgia,confusion,restlessness,headache,pain,sore throat
+Neuroblastoma,headache,dizziness,confusion,seizures,numbness
+Neuroendocrine tumor,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Neurofibromatosis,headache,dizziness,confusion,seizures,numbness
+Neuromyelitis optica,fever,chills,fatigue,body aches,headache
+Niacin deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Niemann-Pick disease,hoarseness,restlessness,chest pain,gas,earache
+Night sweats,heartburn,palpitations,chest pain,back pain,thirst
+Nocardiosis,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Nodular sclerosis HL,night sweats,numbness,pain,abdominal pain,burning sensation
+Non-Hodgkin's lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Nonalcoholic fatty liver disease,vomiting,abdominal pain,nausea,sweating,anxiety
+Nongonococcal urethritis,fever,chills,fatigue,body aches,headache
+Nontuberculous mycobacterial infection,fever,chills,fatigue,body aches,headache
+Noonan syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Norovirus,fever,chills,fatigue,body aches,headache
+Obsessive-compulsive disorder,weight loss,blood in urine,confusion,brittle nails,stiffness
+Obsessive-compulsive personality disorder,bruising,fatigue,delusions,weight loss,bloating
+Obstructive sleep apnoea,hair loss,blood in urine,night sweats,lump,dry skin
+Oesophageal cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Oesophagitis,fever,chills,fatigue,body aches,headache
+Oligodendroglioma,seizures,fatigue,blood in stool,restlessness,confusion
+Omsk hemorrhagic fever,fever,chills,fatigue,body aches,headache
+Onchocerciasis,skin rash,hoarseness,mood swings,bruising,loss of balance
+Onychomycosis,pale skin,lethargy,fatigue,tinnitus,bloating
+Opisthorchiasis,sweating,heartburn,chest pain,memory loss,blood in urine
+Oppositional defiant disorder,hoarseness,fatigue,fever,burning sensation,lethargy
+Optic neuritis,fever,chills,fatigue,body aches,headache
+Oral cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Orbital cellulitis,fever,chills,fatigue,body aches,headache
+Orchitis,fever,chills,fatigue,body aches,headache
+Orf,yellowish skin,blurred vision,bruising,dry mouth,inflammation
+Orthostatic hypotension,vomiting,loss of balance,sweating,shortness of breath,abdominal pain
+Osteogenesis imperfecta,thirst,lethargy,fever,blood in urine,inflammation
+Osteomalacia,inflammation,shivering,chest pain,diarrhea,constipation
+Osteomyelitis,fever,chills,fatigue,body aches,headache
+Osteosarcoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Otitis externa,fever,chills,fatigue,body aches,headache
+Otitis media,fever,chills,fatigue,body aches,headache
+Otosclerosis,spinning sensation,earache,dark urine,tremor,blisters
+Ovarian cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Ovarian cyst,dark urine,anxiety,itching,abdominal pain,neck pain
+Overactive thyroid,blisters,inflammation,lump,mood swings,cold intolerance
+Paget's disease of bone,joint pain,stiffness,swelling,movement restriction,muscle weakness
+Paget's disease of the breast,pale skin,lethargy,lump,cough,stiffness
+Pancreatic cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Panic disorder,lethargy,muscle aches,dizziness,hoarseness,palpitations
+Papillary thyroid cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Paracoccidioidomycosis,yellowish skin,headache,mood swings,abdominal pain,bloating
+Paragonimiasis,thirst,bruising,dry mouth,anxiety,insomnia
+Parainfluenza,fever,chills,fatigue,body aches,headache
+Paralysis,dark urine,pain,heat intolerance,chills,hair loss
+Paranoid personality disorder,lump,swelling,insomnia,dizziness,restlessness
+Parathyroid cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Parkinson's disease,dry mouth,sore throat,foul smell,bruising,dark urine
+Paronychia,foul smell,itching,pale skin,difficulty swallowing,memory loss
+Paroxysmal nocturnal haemoglobinuria,watering eyes,tinnitus,constipation,cough,loss of balance
+Paroxysmal nocturnal hemoglobinuria,palpitations,fatigue,joint pain,abdominal pain,vomiting
+Paroxysmal supraventricular tachycardia,swelling,headache,bloating,chills,fever
+Parvovirus B19,fever,chills,fatigue,body aches,headache
+Patau syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Patau's syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Patent ductus arteriosus,diarrhea,fainting,muscle aches,hallucinations,night sweats
+Pediculosis,dark urine,fever,back pain,hallucinations,inflammation
+Pellagra,chills,bloating,hair loss,sweating,cough
+Pelvic inflammatory disease,dry skin,mood swings,delusions,blood in stool,hoarseness
+Pelvic organ prolapse,chills,hoarseness,heat intolerance,swelling,chest pain
+Pemphigoid,skin rash,stiffness,heartburn,brittle nails,anxiety
+Pemphigus vulgaris,chest pain,stiffness,hoarseness,sweating,night sweats
+Penile cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Peptic ulcer,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Peptic ulcer disease,nausea,vomiting,abdominal pain,diarrhea,loss of appetite
+Pericarditis,fever,chills,fatigue,body aches,headache
+Periodontitis,fever,chills,fatigue,body aches,headache
+Peripheral T-cell lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Peripheral artery disease,chest pain,palpitations,shortness of breath,fatigue,dizziness
+Peripheral neuropathy,headache,dizziness,confusion,seizures,numbness
+Peripheral vascular disease,lethargy,earache,pain,blisters,gas
+Peritonitis,fever,chills,fatigue,body aches,headache
+Peroneal neuropathy,headache,dizziness,confusion,seizures,numbness
+Personality disorder,sweating,chills,inflammation,vomiting,diarrhea
+Perthes' disease,weight loss,muscle aches,brittle nails,thirst,loss of appetite
+Pertussis,lump,indigestion,fainting,blood in urine,hallucinations
+Phaeochromocytoma,hallucinations,delusions,shivering,dark urine,headache
+Pharyngitis,fever,chills,fatigue,body aches,headache
+Phenylketonuria,lethargy,spinning sensation,pale skin,memory loss,shivering
+Pheochromocytoma,cough,chest pain,bruising,anxiety,skin rash
+Phimosis,constipation,redness,cough,weight loss,blisters
+Phobias,loss of balance,inflammation,dizziness,sweating,heartburn
+Pick's disease,difficulty swallowing,joint pain,spinning sensation,earache,hallucinations
+Piles,swelling,weakness,yellowish skin,hoarseness,weight loss
+Pinealoma,abdominal pain,constipation,difficulty swallowing,hoarseness,indigestion
+Pinta,chills,thirst,runny nose,night sweats,joint pain
+Pituitary tumor,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Pityriasis rosea,blood in urine,frequent urination,swelling,seizures,gas
+Placenta previa,sore throat,frequent urination,pain,hunger,blisters
+Placental abruption,cough,fatigue,lump,brittle nails,restlessness
+Plague,skin rash,watering eyes,blood in stool,diarrhea,shivering
+Plantar fasciitis,fever,chills,fatigue,body aches,headache
+Plasmacytoma,diarrhea,difficulty swallowing,watering eyes,dark urine,hunger
+Pleural effusion,sweating,back pain,pain,skin rash,spinning sensation
+Pleurisy,redness,runny nose,lump,weight loss,tinnitus
+Pleurodynia,watering eyes,mood swings,blood in stool,blurred vision,burning sensation
+Pneumococcal disease,cough,shortness of breath,chest pain,wheezing,sore throat
+Pneumoconiosis,cough,shortness of breath,chest pain,wheezing,sore throat
+Pneumocystis pneumonia,cough,shortness of breath,chest pain,wheezing,sore throat
+Pneumonia of the newborn,cough,shortness of breath,chest pain,wheezing,sore throat
+Pneumothorax,cough,shortness of breath,chest pain,wheezing,sore throat
+Polio,pale skin,fatigue,chest pain,seizures,palpitations
+Poliomyelitis,fever,chills,fatigue,body aches,headache
+Polyarteritis nodosa,fever,chills,fatigue,body aches,headache
+Polycystic kidney disease,lump,joint pain,hunger,brittle nails,chest pain
+Polycystic ovary syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Polycythaemia vera,tremor,skin rash,earache,dry skin,lump
+Polycythemia vera,vomiting,sweating,numbness,skin rash,cold intolerance
+Polymyalgia rheumatica,delusions,night sweats,insomnia,joint pain,hoarseness
+Polymyositis,fever,chills,fatigue,body aches,headache
+Pontiac fever,fever,chills,fatigue,body aches,headache
+Porphyria,restlessness,night sweats,bruising,abdominal pain,anxiety
+Post-concussion syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Post-polio syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Post-streptococcal glomerulonephritis,fever,chills,fatigue,body aches,headache
+Post-traumatic stress disorder,palpitations,hair loss,skin rash,nausea,heat intolerance
+Postnatal depression,swelling,loss of balance,inflammation,anxiety,hunger
+Prader-Willi syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Pre-eclampsia,stiffness,back pain,tinnitus,fatigue,blood in urine
+Preeclampsia,sweating,anxiety,vomiting,bruising,hoarseness
+Pregnancy,numbness,tinnitus,gas,delusions,sweating
+Premature ejaculation,dry mouth,thirst,inflammation,yellowish skin,shortness of breath
+Premenstrual syndrome,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Presbyopia,insomnia,skin rash,chills,yellowish skin,dizziness
+Priapism,palpitations,insomnia,stiffness,pain,constipation
+Primary CNS lymphoma,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Primary amoebic meningoencephalitis,fever,chills,fatigue,body aches,headache
+Primary biliary cholangitis,fever,chills,fatigue,body aches,headache
+Primary myelofibrosis,thirst,constipation,back pain,restlessness,indigestion
+Primary sclerosing cholangitis,fever,chills,fatigue,body aches,headache
+Proctitis,fever,chills,fatigue,body aches,headache
+Progressive supranuclear palsy,headache,dizziness,confusion,seizures,numbness
+Prolactinoma,blurred vision,bruising,tremor,swelling,shivering
+Prostate cancer,unexplained weight loss,fatigue,persistent pain,lump,night sweats
+Prostatitis,fever,chills,fatigue,body aches,headache
+Protein C deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Protein S deficiency,developmental delay,intellectual disability,physical abnormalities,vision problems,hearing loss
+Protein-energy malnutrition,blisters,burning sensation,cold intolerance,hoarseness,night sweats
+Pseudogout,swelling,chills,dry mouth,restlessness,chest pain
+Pseudohypoparathyroidism,fatigue,spinning sensation,blisters,abdominal pain,dry mouth
+Psittacosis,insomnia,heartburn,hallucinations,brittle nails,pain
+Psoriatic arthritis,fever,chills,fatigue,body aches,headache
+Psychosis,itching,dry mouth,indigestion,nausea,blood in stool
+Ptosis,sore throat,heartburn,weight loss,pain,watering eyes
+Pubic lice,foul smell,weakness,joint pain,seizures,bloating
+Pulmonary edema,confusion,restlessness,blood in urine,nausea,blood in stool
+Pulmonary embolism,cough,neck pain,hoarseness,nausea,fainting
+Pulmonary hypertension,back pain,earache,heartburn,night sweats,vomiting
+Pulmonary regurgitation,restlessness,burning sensation,abdominal pain,anxiety,seizures
+Pulmonary stenosis,dry mouth,brittle nails,heat intolerance,weight loss,skin rash

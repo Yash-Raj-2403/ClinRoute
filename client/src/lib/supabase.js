@@ -7,6 +7,32 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('Supabase credentials not found. Some features may not work.');
 }
 
+// Custom storage implementation to avoid lock issues
+const customStorage = {
+  getItem: (key) => {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (error) {
+      console.warn('Storage getItem error:', error);
+      return null;
+    }
+  },
+  setItem: (key, value) => {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (error) {
+      console.warn('Storage setItem error:', error);
+    }
+  },
+  removeItem: (key) => {
+    try {
+      window.localStorage.removeItem(key);
+    } catch (error) {
+      console.warn('Storage removeItem error:', error);
+    }
+  },
+};
+
 // Create a singleton instance to prevent lock issues
 let supabaseInstance = null;
 
@@ -20,8 +46,7 @@ const getSupabaseClient = () => {
           persistSession: true,
           autoRefreshToken: true,
           detectSessionInUrl: true,
-          flowType: 'pkce',
-          storage: window.localStorage,
+          storage: customStorage,
           storageKey: 'clinroute-auth'
         }
       }

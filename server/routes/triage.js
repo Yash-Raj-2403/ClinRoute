@@ -10,6 +10,11 @@ const { protect, authorize } = require('../middleware/auth');
 // Public quick check (no auth)
 router.post('/quick-check', triageController.quickTriageCheck);
 
+// RAG-powered AI endpoints (public access for demo)
+router.post('/ai-analyze', triageController.aiAnalyzeSymptoms);
+router.get('/search', triageController.semanticSearch);
+router.get('/rag-status', triageController.getRagStatus);
+
 // All other routes require authentication
 router.use(protect);
 

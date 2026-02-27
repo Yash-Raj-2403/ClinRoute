@@ -106,39 +106,95 @@ export const AuthProvider = ({ children }) => {
   // Patient  : email + password
   // Doctor   : email + licenseNumber (used as password) + phone
   const login = async (email, credential, role, phone = '') => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password: credential,
-    });
-    if (error) throw error;
-
-    let profile = await fetchProfile(data.user);
-
-    // If there's no profile row yet (first login after manual Supabase signup),
-    // create one now so the role is persisted.
-    if (!profile.role) {
-      const { error: upsertErr } = await supabase.from('profiles').upsert({
-        id: data.user.id,
+    console.log('🔵 AuthContext login called:', { email, role, phone });
+    
+    try {
+      console.log('🔵 Calling Supabase signInWithPassword...');
+      
+      // Add timeout to detect hanging requests
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Login timeout - Supabase not responding after 15 seconds')), 15000)
+      );
+      
+      const authPromise = supabase.auth.signInWithPassword({
         email,
-        role,
-        phone: phone || '',
-        profile_complete: false,
-        family_members: [],
+        password: credential,
       });
-      if (!upsertErr) profile = await fetchProfile(data.user);
-    }
+      
+      const { data, error } = await Promise.race([authPromise, timeoutPromise]);
+      
+      console.log('🔵 Supabase response received:', { data: !!data, error: !!error });
+      
+      if (error) {
+        console.error('❌ Supabase auth error:', error.message, error.status);
+        throw error;
+      }
+      
+      if (!data || !data.user) {
+        console.error('❌ No user data returned from Supabase');
+        throw new Error('No user data received');
+      }
+      
+      console.log('✅ Supabase auth successful, user ID:', data.user.id);
+      console.log('🔵 Fetching profile...');
+      let profile = await fetchProfile(data.user);
+      console.log('Profile fetched:', profile);
 
-    setUser(profile);
-    return profile;
+      // If there's no profile row yet (first login after manual Supabase signup),
+      // create one now so the role is persisted.
+      if (!profile.role) {
+        console.log('No role found, creating profile...');
+        const profileData = {
+          id: data.user.id,
+          email,
+          role,
+          phone: phone || null,
+          profile_complete: false,
+          family_members: []
+        };
+        console.log('Attempting to upsert profile:', profileData);
+        
+        const { data: upsertData, error: upsertErr } = await supabase
+          .from('profiles')
+          .upsert(profileData, { onConflict: 'id' });
+          
+        if (upsertErr) {
+          console.error('Profile upsert error:', {
+            message: upsertErr.message,
+            details: upsertErr.details,
+            hint: upsertErr.hint,
+            code: upsertErr.code
+          });
+        } else {
+          console.log('Profile upsert successful:', upsertData);
+          profile = await fetchProfile(data.user);
+          console.log('Profile created:', profile);
+        }
+      }
+
+      setUser(profile);
+      console.log('Login complete, user set:', profile);
+      return profile;
+    } catch (error) {
+      console.error('Login function error:', error);
+      throw error;
+    }
   };
 
   //  REGISTER 
   const register = async (userData) => {
+    console.log('🔵 Registration started for role:', userData.role);
+    
     const { data, error } = await supabase.auth.signUp({
       email: userData.email,
       password: userData.password,
     });
-    if (error) throw error;
+    if (error) {
+      console.error('❌ Supabase auth signup error:', error);
+      throw error;
+    }
+    
+    console.log('✅ Supabase auth user created:', data.user.id);
 
     const profileRow = {
       id: data.user.id,
@@ -155,11 +211,35 @@ export const AuthProvider = ({ children }) => {
       family_members: [],
     };
 
-    const { error: profileErr } = await supabase.from('profiles').upsert(profileRow);
-    if (profileErr) console.error('Profile upsert error:', profileErr.message);
+    console.log('📝 Creating profile with data:', {
+      id: profileRow.id,
+      email: profileRow.email,
+      role: profileRow.role,
+      name: profileRow.name
+    });
+
+    const { data: profileData, error: profileErr } = await supabase
+      .from('profiles')
+      .upsert(profileRow, { onConflict: 'id' });
+      
+    if (profileErr) {
+      console.error('❌ Profile upsert error:', {
+        message: profileErr.message,
+        details: profileErr.details,
+        hint: profileErr.hint,
+        code: profileErr.code
+      });
+    } else {
+      console.log('✅ Profile created successfully:', profileData);
+    }
 
     const profile = mapProfile({ ...profileRow, blood_group: '', bio: '', experience: null, consultation_fee: null, avatar: null }, userData.email);
     setUser(profile);
+    console.log('✅ Registration complete, user set:', {
+      id: profile.id,
+      role: profile.role,
+      email: profile.email
+    });
     return profile;
   };
 
