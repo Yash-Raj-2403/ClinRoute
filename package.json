@@ -1,0 +1,30 @@
+{
+  "name": "clinroute",
+  "version": "1.0.0",
+  "description": "ClinRoute - AI-Powered Hospital Triage and Clinical Workflow Automation Platform",
+  "private": true,
+  "scripts": {
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install:all": "npm run install:client && npm run install:server",
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm run dev",
+    "build:client": "cd client && npm run build",
+    "dev": "echo 'Run npm start:server in one terminal and npm start:client in another'",
+    "postinstall": "npm run install:all"
+  },
+  "keywords": [
+    "healthcare",
+    "triage",
+    "ai",
+    "medical",
+    "clinical-workflow",
+    "telemedicine"
+  ],
+  "author": "ClinRoute Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/clinroute.git"
+  }
+}
