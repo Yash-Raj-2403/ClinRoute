@@ -1,163 +1,117 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { supabase } from '../../lib/supabase';
 import './DoctorDashboard.css';
 
 const PatientQueue = () => {
+  const { user } = useAuth();
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('priority');
+  const [patients, setPatients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [queueStats, setQueueStats] = useState({
+    critical: 0,
+    urgent: 0,
+    moderate: 0,
+    routine: 0
+  });
 
-  const patients = [
-    {
-      id: 'CLN-2024-089',
-      patient: {
-        name: 'Sarah Johnson',
-        age: 45,
-        gender: 'Female',
-        avatar: '👩'
-      },
-      symptoms: {
-        primary: 'Chest Pain',
-        additional: ['Shortness of breath', 'Sweating'],
-        severity: 9,
-        duration: '2 hours'
-      },
-      triage: {
-        priority: 'critical',
-        score: 9,
-        recommendation: 'Immediate cardiac evaluation required',
-        riskFactors: ['Age > 40', 'Diabetes', 'Hypertension']
-      },
-      waitTime: '5 min',
-      submittedAt: '9:45 AM',
-      type: 'video',
-      status: 'waiting'
-    },
-    {
-      id: 'CLN-2024-091',
-      patient: {
-        name: 'Michael Chen',
-        age: 62,
-        gender: 'Male',
-        avatar: '👨'
-      },
-      symptoms: {
-        primary: 'Severe Headache',
-        additional: ['Vision changes', 'Nausea'],
-        severity: 8,
-        duration: '6 hours'
-      },
-      triage: {
-        priority: 'urgent',
-        score: 8,
-        recommendation: 'Neurological assessment recommended',
-        riskFactors: ['Age > 60', 'History of migraines']
-      },
-      waitTime: '12 min',
-      submittedAt: '9:38 AM',
-      type: 'video',
-      status: 'waiting'
-    },
-    {
-      id: 'CLN-2024-094',
-      patient: {
-        name: 'Emily Davis',
-        age: 38,
-        gender: 'Female',
-        avatar: '👩'
-      },
-      symptoms: {
-        primary: 'High Fever',
-        additional: ['Difficulty breathing', 'Cough'],
-        severity: 7,
-        duration: '2 days'
-      },
-      triage: {
-        priority: 'urgent',
-        score: 7,
-        recommendation: 'Respiratory evaluation needed',
-        riskFactors: ['Asthma history']
-      },
-      waitTime: '18 min',
-      submittedAt: '9:32 AM',
-      type: 'video',
-      status: 'waiting'
-    },
-    {
-      id: 'CLN-2024-097',
-      patient: {
-        name: 'Robert Wilson',
-        age: 55,
-        gender: 'Male',
-        avatar: '👨'
-      },
-      symptoms: {
-        primary: 'Abdominal Pain',
-        additional: ['Bloating', 'Loss of appetite'],
-        severity: 6,
-        duration: '3 days'
-      },
-      triage: {
-        priority: 'moderate',
-        score: 6,
-        recommendation: 'GI evaluation recommended',
-        riskFactors: ['None identified']
-      },
-      waitTime: '25 min',
-      submittedAt: '9:25 AM',
-      type: 'chat',
-      status: 'waiting'
-    },
-    {
-      id: 'CLN-2024-099',
-      patient: {
-        name: 'Jennifer Brown',
-        age: 29,
-        gender: 'Female',
-        avatar: '👩'
-      },
-      symptoms: {
-        primary: 'Skin Rash',
-        additional: ['Itching', 'Redness'],
-        severity: 4,
-        duration: '5 days'
-      },
-      triage: {
-        priority: 'routine',
-        score: 4,
-        recommendation: 'Dermatological consultation',
-        riskFactors: ['Allergies']
-      },
-      waitTime: '35 min',
-      submittedAt: '9:15 AM',
-      type: 'video',
-      status: 'waiting'
-    },
-    {
-      id: 'CLN-2024-085',
-      patient: {
-        name: 'David Lee',
-        age: 42,
-        gender: 'Male',
-        avatar: '👨'
-      },
-      symptoms: {
-        primary: 'Follow-up',
-        additional: ['Blood pressure monitoring'],
-        severity: 3,
-        duration: 'N/A'
-      },
-      triage: {
-        priority: 'routine',
-        score: 3,
-        recommendation: 'Routine follow-up',
-        riskFactors: ['Controlled hypertension']
-      },
-      waitTime: '40 min',
-      submittedAt: '9:10 AM',
-      type: 'video',
-      status: 'in-consultation'
-    }
-  ];
+  // Fetch patient queue from database
+  useEffect(() => {
+    const fetchQueue = async () => {
+      if (!user?.id) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        // Get consultations where this doctor is assigned OR from patients in general
+        const { data: consultations, error } = await supabase
+          .from('consultations')
+          .select(`
+            id,
+            consultation_code,
+            patient_id,
+            symptoms,
+            triage_priority,
+            triage_score,
+            triage_recommendation,
+            risk_factors,
+            status,
+            submitted_at,
+            profiles!consultations_patient_id_fkey (
+              name,
+              age,
+              gender,
+              phone
+            )
+          `)
+          .in('status', ['submitted', 'in_queue', 'assigned', 'in_progress'])
+          .order('triage_score', { ascending: false });
+
+        if (error) throw error;
+
+        // Transform data to match UI format
+        const transformedPatients = (consultations || []).map((c) => {
+          const waitTimeMs = new Date() - new Date(c.submitted_at);
+          const waitTimeMinutes = Math.floor(waitTimeMs / 60000);
+          const symptoms = c.symptoms || {};
+          
+          return {
+            id: c.consultation_code || c.id,
+            dbId: c.id,
+            patient: {
+              name: c.profiles?.name || 'Unknown Patient',
+              age: c.profiles?.age || 0,
+              gender: c.profiles?.gender || 'Unknown',
+              avatar: c.profiles?.gender === 'female' ? '👩' : '👨'
+            },
+            symptoms: {
+              primary: symptoms.primary_symptom || symptoms.mainSymptom || 'Not specified',
+              additional: symptoms.additional_symptoms || symptoms.otherSymptoms || [],
+              severity: c.triage_score || 5,
+              duration: symptoms.duration || 'Unknown'
+            },
+            triage: {
+              priority: c.triage_priority || 'routine',
+              score: c.triage_score || 5,
+              recommendation: c.triage_recommendation || 'Review required',
+              riskFactors: c.risk_factors || []
+            },
+            waitTime: waitTimeMinutes < 60 
+              ? `${waitTimeMinutes} min` 
+              : `${Math.floor(waitTimeMinutes / 60)}h ${waitTimeMinutes % 60}m`,
+            submittedAt: new Date(c.submitted_at).toLocaleTimeString('en-US', {
+              hour: 'numeric',
+              minute: '2-digit',
+              hour12: true
+            }),
+            type: 'video',
+            status: c.status === 'in_progress' ? 'in-consultation' : 'waiting'
+          };
+        });
+
+        setPatients(transformedPatients);
+
+        // Calculate stats
+        const stats = {
+          critical: transformedPatients.filter(p => p.triage.priority === 'critical').length,
+          urgent: transformedPatients.filter(p => p.triage.priority === 'urgent').length,
+          moderate: transformedPatients.filter(p => p.triage.priority === 'moderate').length,
+          routine: transformedPatients.filter(p => p.triage.priority === 'routine').length
+        };
+        setQueueStats(stats);
+
+      } catch (err) {
+        console.error('Error fetching patient queue:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQueue();
+  }, [user?.id]);
 
   const filteredPatients = patients.filter(p => {
     if (filter === 'all') return true;
@@ -180,6 +134,19 @@ const PatientQueue = () => {
     return colors[priority] || '#6B7280';
   };
 
+  if (loading) {
+    return (
+      <div className="patient-queue-page">
+        <div className="page-header">
+          <div className="header-content">
+            <h1>Patient Queue</h1>
+            <p>Loading patient queue...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="patient-queue-page">
       {/* Page Header */}
@@ -190,19 +157,19 @@ const PatientQueue = () => {
         </div>
         <div className="queue-stats">
           <div className="queue-stat critical">
-            <span className="stat-count">1</span>
+            <span className="stat-count">{queueStats.critical}</span>
             <span className="stat-label">Critical</span>
           </div>
           <div className="queue-stat urgent">
-            <span className="stat-count">2</span>
+            <span className="stat-count">{queueStats.urgent}</span>
             <span className="stat-label">Urgent</span>
           </div>
           <div className="queue-stat moderate">
-            <span className="stat-count">1</span>
+            <span className="stat-count">{queueStats.moderate}</span>
             <span className="stat-label">Moderate</span>
           </div>
           <div className="queue-stat routine">
-            <span className="stat-count">2</span>
+            <span className="stat-count">{queueStats.routine}</span>
             <span className="stat-label">Routine</span>
           </div>
         </div>

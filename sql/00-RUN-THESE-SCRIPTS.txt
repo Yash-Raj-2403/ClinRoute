@@ -1,0 +1,73 @@
+-- ================================================================
+-- SETUP INSTRUCTIONS FOR CLINROUTE DATABASE
+-- ================================================================
+
+## IMPORTANT: Run Scripts in Order
+
+Run these scripts in your Supabase SQL Editor in this exact order:
+
+### 1. supabase-setup.sql (IF NOT ALREADY RUN)
+   - Creates the profiles table
+   - Sets up Row Level Security
+   - Creates triggers
+   
+### 2. 01-appointments-consultations-tables.sql (NEW - RUN THIS)
+   - Creates appointments table
+   - Creates consultations table  
+   - Sets up indexes and RLS policies
+   - Creates helper views for doctors
+
+### 3. 02-helper-functions.sql (NEW - RUN THIS)
+   - Creates get_doctor_stats() function
+   - Creates get_doctor_upcoming_appointments() function
+   - Creates get_doctor_patient_queue() function
+   - Creates get_available_doctors() function
+   - Auto-generates consultation codes
+
+## What This Does
+
+### Real Data Flow:
+1. **Patients** book appointments → stored in `appointments` table
+2. **Patients** submit symptoms → stored in `consultations` table with AI triage
+3. **Doctors** see only REAL patient data in their dashboard:
+   - Today's appointments from actual bookings
+   - Pending consultations from actual patient submissions
+   - Stats calculated from real database records
+   
+### No More Mock Data:
+- ❌ All dummy/mock data removed from frontend
+- ✅ Dashboard shows real patient appointments
+- ✅ Queue shows real patient consultations
+- ✅ Stats calculated from actual database
+- ✅ Empty states shown when no data exists
+
+## To Access Supabase SQL Editor:
+
+1. Go to: https://supabase.com/dashboard
+2. Select your ClinRoute project
+3. Click "SQL Editor" in left sidebar
+4. Copy and paste each script
+5. Click "Run" button
+
+## Verification:
+
+After running the scripts, verify by checking:
+```sql
+-- Check tables exist
+SELECT table_name FROM information_schema.tables 
+WHERE table_schema = 'public' 
+AND table_name IN ('profiles', 'appointments', 'consultations');
+
+-- Check functions exist
+SELECT routine_name FROM information_schema.routines 
+WHERE routine_schema = 'public' 
+AND routine_name LIKE 'get_doctor%';
+```
+
+## Need Help?
+
+If you encounter errors:
+1. Make sure supabase-setup.sql was run first
+2. Check that you're in the correct project
+3. Verify your database user has necessary permissions
+4. Look at the error message - it usually tells you what's wrong

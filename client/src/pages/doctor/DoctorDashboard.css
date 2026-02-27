@@ -41,7 +41,7 @@
   padding: 0;
 }
 
-.welcome-section {
+.dashboard-header {
   background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
   border-radius: 16px;
   padding: 2rem;
@@ -50,33 +50,57 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.welcome-text h1 {
+.welcome-section h1 {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: white;
 }
 
-.welcome-text p {
-  color: rgba(255, 255, 255, 0.85);
+.welcome-section p {
+  color: white;
   font-size: 1rem;
+  opacity: 0.95;
 }
 
-.welcome-actions {
+.welcome-section p {
+  color: white;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.header-actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.welcome-actions .btn {
+.header-actions .btn {
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
-.welcome-actions .btn:hover {
+.header-actions .btn:hover {
   background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.header-actions .btn-primary {
+  background: var(--primary-900);
+  border-color: var(--primary-900);
 }
 
 .welcome-actions .btn.btn-accent {
@@ -108,6 +132,26 @@
 .stat-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.yellow .stat-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.stat-card.green .stat-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-card.red .stat-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.stat-card.blue .stat-icon {
+  background: #dbeafe;
+  color: #2563eb;
 }
 
 .stat-icon {
@@ -237,6 +281,12 @@
 
 .view-all:hover {
   color: var(--primary-700);
+}
+
+.schedule-date {
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+  font-weight: 500;
 }
 
 /* Urgent Cases List */
@@ -3345,4 +3395,187 @@
   .welcome-actions .btn {
     width: 100%;
   }
+}
+
+/* ===============================================
+   PROFESSIONAL ENHANCEMENTS
+   =============================================== */
+
+/* Enhanced Profile Page Styling */
+.profile-page .info-card {
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.profile-page .info-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-page .info-card h3 {
+  color: var(--primary-700);
+  border-bottom: 2px solid var(--primary-100);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Enhanced Form Styling */
+.profile-page input,
+.profile-page select,
+.profile-page textarea {
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.profile-page input:focus,
+.profile-page select:focus,
+.profile-page textarea:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--primary-100);
+  background: white;
+}
+
+.profile-page input:disabled,
+.profile-page select:disabled,
+.profile-page textarea:disabled {
+  background: var(--neutral-100);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Label styling */
+.profile-page .form-group label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Better button styling */
+.profile-page .btn-primary {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  border: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.profile-page .btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Enhanced Queue Page Styling */
+.patient-queue-page .queue-card {
+  transition: all 0.3s ease;
+}
+
+.patient-queue-page .queue-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Priority colors enhancement */
+.queue-card.critical {
+  border-left: 4px solid #DC2626;
+}
+
+.queue-card.urgent {
+  border-left: 4px solid #F59E0B;
+}
+
+.queue-card.moderate {
+  border-left: 4px solid #3B82F6;
+}
+
+.queue-card.routine {
+  border-left: 4px solid #10B981;
+}
+
+/* Enhanced stat cards */
+.queue-stats .queue-stat {
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.queue-stat.critical {
+  background: linear-gradient(135deg, #fff5f5, #fee2e2);
+  border: 1px solid #fecaca;
+}
+
+.queue-stat.urgent {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fde68a;
+}
+
+.queue-stat.moderate {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border: 1px solid #bfdbfe;
+}
+
+.queue-stat.routine {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #bbf7d0;
+}
+
+.queue-stat .stat-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.queue-stat.critical .stat-count {
+  color: #DC2626;
+}
+
+.queue-stat.urgent .stat-count {
+  color: #D97706;
+}
+
+.queue-stat.moderate .stat-count {
+  color: #2563EB;
+}
+
+.queue-stat.routine .stat-count {
+  color: #16A34A;
+}
+
+/* Better empty state */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--neutral-50), white);
+  border-radius: 16px;
+  border: 2px dashed var(--neutral-300);
+}
+
+.empty-state .empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  color: var(--neutral-700);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--neutral-500);
+}
+
+/* Loading state styles */
+.profile-page .loading-text,
+.patient-queue-page .loading-text {
+  text-align: center;
+  padding: 3rem;
+  color: var(--neutral-600);
+  font-size: 1rem;
 }

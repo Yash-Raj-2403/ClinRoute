@@ -1,74 +1,134 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import { supabase } from '../../lib/supabase';
 import './DoctorDashboard.css';
 
 const Profile = () => {
+  const { user, updateProfile } = useAuth();
   const [activeTab, setActiveTab] = useState('personal');
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [stats, setStats] = useState({
+    patientsCount: 0,
+    consultationsCount: 0,
+    avgRating: 0,
+    totalReviews: 0
+  });
 
-  // Mock doctor data
-  const doctorData = {
-    personal: {
-      firstName: 'Robert',
-      lastName: 'Chen',
-      email: 'dr.chen@clinroute.com',
-      phone: '+1 (555) 987-6543',
-      dob: '1978-05-15',
-      gender: 'Male',
-      address: '456 Medical Center Dr',
-      city: 'San Francisco',
-      state: 'CA',
-      zip: '94102',
-      avatar: '👨‍⚕️'
-    },
-    professional: {
-      title: 'Dr.',
-      specialty: 'Cardiology',
-      subspecialty: 'Interventional Cardiology',
-      licenseNumber: 'CA-MD-789456',
-      npi: '1234567890',
-      deaNumber: 'AC1234567',
-      yearsExperience: 18,
-      languages: ['English', 'Mandarin', 'Spanish'],
-      boardCertifications: [
-        { name: 'American Board of Internal Medicine', year: 2005 },
-        { name: 'Cardiovascular Disease', year: 2008 },
-        { name: 'Interventional Cardiology', year: 2010 }
-      ]
-    },
-    education: [
-      { degree: 'MD', institution: 'Stanford University School of Medicine', year: 2002 },
-      { degree: 'Residency - Internal Medicine', institution: 'UCSF Medical Center', year: 2005 },
-      { degree: 'Fellowship - Cardiology', institution: 'Johns Hopkins Hospital', year: 2008 },
-      { degree: 'Fellowship - Interventional Cardiology', institution: 'Cleveland Clinic', year: 2010 }
-    ],
-    practice: {
-      hospitalAffiliations: ['UCSF Medical Center', 'Stanford Health Care', 'California Pacific Medical Center'],
-      acceptedInsurance: ['Blue Cross Blue Shield', 'Aetna', 'United Healthcare', 'Cigna', 'Medicare', 'Medicaid'],
-      consultationFee: 200,
-      followUpFee: 150,
-      virtualConsultation: true,
-      newPatients: true,
-      avgRating: 4.9,
-      totalReviews: 328
-    },
-    schedule: {
-      monday: { available: true, start: '9:00 AM', end: '5:00 PM' },
-      tuesday: { available: true, start: '9:00 AM', end: '5:00 PM' },
-      wednesday: { available: true, start: '9:00 AM', end: '1:00 PM' },
-      thursday: { available: true, start: '9:00 AM', end: '5:00 PM' },
-      friday: { available: true, start: '9:00 AM', end: '3:00 PM' },
-      saturday: { available: false },
-      sunday: { available: false }
-    },
-    bio: 'Dr. Robert Chen is a board-certified cardiologist with over 18 years of experience in diagnosing and treating heart conditions. He specializes in interventional cardiology, focusing on minimally invasive procedures for coronary artery disease. Dr. Chen is passionate about preventive cardiology and patient education, believing that many heart conditions can be prevented through lifestyle modifications and early intervention.'
+  // Form state based on real user data
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    dob: '',
+    gender: '',
+    address: '',
+    specialty: '',
+    licenseNumber: '',
+    hospitalName: '',
+    hospitalAddress: '',
+    bio: '',
+    experience: '',
+    consultationFee: ''
+  });
+
+  // Initialize form data when user loads
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        name: user.name || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        dob: user.dob || '',
+        gender: user.gender || '',
+        address: user.address || '',
+        specialty: user.specialty || '',
+        licenseNumber: user.licenseNumber || '',
+        hospitalName: user.hospitalName || '',
+        hospitalAddress: user.hospitalAddress || '',
+        bio: user.bio || '',
+        experience: user.experience || '',
+        consultationFee: user.consultationFee || ''
+      });
+    }
+  }, [user]);
+
+  // Fetch doctor stats
+  useEffect(() => {
+    const fetchStats = async () => {
+      if (!user?.id) return;
+      try {
+        const { data, error } = await supabase.rpc('get_doctor_stats', { doc_id: user.id });
+        if (!error && data) {
+          setStats({
+            patientsCount: data.totalPatientsThisWeek || 0,
+            consultationsCount: data.todayAppointments || 0,
+            avgRating: 4.8,
+            totalReviews: data.completedToday || 0
+          });
+        }
+      } catch (err) {
+        console.error('Error fetching stats:', err);
+      }
+    };
+    fetchStats();
+  }, [user?.id]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const stats = [
-    { label: 'Patients Treated', value: '2,847', icon: '👥' },
-    { label: 'Years Experience', value: '18', icon: '📅' },
-    { label: 'Rating', value: '4.9', icon: '⭐' },
-    { label: 'Reviews', value: '328', icon: '💬' }
+  const handleSave = async () => {
+    setLoading(true);
+    try {
+      await updateProfile({
+        name: formData.name,
+        phone: formData.phone,
+        gender: formData.gender,
+        address: formData.address,
+        specialty: formData.specialty,
+        license_number: formData.licenseNumber,
+        hospital_name: formData.hospitalName,
+        hospital_address: formData.hospitalAddress,
+        bio: formData.bio,
+        experience: formData.experience ? Number(formData.experience) : null,
+        consultation_fee: formData.consultationFee ? Number(formData.consultationFee) : null
+      });
+      setIsEditing(false);
+    } catch (err) {
+      console.error('Error saving profile:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Parse name into first and last
+  const nameParts = (formData.name || '').split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName = nameParts.slice(1).join(' ') || '';
+
+  // Default schedule (can be stored in DB later)
+  const schedule = {
+    monday: { available: true, start: '9:00 AM', end: '5:00 PM' },
+    tuesday: { available: true, start: '9:00 AM', end: '5:00 PM' },
+    wednesday: { available: true, start: '9:00 AM', end: '1:00 PM' },
+    thursday: { available: true, start: '9:00 AM', end: '5:00 PM' },
+    friday: { available: true, start: '9:00 AM', end: '3:00 PM' },
+    saturday: { available: false },
+    sunday: { available: false }
+  };
+
+  const displayStats = [
+    { label: 'Patients Treated', value: stats.patientsCount.toLocaleString(), icon: '👥' },
+    { label: 'Years Experience', value: formData.experience || '0', icon: '📅' },
+    { label: 'Rating', value: stats.avgRating.toFixed(1), icon: '⭐' },
+    { label: 'Consultations', value: stats.consultationsCount.toString(), icon: '💬' }
   ];
+
+  if (!user) {
+    return <div className="profile-page"><p>Loading profile...</p></div>;
+  }
 
   return (
     <div className="profile-page">
@@ -78,12 +138,12 @@ const Profile = () => {
         <div className="profile-header-content">
           <div className="profile-avatar-section">
             <div className="profile-avatar">
-              <span>{doctorData.personal.avatar}</span>
+              <span>{user.avatar || '👨‍⚕️'}</span>
               <button className="avatar-edit-btn">📷</button>
             </div>
             <div className="profile-title-info">
-              <h1>{doctorData.personal.title} {doctorData.personal.firstName} {doctorData.personal.lastName}</h1>
-              <p className="specialty">{doctorData.professional.specialty} • {doctorData.professional.subspecialty}</p>
+              <h1>Dr. {formData.name || 'Doctor'}</h1>
+              <p className="specialty">{formData.specialty || 'General Practice'} {formData.hospitalName ? `• ${formData.hospitalName}` : ''}</p>
               <div className="profile-badges">
                 <span className="badge verified">✓ Verified</span>
                 <span className="badge">📹 Telehealth Available</span>
@@ -92,7 +152,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="profile-stats">
-            {stats.map((stat, index) => (
+            {displayStats.map((stat, index) => (
               <div key={index} className="profile-stat">
                 <span className="stat-icon">{stat.icon}</span>
                 <span className="stat-value">{stat.value}</span>
@@ -152,27 +212,22 @@ const Profile = () => {
               <h2>Personal Information</h2>
               <button 
                 className={`btn ${isEditing ? 'btn-primary' : 'btn-outline'}`}
-                onClick={() => setIsEditing(!isEditing)}
+                onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+                disabled={loading}
               >
-                {isEditing ? 'Save Changes' : 'Edit Profile'}
+                {loading ? 'Saving...' : isEditing ? 'Save Changes' : 'Edit Profile'}
               </button>
             </div>
 
             <div className="info-card">
               <div className="form-grid">
-                <div className="form-group">
-                  <label>First Name</label>
+                <div className="form-group full-width">
+                  <label>Full Name</label>
                   <input 
                     type="text" 
-                    value={doctorData.personal.firstName} 
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Last Name</label>
-                  <input 
-                    type="text" 
-                    value={doctorData.personal.lastName} 
+                    name="name"
+                    value={formData.name} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
@@ -180,15 +235,18 @@ const Profile = () => {
                   <label>Email Address</label>
                   <input 
                     type="email" 
-                    value={doctorData.personal.email} 
-                    disabled={!isEditing}
+                    name="email"
+                    value={formData.email} 
+                    disabled={true}
                   />
                 </div>
                 <div className="form-group">
                   <label>Phone Number</label>
                   <input 
                     type="tel" 
-                    value={doctorData.personal.phone} 
+                    name="phone"
+                    value={formData.phone} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
@@ -196,16 +254,24 @@ const Profile = () => {
                   <label>Date of Birth</label>
                   <input 
                     type="date" 
-                    value={doctorData.personal.dob} 
+                    name="dob"
+                    value={formData.dob} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
                 <div className="form-group">
                   <label>Gender</label>
-                  <select disabled={!isEditing}>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
+                  <select 
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
               </div>
@@ -215,34 +281,32 @@ const Profile = () => {
               <h3>Address</h3>
               <div className="form-grid">
                 <div className="form-group full-width">
-                  <label>Street Address</label>
+                  <label>Address</label>
                   <input 
                     type="text" 
-                    value={doctorData.personal.address} 
+                    name="address"
+                    value={formData.address} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
                 <div className="form-group">
-                  <label>City</label>
+                  <label>Hospital Name</label>
                   <input 
                     type="text" 
-                    value={doctorData.personal.city} 
+                    name="hospitalName"
+                    value={formData.hospitalName} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
                 <div className="form-group">
-                  <label>State</label>
+                  <label>Hospital Address</label>
                   <input 
                     type="text" 
-                    value={doctorData.personal.state} 
-                    disabled={!isEditing}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>ZIP Code</label>
-                  <input 
-                    type="text" 
-                    value={doctorData.personal.zip} 
+                    name="hospitalAddress"
+                    value={formData.hospitalAddress} 
+                    onChange={handleInputChange}
                     disabled={!isEditing}
                   />
                 </div>
@@ -254,7 +318,9 @@ const Profile = () => {
               <div className="form-group">
                 <textarea 
                   rows="4" 
-                  value={doctorData.bio}
+                  name="bio"
+                  value={formData.bio}
+                  onChange={handleInputChange}
                   disabled={!isEditing}
                 ></textarea>
               </div>
@@ -267,7 +333,13 @@ const Profile = () => {
           <div className="profile-section">
             <div className="section-header">
               <h2>Professional Information</h2>
-              <button className="btn btn-outline">Edit</button>
+              <button 
+                className={`btn ${isEditing ? 'btn-primary' : 'btn-outline'}`}
+                onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+                disabled={loading}
+              >
+                {loading ? 'Saving...' : isEditing ? 'Save Changes' : 'Edit'}
+              </button>
             </div>
 
             <div className="info-card">
@@ -275,19 +347,23 @@ const Profile = () => {
               <div className="form-grid">
                 <div className="form-group">
                   <label>Medical License Number</label>
-                  <input type="text" value={doctorData.professional.licenseNumber} disabled />
-                </div>
-                <div className="form-group">
-                  <label>NPI Number</label>
-                  <input type="text" value={doctorData.professional.npi} disabled />
-                </div>
-                <div className="form-group">
-                  <label>DEA Number</label>
-                  <input type="text" value={doctorData.professional.deaNumber} disabled />
+                  <input 
+                    type="text" 
+                    name="licenseNumber"
+                    value={formData.licenseNumber} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Years of Experience</label>
-                  <input type="text" value={doctorData.professional.yearsExperience} disabled />
+                  <input 
+                    type="number" 
+                    name="experience"
+                    value={formData.experience} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
                 </div>
               </div>
             </div>
@@ -297,37 +373,50 @@ const Profile = () => {
               <div className="form-grid">
                 <div className="form-group">
                   <label>Primary Specialty</label>
-                  <input type="text" value={doctorData.professional.specialty} disabled />
+                  <input 
+                    type="text" 
+                    name="specialty"
+                    value={formData.specialty} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
                 </div>
                 <div className="form-group">
-                  <label>Subspecialty</label>
-                  <input type="text" value={doctorData.professional.subspecialty} disabled />
+                  <label>Consultation Fee ($)</label>
+                  <input 
+                    type="number" 
+                    name="consultationFee"
+                    value={formData.consultationFee} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
                 </div>
               </div>
             </div>
 
             <div className="info-card">
-              <h3>Board Certifications</h3>
-              <div className="certifications-list">
-                {doctorData.professional.boardCertifications.map((cert, index) => (
-                  <div key={index} className="certification-item">
-                    <span className="cert-icon">🏅</span>
-                    <div className="cert-info">
-                      <span className="cert-name">{cert.name}</span>
-                      <span className="cert-year">Certified {cert.year}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <button className="btn btn-outline btn-sm">+ Add Certification</button>
-            </div>
-
-            <div className="info-card">
-              <h3>Languages</h3>
-              <div className="language-tags">
-                {doctorData.professional.languages.map((lang, index) => (
-                  <span key={index} className="language-tag">{lang}</span>
-                ))}
+              <h3>Hospital Affiliation</h3>
+              <div className="form-grid">
+                <div className="form-group">
+                  <label>Hospital Name</label>
+                  <input 
+                    type="text" 
+                    name="hospitalName"
+                    value={formData.hospitalName} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Hospital Address</label>
+                  <input 
+                    type="text" 
+                    name="hospitalAddress"
+                    value={formData.hospitalAddress} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -341,21 +430,8 @@ const Profile = () => {
               <button className="btn btn-outline">+ Add</button>
             </div>
 
-            <div className="education-timeline">
-              {doctorData.education.map((edu, index) => (
-                <div key={index} className="education-item">
-                  <div className="timeline-marker">
-                    <span className="marker-icon">🎓</span>
-                  </div>
-                  <div className="education-content">
-                    <div className="education-header">
-                      <h4>{edu.degree}</h4>
-                      <span className="education-year">{edu.year}</span>
-                    </div>
-                    <p className="education-institution">{edu.institution}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="info-card">
+              <p className="info-text">No education history added yet. Click "+ Add" to add your educational background.</p>
             </div>
           </div>
         )}
@@ -365,50 +441,55 @@ const Profile = () => {
           <div className="profile-section">
             <div className="section-header">
               <h2>Practice Settings</h2>
-              <button className="btn btn-outline">Edit</button>
+              <button 
+                className={`btn ${isEditing ? 'btn-primary' : 'btn-outline'}`}
+                onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+                disabled={loading}
+              >
+                {loading ? 'Saving...' : isEditing ? 'Save Changes' : 'Edit'}
+              </button>
             </div>
 
             <div className="info-card">
-              <h3>Hospital Affiliations</h3>
-              <div className="affiliations-list">
-                {doctorData.practice.hospitalAffiliations.map((hospital, index) => (
-                  <div key={index} className="affiliation-item">
-                    <span className="affiliation-icon">🏥</span>
-                    <span>{hospital}</span>
-                  </div>
-                ))}
+              <h3>Hospital Affiliation</h3>
+              <div className="form-grid">
+                <div className="form-group">
+                  <label>Hospital Name</label>
+                  <input 
+                    type="text" 
+                    name="hospitalName"
+                    value={formData.hospitalName} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Hospital Address</label>
+                  <input 
+                    type="text" 
+                    name="hospitalAddress"
+                    value={formData.hospitalAddress} 
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                  />
+                </div>
               </div>
-              <button className="btn btn-outline btn-sm">+ Add Affiliation</button>
-            </div>
-
-            <div className="info-card">
-              <h3>Accepted Insurance</h3>
-              <div className="insurance-grid">
-                {doctorData.practice.acceptedInsurance.map((insurance, index) => (
-                  <div key={index} className="insurance-item">
-                    <input type="checkbox" checked readOnly />
-                    <label>{insurance}</label>
-                  </div>
-                ))}
-              </div>
-              <button className="btn btn-outline btn-sm">Manage Insurance</button>
             </div>
 
             <div className="info-card">
               <h3>Consultation Fees</h3>
               <div className="form-grid">
                 <div className="form-group">
-                  <label>Initial Consultation</label>
+                  <label>Consultation Fee</label>
                   <div className="input-with-prefix">
                     <span>$</span>
-                    <input type="number" value={doctorData.practice.consultationFee} disabled />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Follow-up Visit</label>
-                  <div className="input-with-prefix">
-                    <span>$</span>
-                    <input type="number" value={doctorData.practice.followUpFee} disabled />
+                    <input 
+                      type="number" 
+                      name="consultationFee"
+                      value={formData.consultationFee} 
+                      onChange={handleInputChange}
+                      disabled={!isEditing}
+                    />
                   </div>
                 </div>
               </div>
@@ -423,7 +504,7 @@ const Profile = () => {
                     <span className="toggle-desc">Allow patients to book video consultations</span>
                   </div>
                   <label className="toggle-switch">
-                    <input type="checkbox" checked={doctorData.practice.virtualConsultation} readOnly />
+                    <input type="checkbox" defaultChecked />
                     <span className="toggle-slider"></span>
                   </label>
                 </div>
@@ -433,7 +514,7 @@ const Profile = () => {
                     <span className="toggle-desc">Show availability to new patients</span>
                   </div>
                   <label className="toggle-switch">
-                    <input type="checkbox" checked={doctorData.practice.newPatients} readOnly />
+                    <input type="checkbox" defaultChecked />
                     <span className="toggle-slider"></span>
                   </label>
                 </div>
@@ -453,12 +534,12 @@ const Profile = () => {
             <div className="info-card">
               <h3>Weekly Hours</h3>
               <div className="schedule-grid">
-                {Object.entries(doctorData.schedule).map(([day, schedule], index) => (
-                  <div key={index} className={`schedule-day ${!schedule.available ? 'unavailable' : ''}`}>
+                {Object.entries(schedule).map(([day, daySchedule], index) => (
+                  <div key={index} className={`schedule-day ${!daySchedule.available ? 'unavailable' : ''}`}>
                     <span className="day-name">{day.charAt(0).toUpperCase() + day.slice(1)}</span>
-                    {schedule.available ? (
+                    {daySchedule.available ? (
                       <div className="day-hours">
-                        <span className="hours">{schedule.start} - {schedule.end}</span>
+                        <span className="hours">{daySchedule.start} - {daySchedule.end}</span>
                       </div>
                     ) : (
                       <span className="unavailable-label">Unavailable</span>

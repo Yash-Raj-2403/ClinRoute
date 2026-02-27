@@ -155,6 +155,12 @@ export const AuthProvider = ({ children }) => {
       return isNaN(num) ? null : num;
     };
 
+    // Helper function to convert empty strings to null for date fields
+    const toDateOrNull = (value) => {
+      if (value === '' || value === null || value === undefined) return null;
+      return value;
+    };
+
     const row = {
       id: user.id,
       email: user.email,
@@ -166,7 +172,7 @@ export const AuthProvider = ({ children }) => {
       blood_group: updates.bloodGroup !== undefined ? updates.bloodGroup : user.bloodGroup,
       phone: updates.phone !== undefined ? updates.phone : user.phone,
       gender: updates.gender !== undefined ? updates.gender : user.gender,
-      dob: updates.dob !== undefined ? updates.dob : user.dob,
+      dob: toDateOrNull(updates.dob !== undefined ? updates.dob : user.dob),
       address: updates.address !== undefined ? updates.address : user.address,
       emergency_contact: updates.emergencyContact !== undefined ? updates.emergencyContact : user.emergencyContact,
       specialty: updates.specialty !== undefined ? updates.specialty : user.specialty,

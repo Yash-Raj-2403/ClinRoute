@@ -6,17 +6,12 @@ import {
   Trash2, Clock, Calendar, Save, ArrowRight, AlertTriangle, ChevronRight, ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { supabase } from '../../lib/supabase';
 import '../../styles/settings.css';
 
 const SPECIALTIES = [
   'General Physician','Cardiologist','Dermatologist','Neurologist','Pediatrician',
   'Orthopedic','Gynecologist','Psychiatrist','Radiologist','ENT Specialist','Other'
-];
-
-const MOCK_DOC_APPOINTMENTS = [
-  { id: 1, patient: 'Alice Johnson', date: '2026-02-12', time: '9:00 AM', status: 'Completed', reason: 'Routine checkup' },
-  { id: 2, patient: 'Bob Smith', date: '2026-02-18', time: '11:30 AM', status: 'Completed', reason: 'Chest pain' },
-  { id: 3, patient: 'Carol White', date: '2026-03-07', time: '3:00 PM', status: 'Upcoming', reason: 'Follow-up' },
 ];
 
 const validateDoc = (p) => {
@@ -46,6 +41,8 @@ const DoctorSettings = () => {
   const [errors, setErrors] = useState({});
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteInput, setDeleteInput] = useState('');
+  const [appointments, setAppointments] = useState([]);
+  const [loadingAppointments, setLoadingAppointments] = useState(false);
 
   const [profile, setProfile] = useState({
     name: user?.name || '',
@@ -98,6 +95,49 @@ const DoctorSettings = () => {
       JSON.stringify({ profile, activeTab })
     );
   }, [profile, activeTab]);
+
+  // ── Fetch appointments when appointments tab is opened
+  useEffect(() => {
+    if (activeTab === 'appointments' && user?.id) {
+      fetchAppointments();
+    }
+  }, [activeTab, user?.id]);
+
+  const fetchAppointments = async () => {
+    setLoadingAppointments(true);
+    try {
+      const { data, error } = await supabase
+        .from('appointments')
+        .select(`
+          id,
+          date_time,
+          duration_minutes,
+          reason,
+          type,
+          status,
+          patient_id,
+          profiles!appointments_patient_id_fkey (name, age, phone)
+        `)
+        .eq('doctor_id', user.id)
+        .order('date_time', { ascending: false })
+        .limit(10);
+
+      if (!error && data) {
+        setAppointments(data.map(appt => ({
+          id: appt.id,
+          patient: appt.profiles?.name || 'Unknown Patient',
+          date: new Date(appt.date_time).toLocaleDateString(),
+          time: new Date(appt.date_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+          status: appt.status,
+          reason: appt.reason
+        })));
+      }
+    } catch (err) {
+      console.error('Error fetching appointments:', err);
+    } finally {
+      setLoadingAppointments(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -330,24 +370,32 @@ const DoctorSettings = () => {
             {activeTab === 'appointments' && (
               <motion.div key="appointments" className="as-section" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>
                 <div className="as-section-header"><h2>My Appointments</h2><p>Your consultation schedule and history.</p></div>
-                <div className="as-appointments-list">
-                  {MOCK_DOC_APPOINTMENTS.map(appt => (
-                    <div key={appt.id} className={`as-appt-card as-appt-card--${appt.status.toLowerCase()}`}>
-                      <div className="as-appt-left">
-                        <div className="as-appt-avatar">{appt.patient.charAt(0)}</div>
-                        <div className="as-appt-info">
-                          <span className="as-appt-doctor">{appt.patient}</span>
-                          <span className="as-appt-specialty">{appt.reason}</span>
+                {loadingAppointments ? (
+                  <p style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>Loading appointments...</p>
+                ) : appointments.length === 0 ? (
+                  <p style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
+                    No appointments yet. Patients will be able to book appointments with you once they find your profile.
+                  </p>
+                ) : (
+                  <div className="as-appointments-list">
+                    {appointments.map(appt => (
+                      <div key={appt.id} className={`as-appt-card as-appt-card--${appt.status.toLowerCase()}`}>
+                        <div className="as-appt-left">
+                          <div className="as-appt-avatar">{appt.patient.charAt(0)}</div>
+                          <div className="as-appt-info">
+                            <span className="as-appt-doctor">{appt.patient}</span>
+                            <span className="as-appt-specialty">{appt.reason}</span>
+                          </div>
+                        </div>
+                        <div className="as-appt-right">
+                          <span className="as-appt-date"><Calendar size={13} /> {appt.date}</span>
+                          <span className="as-appt-time"><Clock size={13} /> {appt.time}</span>
+                          <span className={`as-appt-status as-appt-status--${appt.status.toLowerCase()}`}>{appt.status}</span>
                         </div>
                       </div>
-                      <div className="as-appt-right">
-                        <span className="as-appt-date"><Calendar size={13} /> {appt.date}</span>
-                        <span className="as-appt-time"><Clock size={13} /> {appt.time}</span>
-                        <span className={`as-appt-status as-appt-status--${appt.status.toLowerCase()}`}>{appt.status}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             )}
 
