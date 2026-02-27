@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Scale, Ruler, Calendar, Trash2, UserPlus, FileText, Clock, ChevronRight, Save, ArrowRight, AlertTriangle, Phone, Mail, MapPin } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import './AccountSettings.css';
+import '../../styles/settings.css';
 
 const EMPTY_MEMBER = { name: '', age: '', relation: '', bloodGroup: '', allergies: '' };
 const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
@@ -64,9 +64,17 @@ const PatientAccountSettings = () => {
   const [familyMembers, setFamilyMembers] = useState(user?.familyMembers || []);
   const [saveError, setSaveError] = useState('');
 
-  // Sync from Supabase-backed user context on first load
+  // ── On mount: restore draft from sessionStorage first, then fall back to saved profile
   useEffect(() => {
-    if (user?.id) {
+    const draft = sessionStorage.getItem('clinroute_patient_draft');
+    if (draft) {
+      try {
+        const parsed = JSON.parse(draft);
+        if (parsed.basicInfo) setBasicInfo(b => ({ ...b, ...parsed.basicInfo }));
+        if (parsed.familyMembers) setFamilyMembers(parsed.familyMembers);
+        if (parsed.activeTab) setActiveTab(parsed.activeTab);
+      } catch {}
+    } else if (user?.id) {
       setBasicInfo({
         name: user.name || '',
         age: user.age ?? '',
@@ -80,10 +88,18 @@ const PatientAccountSettings = () => {
         emergencyContact: user.emergencyContact || '',
       });
       setFamilyMembers(user.familyMembers || []);
-      setSavedOnce(!!user.profileComplete);
     }
+    if (user?.id) setSavedOnce(!!user.profileComplete);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
+
+  // ── Auto-save draft to sessionStorage whenever form changes
+  useEffect(() => {
+    sessionStorage.setItem(
+      'clinroute_patient_draft',
+      JSON.stringify({ basicInfo, familyMembers, activeTab })
+    );
+  }, [basicInfo, familyMembers, activeTab]);
 
   const handleBasicChange = (e) => {
     const { name, value } = e.target;
@@ -105,6 +121,7 @@ const PatientAccountSettings = () => {
     try {
       await updateProfile({ ...basicInfo, familyMembers, profileComplete: true });
       setSavedOnce(true);
+      sessionStorage.removeItem('clinroute_patient_draft');
     } catch (err) {
       setSaveError(err.message || 'Failed to save. Please try again.');
     } finally {

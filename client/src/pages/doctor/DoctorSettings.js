@@ -6,8 +6,7 @@ import {
   Trash2, Clock, Calendar, Save, ArrowRight, AlertTriangle, ChevronRight, ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import '../patient/AccountSettings.css';
-import './DoctorDashboard.css';
+import '../../styles/settings.css';
 
 const SPECIALTIES = [
   'General Physician','Cardiologist','Dermatologist','Neurologist','Pediatrician',
@@ -64,9 +63,16 @@ const DoctorSettings = () => {
 
   const [saveError, setSaveError] = useState('');
 
-  // Sync from Supabase-backed user context on first load
+  // ── On mount: restore draft from sessionStorage first, then fall back to saved profile
   useEffect(() => {
-    if (user?.id) {
+    const draft = sessionStorage.getItem('clinroute_doctor_draft');
+    if (draft) {
+      try {
+        const parsed = JSON.parse(draft);
+        if (parsed.profile) setProfile(prev => ({ ...prev, ...parsed.profile }));
+        if (parsed.activeTab) setActiveTab(parsed.activeTab);
+      } catch {}
+    } else if (user?.id) {
       setProfile({
         name: user.name || '',
         email: user.email || '',
@@ -80,10 +86,18 @@ const DoctorSettings = () => {
         experience: user.experience ?? '',
         consultationFee: user.consultationFee ?? '',
       });
-      setSavedOnce(!!user.profileComplete);
     }
+    if (user?.id) setSavedOnce(!!user.profileComplete);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
+
+  // ── Auto-save draft to sessionStorage whenever form changes
+  useEffect(() => {
+    sessionStorage.setItem(
+      'clinroute_doctor_draft',
+      JSON.stringify({ profile, activeTab })
+    );
+  }, [profile, activeTab]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,6 +114,7 @@ const DoctorSettings = () => {
     try {
       await updateProfile({ ...profile, profileComplete: true });
       setSavedOnce(true);
+      sessionStorage.removeItem('clinroute_doctor_draft');
     } catch (err) {
       setSaveError(err.message || 'Failed to save. Please try again.');
     } finally {
