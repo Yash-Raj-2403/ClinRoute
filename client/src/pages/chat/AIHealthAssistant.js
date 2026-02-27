@@ -94,7 +94,7 @@ const AIHealthAssistant = () => {
       {/* Header */}
       <div className="bg-white/80 backdrop-blur-md p-6 border-b border-slate-100 flex items-center justify-between z-10">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0f4c3a] to-teal-500 flex items-center justify-center text-white shadow-lg">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-primary-600 to-teal-500 flex items-center justify-center text-white shadow-lg">
              <Activity size={24} />
           </div>
           <div>
@@ -128,7 +128,7 @@ const AIHealthAssistant = () => {
             <div className={`
               max-w-[80%] p-5 rounded-3xl text-lg leading-relaxed shadow-sm
               ${message.sender === 'user' 
-                ? 'bg-[#0f4c3a] text-white rounded-br-none' 
+                ? 'bg-primary-600 text-white rounded-br-none' 
                 : 'bg-white border border-slate-100 text-slate-700 rounded-bl-none shadow-md'
               }
             `}>
@@ -177,7 +177,7 @@ const AIHealthAssistant = () => {
       {/* Input Area */}
       <div className="p-4 bg-white border-t border-slate-100 z-20 rounded-b-[2.5rem]">
         <form onSubmit={handleSendMessage} className="relative flex items-center gap-2">
-           <button type="button" className="p-3 text-slate-400 hover:text-[#0f4c3a] hover:bg-slate-50 rounded-full transition-colors">
+           <button type="button" className="p-3 text-slate-400 hover:text-primary-600 hover:bg-slate-50 rounded-full transition-colors">
               <Paperclip size={24} />
            </button>
            <input
@@ -186,12 +186,12 @@ const AIHealthAssistant = () => {
              value={inputValue}
              onChange={(e) => setInputValue(e.target.value)}
              placeholder="Type your symptoms or questions..."
-             className="flex-1 bg-slate-50 border-transparent focus:bg-white focus:border-[#0f4c3a]/20 focus:ring-4 focus:ring-[#0f4c3a]/5 rounded-2xl py-4 px-6 text-lg font-medium transition-all"
+             className="flex-1 bg-slate-50 border-transparent focus:bg-white focus:border-primary-600/20 focus:ring-4 focus:ring-[primary-600]/5 rounded-2xl py-4 px-6 text-lg font-medium transition-all"
            />
            <button 
              type="submit" 
              disabled={!inputValue.trim() || isTyping}
-             className="p-4 bg-[#FBBF24] text-[#0f4c3a] rounded-2xl hover:bg-[#F59E0B] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
+             className="p-4 bg-secondary text-primary-600 rounded-2xl hover:bg-secondary-dark disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
            >
              <Send size={24} />
            </button>

@@ -43,7 +43,7 @@ const SymptomSubmission = () => {
   const renderStep1 = () => (
     <div className="space-y-10">
       <div className="text-center mb-12">
-        <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-4">How are you feeling?</h3>
+        <h3 className="text-4xl font-serif font-bold text-primary-600 mb-4">How are you feeling?</h3>
         <p className="text-slate-600 text-xl font-medium">Select the symptoms that best describe your condition.</p>
       </div>
 
@@ -57,7 +57,7 @@ const SymptomSubmission = () => {
               key={symptom.id}
               className={`p-8 rounded-[2rem] border-2 transition-all duration-300 flex flex-col items-center gap-4 group hover:shadow-lg hover:-translate-y-1 ${
                  isSelected
-                 ? 'border-[#0f4c3a] bg-[#0f4c3a] text-white'
+                 ? 'border-primary-600 bg-primary-600 text-white'
                  : `bg-white hover:border-current ${symptom.color}`
               }`}
               onClick={() => {
@@ -81,7 +81,7 @@ const SymptomSubmission = () => {
          <input 
            type="text" 
            placeholder="e.g. Dizziness, Sore throat..." 
-           className="w-full p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[#0f4c3a] focus:bg-white focus:border-transparent outline-none transition-all text-lg font-medium text-slate-800"
+           className="w-full p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[primary-600] focus:bg-white focus:border-transparent outline-none transition-all text-lg font-medium text-slate-800"
          />
       </div>
     </div>
@@ -90,7 +90,7 @@ const SymptomSubmission = () => {
   const renderStep2 = () => (
     <div className="space-y-10">
       <div className="text-center mb-12">
-        <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-4">Tell us more</h3>
+        <h3 className="text-4xl font-serif font-bold text-primary-600 mb-4">Tell us more</h3>
         <p className="text-slate-600 text-xl font-medium">Help us understand the severity and duration.</p>
       </div>
 
@@ -112,7 +112,7 @@ const SymptomSubmission = () => {
               max="10" 
               value={formData.severity}
               onChange={(e) => setFormData({...formData, severity: parseInt(e.target.value)})}
-              className="w-full h-4 bg-slate-100 rounded-full appearance-none cursor-pointer accent-[#0f4c3a]"
+              className="w-full h-4 bg-slate-100 rounded-full appearance-none cursor-pointer accent-[primary-600]"
             />
             <div className="flex justify-between text-sm font-bold text-slate-400 mt-4 uppercase tracking-wide">
               <span>Mild Discomfort</span>
@@ -123,7 +123,7 @@ const SymptomSubmission = () => {
          <div>
             <label className="block font-bold text-slate-800 text-xl mb-6">Detailed Description</label>
             <textarea 
-              className="w-full h-48 p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[#0f4c3a] focus:bg-white outline-none resize-none transition-all placeholder:text-slate-400 text-lg font-medium leading-relaxed"
+              className="w-full h-48 p-6 bg-slate-50 border border-slate-200 rounded-[2rem] focus:ring-2 focus:ring-[primary-600] focus:bg-white outline-none resize-none transition-all placeholder:text-slate-400 text-lg font-medium leading-relaxed"
               placeholder="Please describe exactly what you're feeling, when it started, and any pattern you've noticed..."
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
@@ -144,7 +144,7 @@ const SymptomSubmission = () => {
        </motion.div>
        
        <div>
-         <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-6">Ready to Submit?</h3>
+         <h3 className="text-4xl font-serif font-bold text-primary-600 mb-6">Ready to Submit?</h3>
          <p className="text-slate-600 font-medium max-w-lg mx-auto mb-10 text-xl leading-relaxed">
            Our AI will analyze your symptoms and recommend the best specialist for your case immediately.
          </p>
@@ -165,11 +165,11 @@ const SymptomSubmission = () => {
   return (
     <div className="max-w-5xl mx-auto pb-24 px-6">
       <div className="flex items-center gap-6 mb-12">
-        <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-[#0f4c3a]">
+        <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-primary-600">
           <Stethoscope size={32} />
         </div>
         <div>
-           <h1 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-1">Symptom Checker</h1>
+           <h1 className="text-4xl font-serif font-bold text-primary-600 mb-1">Symptom Checker</h1>
            <p className="text-slate-500 font-medium text-lg">AI-Powered Triage Assistant</p>
         </div>
       </div>
@@ -177,7 +177,7 @@ const SymptomSubmission = () => {
       {/* Progress Bar */}
       <div className="mb-12 relative h-3 bg-slate-100 rounded-full overflow-hidden">
         <motion.div 
-           className="absolute top-0 left-0 h-full bg-[#0f4c3a]"
+           className="absolute top-0 left-0 h-full bg-primary-600"
            initial={{ width: 0 }}
            animate={{ width: `${(step / totalSteps) * 100}%` }}
            transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -213,14 +213,14 @@ const SymptomSubmission = () => {
             {step < totalSteps ? (
               <button 
                 onClick={handleNext}
-                className="px-10 py-4 rounded-full bg-[#0f4c3a] text-white font-bold shadow-lg hover:bg-[#065F46] hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
+                className="px-10 py-4 rounded-full bg-primary-600 text-white font-bold shadow-lg hover:bg-primary-700 hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
               >
                 Next Step
                 <ChevronRight size={24} />
               </button>
             ) : (
                <button 
-                className="px-12 py-4 rounded-full bg-[#FBBF24] text-[#0f4c3a] font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
+                className="px-12 py-4 rounded-full bg-secondary text-primary-600 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
               >
                 Submit Assessment
                 <Send size={20} />

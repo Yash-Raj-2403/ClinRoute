@@ -34,14 +34,14 @@ const Consultations = () => {
                 </div>
             </motion.div>
             
-            <h3 className="text-4xl font-serif font-bold text-[#0f4c3a] mb-6">Start your journey</h3>
+            <h3 className="text-4xl font-serif font-bold text-primary-600 mb-6">Start your journey</h3>
             <p className="text-slate-600 max-w-lg mb-12 text-xl font-medium leading-relaxed">
                 Connect with our AI assistant or a specialist to begin your health consultation. It's safe, secure, and fast.
             </p>
             
             <Link 
                 to="/patient/consultation/new" 
-                className="group px-10 py-5 bg-[#0f4c3a] text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
+                className="group px-10 py-5 bg-primary-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-3 text-lg"
             >
                 Start New Consultation
                 <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -66,7 +66,7 @@ const Consultations = () => {
                       <Calendar size={14} className="fill-current" />
                       History & Active
                    </motion.div>
-                   <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#0f4c3a] tracking-tight">Your Consultations</h1>
+                   <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary-600 tracking-tight">Your Consultations</h1>
                 </div>
                 
                 <div className="flex items-center gap-4">
@@ -76,7 +76,7 @@ const Consultations = () => {
                     </button>
                     <Link 
                         to="/patient/consultation/new" 
-                        className="px-8 py-4 bg-[#FBBF24] text-[#0f4c3a] rounded-full font-bold hover:bg-[#F59E0B] hover:shadow-lg transition-all shadow-sm text-lg flex items-center gap-2"
+                        className="px-8 py-4 bg-secondary text-primary-600 rounded-full font-bold hover:bg-secondary-dark hover:shadow-lg transition-all shadow-sm text-lg flex items-center gap-2"
                     >
                         <MessageSquare size={20} />
                         New Request

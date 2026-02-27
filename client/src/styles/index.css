@@ -12,7 +12,7 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #FDFBF7;
+  background-color: background;
   color: #1F2937;
 }
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   --accent-100: #FEF3C7;
   --accent-200: #FDE68A;
   --accent-300: #FCD34D;
-  --accent-400: #FBBF24;
+  --accent-400: secondary;
   --accent-500: #F59E0B;
   --accent-600: #D97706;
   --accent-700: #B45309;
@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Emergency Colors */
   --emergency: #DC2626;
   --urgent: #F97316;
-  --moderate: #FBBF24;
+  --moderate: secondary;
   --low: #22C55E;
 
   /* Typography */
@@ -409,13 +409,13 @@ ul, ol {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: background;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #CBD5E1;
   border-radius: 99px;
-  border: 3px solid #FDFBF7;
+  border: 3px solid background;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -424,8 +424,8 @@ ul, ol {
 
 /* Text Selection */
 ::selection {
-  background: #0f4c3a;
-  color: #FDFBF7;
+  background: primary-600;
+  color: background;
 }
 
 /* Smooth Scrolling */

@@ -47,7 +47,7 @@ const Dashboard = () => {
        <div className={`w-16 h-16 rounded-[2rem] bg-white flex items-center justify-center mb-6 shadow-md shadow-black/5 group-hover:scale-110 transition-transform duration-300 ${iconColor}`}>
           <Icon size={32} strokeWidth={2} />
        </div>
-       <h3 className="text-2xl font-serif font-bold text-[#0f4c3a] mb-3">{title}</h3>
+       <h3 className="text-2xl font-serif font-bold text-primary-600 mb-3">{title}</h3>
        <p className="text-slate-600 font-medium mb-8 leading-relaxed text-lg min-h-[3.5rem] relative z-10">{description}</p>
        
        <Link 
@@ -73,10 +73,10 @@ const Dashboard = () => {
       {/* Hero Welcome Section - Vibrant & Eye Catchy */}
       <motion.div 
         variants={item}
-        className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-[#0f4c3a] via-[#13614d] to-[#0A3D30] text-white p-10 md:p-16 mb-12 shadow-2xl shadow-green-900/20"
+        className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white p-10 md:p-16 mb-12 shadow-2xl shadow-green-900/20"
       >
         {/* Abstract Background Art */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FBBF24] rounded-full mix-blend-overlay opacity-20 blur-[80px] -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full mix-blend-overlay opacity-20 blur-[80px] -translate-y-1/2 translate-x-1/4"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-400 rounded-full mix-blend-overlay opacity-20 blur-[60px] translate-y-1/2 -translate-x-1/4"></div>
         <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] border border-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -86,22 +86,22 @@ const Dashboard = () => {
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-[#FBBF24] text-sm font-bold uppercase tracking-widest mb-8 border border-white/20"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md text-secondary text-sm font-bold uppercase tracking-widest mb-8 border border-white/20"
             >
               <Sun size={16} className="fill-current animate-pulse-slow" />
               Good Morning
             </motion.div>
             <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight leading-[1.1] mb-8">
               Mental health <br/>
-              <span className="text-[#FBBF24] italic font-light">is wealth.</span>
+              <span className="text-secondary italic font-light">is wealth.</span>
             </h1>
             <p className="text-emerald-50/90 text-xl font-medium max-w-lg leading-relaxed mb-10">
-              Welcome back, <strong className="text-white border-b-2 border-[#FBBF24]">{user?.name?.split(' ')[0] || 'Friend'}</strong>. 
+              Welcome back, <strong className="text-white border-b-2 border-secondary">{user?.name?.split(' ')[0] || 'Friend'}</strong>. 
               We've organized everything for your well-being today.
             </p>
             
             <div className="flex flex-wrap gap-4">
-               <Link to="/patient/consultation/new" className="px-10 py-5 bg-[#FBBF24] text-[#0f4c3a] rounded-full font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 hover:-translate-y-1 transition-all text-lg flex items-center gap-3">
+               <Link to="/patient/consultation/new" className="px-10 py-5 bg-secondary text-primary-600 rounded-full font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 hover:-translate-y-1 transition-all text-lg flex items-center gap-3">
                  <Activity size={20} />
                  Check Symptoms
                </Link>
@@ -120,7 +120,7 @@ const Dashboard = () => {
              >
                 <div className="flex items-center justify-between mb-8">
                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FBBF24] flex items-center justify-center text-[#0f4c3a]">
+                      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary-600">
                         <Heart size={20} className="fill-current" />
                       </div>
                       <span className="font-bold text-white">Daily Vitels</span>
@@ -147,15 +147,15 @@ const Dashboard = () => {
              </motion.div>
              
              {/* Abstract floating circles */}
-             <div className="absolute top-0 right-10 w-20 h-20 bg-[#FBBF24] rounded-full blur-xl opacity-40"></div>
+             <div className="absolute top-0 right-10 w-20 h-20 bg-secondary rounded-full blur-xl opacity-40"></div>
              <div className="absolute bottom-0 right-60 w-32 h-32 bg-teal-400 rounded-full blur-2xl opacity-30"></div>
           </div>
         </div>
       </motion.div>
 
       {/* Action Grid - Colorful & Engaging */}
-      <h3 className="text-2xl font-serif font-bold text-[#0f4c3a] mb-8 flex items-center gap-3">
-        <Zap className="fill-[#FBBF24] text-[#FBBF24]" />
+      <h3 className="text-2xl font-serif font-bold text-primary-600 mb-8 flex items-center gap-3">
+        <Zap className="fill-secondary text-secondary" />
         Quick Actions
       </h3>
       
