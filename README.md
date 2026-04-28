@@ -2,9 +2,9 @@
 
 A comprehensive healthcare platform featuring AI-powered triage assessment, real-time consultations, and clinical workflow automation. Styled with a modern, Zocdoc-inspired design system.
 
-## 🏥 Overview
+## 🏥 Overview 2 
 
-ClinRoute is a full-stack healthcare application that streamlines the patient journey from symptom submission to diagnosis. The platform features:
+ClinRoute is a full-stack healthcare application that streamlines the patient journey from symptom submission to diagnosis. The platform features:they are given below :
 
 - **AI-Powered Triage**: Intelligent symptom analysis and priority scoring
 - **Patient Portal**: Easy symptom submission, consultation tracking, and health records
